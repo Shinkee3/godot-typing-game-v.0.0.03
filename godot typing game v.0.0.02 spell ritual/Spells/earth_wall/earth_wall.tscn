@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d34adtmnorgrd"]
+
+[ext_resource type="Script" path="res://Spells/earth_wall/earth_wall.gd" id="1_bm3j1"]
+[ext_resource type="Texture2D" uid="uid://bpkxrx2fbqdj1" path="res://Assets/white circle.png" id="2_u71co"]
+
+[node name="earth_wall" type="Node2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_bm3j1")
+spell_tag = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(18.25, -0.25)
+scale = Vector2(-0.0104317, -0.0081258)
+texture = ExtResource("2_u71co")
+
+[node name="LifeTime" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

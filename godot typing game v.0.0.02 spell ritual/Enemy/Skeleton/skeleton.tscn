@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://j787dha03xy1"]
+
+[ext_resource type="Script" path="res://Enemy/Skeleton/skeleton.gd" id="1_426rx"]
+[ext_resource type="Texture2D" uid="uid://cfwwke5w61udb" path="res://Assets/32rogues/monsters.png" id="1_gbgqe"]
+[ext_resource type="PackedScene" uid="uid://dkmyihsnyob7p" path="res://Enemy/enemy_hurtbox.tscn" id="3_itt4j"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uf876"]
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gs3gr"]
+size = Vector2(14, 25)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_inpqm"]
+radius = 12.0
+
+[node name="Skeleton_rewrite" type="CharacterBody2D"]
+light_mask = 3
+visibility_layer = 3
+material = SubResource("CanvasItemMaterial_uf876")
+scale = Vector2(2, 2)
+script = ExtResource("1_426rx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_gs3gr")
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = ExtResource("1_gbgqe")
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 128, 32, 32)
+
+[node name="EnemyHurtbox" parent="." instance=ExtResource("3_itt4j")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtbox"]
+shape = SubResource("CircleShape2D_inpqm")
+debug_color = Color(0.937255, 0.207843, 0.356863, 0.419608)
+
+[node name="Healthbar" type="Label" parent="."]
+use_parent_material = true
+offset_left = -26.0
+offset_top = -35.5
+offset_right = 26.0
+offset_bottom = -9.5
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1

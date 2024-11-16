@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://ykp7ud4xjj7r"]
+
+[ext_resource type="Script" path="res://UI/main_ui/spellpage.gd" id="1_ixcje"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8jpvr"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_42kf3"]
+font_size = 12
+
+[node name="Spellpage" type="MarginContainer"]
+theme_override_constants/margin_right = 15
+script = ExtResource("1_ixcje")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="PanelContainer"]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="title" type="Label" parent="PanelContainer/VBox"]
+layout_mode = 2
+text = "Spell Title"
+horizontal_alignment = 1
+
+[node name="line" type="ColorRect" parent="PanelContainer/VBox"]
+custom_minimum_size = Vector2(160, 2)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.372549, 0.372549, 0.372549, 1)
+
+[node name="incantation" type="Label" parent="PanelContainer/VBox"]
+layout_mode = 2
+text = "\"incantation\""
+label_settings = SubResource("LabelSettings_8jpvr")
+horizontal_alignment = 1
+
+[node name="description" type="Label" parent="PanelContainer/VBox"]
+layout_mode = 2
+text = "<spell description>"
+label_settings = SubResource("LabelSettings_42kf3")
+horizontal_alignment = 1
+autowrap_mode = 3

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://drlj5p7tiypmf"]
+
+[ext_resource type="Script" path="res://Spells/magic_missile/magic_missile.gd" id="1_vmy0h"]
+
+[node name="magic_missile" type="Node2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_vmy0h")
+spell_tag = 0

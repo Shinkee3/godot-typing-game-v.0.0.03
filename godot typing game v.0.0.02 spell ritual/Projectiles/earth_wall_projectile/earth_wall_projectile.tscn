@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5hieqkxw5nct"]
+
+[ext_resource type="Script" path="res://Projectiles/earth_wall_projectile/earth_wall_projectile.gd" id="1_30bdx"]
+[ext_resource type="Texture2D" uid="uid://yxigoyhs4jfc" path="res://Assets/Earth Wall.png" id="2_pcd4u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bau15"]
+radius = 25.0799
+
+[node name="earth_wall_projectile" type="Area2D"]
+top_level = true
+collision_layer = 13
+collision_mask = 13
+script = ExtResource("1_30bdx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+scale = Vector2(3, 3)
+texture = ExtResource("2_pcd4u")
+region_enabled = true
+region_rect = Rect2(144, 2.08165e-12, 48, 48)
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-5, 19)
+shape = SubResource("CircleShape2D_bau15")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 19)
+shape = SubResource("CircleShape2D_bau15")
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

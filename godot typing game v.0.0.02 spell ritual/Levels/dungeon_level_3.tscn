@@ -1,0 +1,140 @@
+[gd_scene load_steps=9 format=3 uid="uid://cyvbmhxob2268"]
+
+[ext_resource type="PackedScene" uid="uid://c4a30yaatk3t1" path="res://Player/player_melee.tscn" id="1_cma4o"]
+[ext_resource type="PackedScene" uid="uid://bl0dlxrg1qk1n" path="res://Player/player_rewrite.tscn" id="2_ie25h"]
+[ext_resource type="PackedScene" uid="uid://dhand6e123x1j" path="res://Levels/test_tilemap.tscn" id="3_g7luo"]
+[ext_resource type="PackedScene" uid="uid://bytbggxc17ka5" path="res://Levels/door.tscn" id="3_wa8dd"]
+[ext_resource type="PackedScene" uid="uid://j787dha03xy1" path="res://Enemy/Skeleton/skeleton.tscn" id="4_j7jcm"]
+[ext_resource type="PackedScene" uid="uid://7ypyy43mejd5" path="res://Enemy/FastEnemy/fast_enemy.tscn" id="5_wh7y3"]
+[ext_resource type="PackedScene" uid="uid://bfebtipda7v1r" path="res://UI/spell_cast_handler.tscn" id="6_00kwg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_igrjn"]
+font_size = 14
+
+[node name="dungeon_level_3" type="Node2D"]
+
+[node name="Player_melee" parent="." instance=ExtResource("1_cma4o")]
+position = Vector2(1032, 547)
+
+[node name="Player" parent="." instance=ExtResource("2_ie25h")]
+position = Vector2(1034, 444)
+
+[node name="Map" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="StairUp" parent="Map" instance=ExtResource("3_wa8dd")]
+position = Vector2(927, 481)
+next_scene = "res://Levels/arena_level.tscn"
+
+[node name="Clutter" parent="Map" instance=ExtResource("3_g7luo")]
+z_index = -1
+layer_0/tile_data = PackedInt32Array(6, 196609, 16, 458766, 524289, 16)
+
+[node name="FloorWall" parent="Map" instance=ExtResource("3_g7luo")]
+layer_0/tile_data = PackedInt32Array(0, 65537, 0, 65536, 1, 3, 131072, 1, 3, 196608, 1, 3, 262144, 1, 3, 327680, 1, 3, 393216, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 65537, 0, 1, 65537, 0, 65537, 1, 3, 131073, 1, 0, 196609, 1, 0, 262145, 65537, 0, 327681, 1, 3, 393217, 65537, 0, 458753, 1, 3, 524289, 1, 3, 589825, 65537, 0, 2, 65537, 0, 65538, 1, 3, 131074, 1, 3, 196610, 65537, 0, 262146, 1, 3, 327682, 1, 3, 393218, 1, 3, 458754, 1, 3, 524290, 1, 3, 589826, 65537, 0, 3, 65537, 0, 65539, 1, 3, 131075, 1, 0, 196611, 65537, 0, 262147, 1, 3, 327683, 65537, 0, 393219, 1, 3, 458755, 65537, 0, 524291, 1, 3, 589827, 65537, 0, 4, 65537, 0, 65540, 1, 3, 131076, 1, 3, 196612, 65537, 0, 262148, 1, 3, 327684, 65537, 0, 393220, 1, 3, 458756, 65537, 0, 524292, 1, 3, 589828, 65537, 0, 5, 65537, 0, 65541, 1, 3, 196613, 65537, 0, 262149, 1, 3, 327685, 65537, 0, 393221, 1, 3, 458757, 1, 3, 524293, 1, 3, 589829, 65537, 0, 6, 65537, 0, 65542, 1, 3, 131078, 1, 3, 262150, 1, 3, 327686, 1, 3, 393222, 1, 3, 458758, 1, 3, 524294, 1, 3, 589830, 65537, 0, 7, 1, 0, 65543, 1, 0, 131079, 1, 0, 196615, 1, 0, 262151, 1, 0, 327687, 1, 0, 393223, 1, 0, 458759, 65537, 0, 524295, 1, 3, 589831, 65537, 0, 8, 65537, 0, 65544, 1, 3, 131080, 1, 3, 196616, 1, 3, 262152, 1, 3, 327688, 65537, 0, 393224, 1, 3, 458760, 1, 3, 524296, 1, 3, 589832, 65537, 0, 9, 65537, 0, 65545, 1, 3, 131081, 1, 0, 196617, 65537, 0, 262153, 1, 3, 327689, 65537, 0, 393225, 1, 3, 458761, 1, 3, 524297, 1, 0, 589833, 65537, 0, 10, 65537, 0, 65546, 1, 3, 131082, 1, 0, 196618, 1, 3, 262154, 1, 3, 327690, 1, 3, 393226, 1, 3, 458762, 1, 3, 524298, 1, 3, 589834, 65537, 0, 11, 65537, 0, 65547, 1, 3, 131083, 1, 0, 196619, 1, 0, 262155, 1, 0, 327691, 1, 0, 393227, 1, 0, 458763, 1, 0, 524299, 1, 0, 589835, 65537, 0, 12, 65537, 0, 65548, 1, 3, 131084, 65537, 0, 196620, 1, 3, 262156, 1, 3, 327692, 1, 3, 393228, 1, 3, 458764, 1, 3, 524300, 1, 3, 589836, 65537, 0, 13, 65537, 0, 65549, 1, 3, 131085, 65537, 0, 196621, 1, 3, 262157, 1, 3, 327693, 1, 0, 393229, 1, 0, 458765, 65537, 0, 524301, 1, 3, 589837, 65537, 0, 14, 65537, 0, 65550, 1, 3, 131086, 65537, 0, 196622, 1, 3, 262158, 1, 3, 327694, 65537, 0, 393230, 1, 3, 458766, 1, 3, 524302, 1, 3, 589838, 65537, 0, 15, 65537, 0, 131087, 1, 3, 196623, 1, 3, 262159, 1, 3, 327695, 65537, 0, 393231, 1, 3, 458767, 1, 3, 524303, 1, 3, 589839, 65537, 0, 16, 65537, 0, 131088, 65537, 0, 196624, 1, 3, 262160, 1, 3, 327696, 65537, 0, 393232, 1, 3, 458768, 1, 3, 524304, 1, 3, 589840, 65537, 0, 17, 65537, 0, 131089, 1, 0, 196625, 1, 0, 262161, 1, 0, 327697, 1, 0, 393233, 1, 0, 458769, 1, 0, 524305, 1, 0, 589841, 65537, 0, 131077, 1, 3, 196614, 65537, 0, 65553, 1, 3, 65552, 1, 3, 65551, 1, 3, 18, 65537, 0, 19, 65537, 0, 20, 65537, 0, 21, 65537, 0, 131095, 1, 0, 65559, 1, 0, 23, 1, 0, 22, 65537, 0, 131090, 1, 0, 131091, 1, 0, 131092, 1, 0, 131093, 1, 0, 131094, 1, 0)
+
+[node name="Door" parent="Map" instance=ExtResource("3_wa8dd")]
+position = Vector2(421, 46)
+next_scene = "res://Levels/dungeon_level_4.tscn"
+
+[node name="Enemies" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Skeleton" parent="Enemies" instance=ExtResource("4_j7jcm")]
+position = Vector2(314, 103)
+
+[node name="Skeleton2" parent="Enemies" instance=ExtResource("4_j7jcm")]
+position = Vector2(140, 344)
+
+[node name="Skeleton3" parent="Enemies" instance=ExtResource("4_j7jcm")]
+position = Vector2(121, 490)
+
+[node name="Skeleton4" parent="Enemies" instance=ExtResource("4_j7jcm")]
+position = Vector2(971, 284)
+
+[node name="Skeleton5" parent="Enemies" instance=ExtResource("4_j7jcm")]
+position = Vector2(412, 492)
+
+[node name="Skeleton6" parent="Enemies" instance=ExtResource("4_j7jcm")]
+position = Vector2(1221, 100)
+
+[node name="Skeleton7" parent="Enemies" instance=ExtResource("4_j7jcm")]
+position = Vector2(674, 99)
+
+[node name="Skeleton8" parent="Enemies" instance=ExtResource("4_j7jcm")]
+position = Vector2(558, 407)
+
+[node name="Skeleton9" parent="Enemies" instance=ExtResource("4_j7jcm")]
+position = Vector2(549, 491)
+
+[node name="Skeleton10" parent="Enemies" instance=ExtResource("4_j7jcm")]
+position = Vector2(647, 476)
+
+[node name="Skeleton11" parent="Enemies" instance=ExtResource("4_j7jcm")]
+position = Vector2(324, 420)
+
+[node name="Skeleton12" parent="Enemies" instance=ExtResource("4_j7jcm")]
+position = Vector2(200, 419)
+
+[node name="Skeleton13" parent="Enemies" instance=ExtResource("4_j7jcm")]
+position = Vector2(208, 285)
+
+[node name="Skeleton14" parent="Enemies" instance=ExtResource("4_j7jcm")]
+position = Vector2(166, 547)
+
+[node name="Fast_enemy" parent="Enemies" instance=ExtResource("5_wh7y3")]
+position = Vector2(367, 287)
+
+[node name="Fast_enemy2" parent="Enemies" instance=ExtResource("5_wh7y3")]
+position = Vector2(371, 148)
+
+[node name="Fast_enemy3" parent="Enemies" instance=ExtResource("5_wh7y3")]
+position = Vector2(675, 230)
+
+[node name="Fast_enemy4" parent="Enemies" instance=ExtResource("5_wh7y3")]
+position = Vector2(1393, 93)
+
+[node name="Fast_enemy5" parent="Enemies" instance=ExtResource("5_wh7y3")]
+position = Vector2(292, 288)
+
+[node name="Fast_enemy6" parent="Enemies" instance=ExtResource("5_wh7y3")]
+position = Vector2(257, 419)
+
+[node name="Fast_enemy7" parent="Enemies" instance=ExtResource("5_wh7y3")]
+position = Vector2(54, 344)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_right = 294.0
+offset_bottom = 185.0
+
+[node name="Label_Controls" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+offset_right = 371.0
+offset_bottom = 97.0
+text = "Controls:
+Left Click = Move to mouse position
+Right click = Set aim to mouse position
+ 
+Click on the textbar below the screen to
+cast a spell. Type title to show incantation.
+
+Press enter to process input."
+label_settings = SubResource("LabelSettings_igrjn")
+
+[node name="Spell_Cast_handler" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("6_00kwg")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+player = NodePath("../../Player")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+light_mask = 3
+visibility_layer = 3
+color = Color(0.231373, 0.231373, 0.231373, 1)

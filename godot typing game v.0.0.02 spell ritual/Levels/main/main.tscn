@@ -1,0 +1,117 @@
+[gd_scene load_steps=19 format=3 uid="uid://cxhs8mky6mys5"]
+
+[ext_resource type="PackedScene" uid="uid://clqmjlyciugkd" path="res://Levels/main/main_test_level.tscn" id="1_e15ap"]
+[ext_resource type="Script" path="res://Levels/main/main.gd" id="1_yeh0h"]
+[ext_resource type="PackedScene" uid="uid://bimkd41ouig5e" path="res://UI/main_ui/ingame_ui.tscn" id="2_ffheu"]
+[ext_resource type="PackedScene" uid="uid://cmku625mxhvvn" path="res://Spells/fireball/fireball_rewrite.tscn" id="4_cvyq6"]
+[ext_resource type="PackedScene" uid="uid://bgb50llhrwdqu" path="res://Spells/cast_light/cast_light.tscn" id="5_0pkyi"]
+[ext_resource type="PackedScene" uid="uid://fowttahueitf" path="res://Spells/curse_of_rah/curse_of_rah.tscn" id="6_0nqwv"]
+[ext_resource type="PackedScene" uid="uid://dprtktnhtow1j" path="res://Spells/blessed_aura/blessed_aura.tscn" id="7_waqyl"]
+[ext_resource type="PackedScene" uid="uid://drlj5p7tiypmf" path="res://Spells/magic_missile/magic_missile.tscn" id="8_3fjbr"]
+[ext_resource type="PackedScene" uid="uid://dc502prk7b82g" path="res://Spells/teleport/teleport.tscn" id="9_iysua"]
+[ext_resource type="PackedScene" uid="uid://d34adtmnorgrd" path="res://Spells/earth_wall/earth_wall.tscn" id="10_jj1em"]
+[ext_resource type="PackedScene" uid="uid://dhgv5so4cctm2" path="res://Spells/magic_shield/magic_shield.tscn" id="11_40o1w"]
+[ext_resource type="PackedScene" uid="uid://cfwemia6mu77g" path="res://Spells/sigil_writing/sigil_base.tscn" id="12_0rhst"]
+[ext_resource type="PackedScene" uid="uid://dvs8auh4r8oxv" path="res://Spells/sigil_writing/sigil_insides/Eyelid/sigil_writing_eyelid.tscn" id="13_xsmsq"]
+[ext_resource type="PackedScene" uid="uid://ceutu3uyr4cf5" path="res://Spells/sigil_writing/sigil_insides/spell_circle/sigil_spell_circle.tscn" id="14_vw4dj"]
+[ext_resource type="PackedScene" uid="uid://cb0mktloa1po7" path="res://Spells/sigil_writing/sigil_insides/woh_symbol/sigil_woh_symbol.tscn" id="15_phae2"]
+[ext_resource type="PackedScene" uid="uid://bq62dt20lynow" path="res://Spells/sigil_writing/sigil_insides/sigil_small_circle/sigil_small_circle.tscn" id="16_541m5"]
+[ext_resource type="PackedScene" uid="uid://ceyyaiuvdn723" path="res://Spells/sigil_writing/sigil_insides/sigil_small_square/sigil_small_square.tscn" id="17_e1j4l"]
+[ext_resource type="PackedScene" uid="uid://yw05xsfwhtwm" path="res://Spells/sigil_writing/sigil_insides/sigil_star/sigil_star.tscn" id="18_hqdxn"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_yeh0h")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ingame_ui" parent="CanvasLayer" instance=ExtResource("2_ffheu")]
+unique_name_in_owner = true
+mouse_filter = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_left = 288.0
+offset_right = 1152.0
+offset_bottom = 486.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(864, 486)
+render_target_update_mode = 4
+
+[node name="main_test_level" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_e15ap")]
+unique_name_in_owner = true
+
+[node name="SpellContainer" type="Node2D" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+
+[node name="Fireball_rewrite" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("4_cvyq6")]
+visible = false
+
+[node name="cast_light" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("5_0pkyi")]
+visible = false
+
+[node name="Curse_of_Rah" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("6_0nqwv")]
+visible = false
+title = "curse"
+
+[node name="blessed_aura" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("7_waqyl")]
+visible = false
+title = "Blessed Aura"
+incantation = "vect a unocht inimicus"
+
+[node name="magic_missile" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("8_3fjbr")]
+position = Vector2(-89, -243)
+title = "Magic Missile"
+incantation = "mm"
+
+[node name="teleport" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("9_iysua")]
+visible = false
+position = Vector2(508, 819)
+title = "teleport"
+incantation = "digredior demovio"
+
+[node name="earth_wall" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("10_jj1em")]
+visible = false
+title = "earth wall"
+incantation = "earth wall 0"
+
+[node name="magic_shield" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("11_40o1w")]
+visible = false
+title = "magic shield"
+incantation = "eye for the enemy"
+
+[node name="sigil_base" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("12_0rhst")]
+visible = false
+z_as_relative = false
+title = "Sigil Base"
+incantation = "Draw sigil base"
+
+[node name="sigil_writing_eyelid" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("13_xsmsq")]
+visible = false
+title = "Draw Symbol: Eyelid"
+incantation = "Draw symbol eyelid"
+
+[node name="sigil_writing_spell_circle" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("14_vw4dj")]
+visible = false
+title = "Sigil Symbol: Spell"
+incantation = "Draw symbol spell"
+
+[node name="sigil_writing_woh_symbol" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("15_phae2")]
+visible = false
+title = "Sigil Symbol: WoH"
+incantation = "Draw symbol woh"
+
+[node name="sigil_writing_small_circle" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("16_541m5")]
+visible = false
+title = "Sigil Symbol: Small Circle"
+incantation = "Draw symbol small circle"
+
+[node name="sigil_writing_small_square" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("17_e1j4l")]
+visible = false
+title = "Sigil Symbol: Small Square"
+incantation = "Draw symbol small square"
+
+[node name="sigil_star" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("18_hqdxn")]
+visible = false
+title = "Sigil Symbol: Star"
+incantation = "Draw symbol star"

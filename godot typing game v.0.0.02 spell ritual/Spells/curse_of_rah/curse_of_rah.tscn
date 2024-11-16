@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://fowttahueitf"]
+
+[ext_resource type="Script" path="res://Spells/curse_of_rah/curse_of_rah.gd" id="1_6onw3"]
+[ext_resource type="Texture2D" uid="uid://cfwwke5w61udb" path="res://Assets/32rogues/monsters.png" id="2_i4drx"]
+[ext_resource type="PackedScene" uid="uid://dkdhhewiedge0" path="res://Spells/spell_hitbox.tscn" id="3_kvs2s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk6of"]
+atlas = ExtResource("2_i4drx")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e10qm"]
+radius = 98.27
+
+[node name="Curse_of_Rah" type="Node2D"]
+script = ExtResource("1_6onw3")
+title = "Curse"
+spell_tag = 2
+incantation = "Avalem Morgus"
+description = "spell description"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.133333, 0.780392, 0, 1)
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_lk6of")
+
+[node name="Spell_hitbox" parent="." instance=ExtResource("3_kvs2s")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spell_hitbox"]
+shape = SubResource("CircleShape2D_e10qm")
+
+[node name="lifetime" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="attacktimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="lifetime" to="." method="_on_lifetime_timeout"]
+[connection signal="timeout" from="attacktimer" to="." method="_on_attacktimer_timeout"]

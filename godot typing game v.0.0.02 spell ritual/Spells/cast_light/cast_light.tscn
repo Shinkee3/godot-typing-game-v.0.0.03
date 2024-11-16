@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgb50llhrwdqu"]
+
+[ext_resource type="Script" path="res://Spells/cast_light/cast_light.gd" id="1_iroyi"]
+[ext_resource type="Texture2D" uid="uid://2ny6ad15t0o0" path="res://Assets/Explosion 2 SpriteSheet.png" id="2_k462o"]
+[ext_resource type="Texture2D" uid="uid://bpkxrx2fbqdj1" path="res://Assets/white circle.png" id="3_ct5ub"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1d10c"]
+atlas = ExtResource("2_k462o")
+region = Rect2(8, 8, 32, 32)
+
+[node name="cast_light" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_iroyi")
+title = "Light"
+spell_tag = 1
+incantation = "cast light"
+description = "light up the area"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_1d10c")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = ExtResource("3_ct5ub")
+
+[node name="lifetime" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="lifetime" to="." method="_on_lifetime_timeout"]

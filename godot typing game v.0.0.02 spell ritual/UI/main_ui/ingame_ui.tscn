@@ -1,0 +1,179 @@
+[gd_scene load_steps=5 format=3 uid="uid://bimkd41ouig5e"]
+
+[ext_resource type="Script" path="res://UI/main_ui/ingame_ui.gd" id="1_nsmss"]
+[ext_resource type="PackedScene" uid="uid://behoom6x21d2d" path="res://UI/main_ui/SpellBook.tscn" id="2_56rqe"]
+[ext_resource type="Texture2D" uid="uid://ceeatsthmnt54" path="res://Assets/32rogues/rogues.png" id="2_laq15"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u314i"]
+atlas = ExtResource("2_laq15")
+region = Rect2(78, 67, 15, 12)
+
+[node name="ingame_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nsmss")
+
+[node name="BottomBar" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 486.0
+offset_right = 1152.0
+offset_bottom = 646.0
+color = Color(0.231373, 0.203922, 0.156863, 1)
+
+[node name="CharacterStatus" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 303.0
+offset_top = 510.0
+offset_right = 531.0
+offset_bottom = 629.0
+
+[node name="portrait" type="TextureRect" parent="CharacterStatus"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 8.0
+offset_right = 61.0
+offset_bottom = 44.0
+texture = SubResource("AtlasTexture_u314i")
+stretch_mode = 4
+
+[node name="name" type="Label" parent="CharacterStatus"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 10.0
+offset_right = 122.0
+offset_bottom = 36.0
+text = "Mage"
+horizontal_alignment = 1
+
+[node name="VBox" type="VBoxContainer" parent="CharacterStatus"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 54.0
+offset_right = 210.0
+offset_bottom = 112.0
+
+[node name="HBox" type="HBoxContainer" parent="CharacterStatus/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="hp" type="Label" parent="CharacterStatus/VBox/HBox"]
+layout_mode = 2
+text = "HP:"
+
+[node name="healthbar" type="ProgressBar" parent="CharacterStatus/VBox/HBox"]
+modulate = Color(0.945098, 0.380392, 0.458824, 1)
+custom_minimum_size = Vector2(140, 18)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+value = 100.0
+show_percentage = false
+
+[node name="HBox2" type="HBoxContainer" parent="CharacterStatus/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="mana" type="Label" parent="CharacterStatus/VBox/HBox2"]
+layout_mode = 2
+text = "Mana:"
+
+[node name="manabar" type="ProgressBar" parent="CharacterStatus/VBox/HBox2"]
+modulate = Color(0.45098, 0.74902, 0.984314, 1)
+custom_minimum_size = Vector2(140, 18)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+value = 100.0
+show_percentage = false
+
+[node name="Incant" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 557.0
+offset_top = 514.0
+offset_right = 1096.0
+offset_bottom = 614.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Incant"]
+layout_mode = 2
+
+[node name="MainPrompt" type="RichTextLabel" parent="Incant/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center] Incantation [/center]"
+fit_content = true
+
+[node name="HBox" type="HBoxContainer" parent="Incant/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Incant/VBoxContainer/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TopPrompt1" type="RichTextLabel" parent="Incant/VBoxContainer/HBox/VBox"]
+unique_name_in_owner = true
+clip_contents = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+
+[node name="BottomPrompt1" type="RichTextLabel" parent="Incant/VBoxContainer/HBox/VBox"]
+unique_name_in_owner = true
+clip_contents = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+
+[node name="VBox2" type="VBoxContainer" parent="Incant/VBoxContainer/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TopPrompt2" type="RichTextLabel" parent="Incant/VBoxContainer/HBox/VBox2"]
+unique_name_in_owner = true
+clip_contents = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+
+[node name="BottomPrompt2" type="RichTextLabel" parent="Incant/VBoxContainer/HBox/VBox2"]
+unique_name_in_owner = true
+clip_contents = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+
+[node name="IncantationBar" type="LineEdit" parent="Incant/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "Input spell title or incantation"
+expand_to_text_length = true
+clear_button_enabled = true
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="SideBar" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 647.0
+color = Color(0.145098, 0.176471, 0.305882, 1)
+
+[node name="SpellBook" parent="." instance=ExtResource("2_56rqe")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 24.0
+offset_top = 30.0
+offset_right = 263.0
+offset_bottom = 620.0
+
+[connection signal="text_changed" from="Incant/VBoxContainer/IncantationBar" to="." method="_on_line_edit_text_changed"]

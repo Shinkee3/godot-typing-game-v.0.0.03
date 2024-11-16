@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc502prk7b82g"]
+
+[ext_resource type="Script" path="res://Spells/teleport/teleport.gd" id="1_pw7aw"]
+[ext_resource type="Texture2D" uid="uid://2ny6ad15t0o0" path="res://Assets/Explosion 2 SpriteSheet.png" id="2_6fk8o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1d10c"]
+atlas = ExtResource("2_6fk8o")
+region = Rect2(8, 8, 32, 32)
+
+[node name="teleport" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_pw7aw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_1d10c")

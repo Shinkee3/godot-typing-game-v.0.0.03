@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://behoom6x21d2d"]
+
+[ext_resource type="Script" path="res://UI/main_ui/SpellBook.gd" id="1_0jp7s"]
+[ext_resource type="PackedScene" uid="uid://ykp7ud4xjj7r" path="res://UI/main_ui/spellpage.tscn" id="2_u75fu"]
+[ext_resource type="PackedScene" uid="uid://b1tscdxa66tdx" path="res://UI/main_ui/filter_button.tscn" id="3_j11h3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kdyxu"]
+font_size = 20
+
+[node name="SpellBook" type="VBoxContainer"]
+offset_right = 239.0
+offset_bottom = 435.0
+script = ExtResource("1_0jp7s")
+SpellPagePackedScene = ExtResource("2_u75fu")
+filter_button = ExtResource("3_j11h3")
+
+[node name="spellbook_label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Spell Book"
+label_settings = SubResource("LabelSettings_kdyxu")
+horizontal_alignment = 1
+
+[node name="line" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+
+[node name="Searchbar" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "search spells"
+
+[node name="Filters" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 3
+
+[node name="Label" type="Label" parent="Filters"]
+layout_mode = 2
+text = "Filters: "
+horizontal_alignment = 1
+
+[node name="spacer" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="DisplayList" type="VBoxContainer" parent="ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 5
+
+[connection signal="text_changed" from="Searchbar" to="." method="_on_searchbar_text_changed"]

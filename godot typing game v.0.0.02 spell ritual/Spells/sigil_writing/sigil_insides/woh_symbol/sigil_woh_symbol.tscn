@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb0mktloa1po7"]
+
+[ext_resource type="Script" path="res://Spells/sigil_writing/sigil_insides/woh_symbol/sigil_woh_symbol.gd" id="1_kfsfp"]
+[ext_resource type="Texture2D" uid="uid://dg5ee5qtycuqp" path="res://Assets/ritualcircle/ritual_circle_woh_shapel.png" id="2_jxaj0"]
+[ext_resource type="PackedScene" uid="uid://dkdhhewiedge0" path="res://Spells/spell_hitbox.tscn" id="3_b02nv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e10qm"]
+radius = 98.27
+
+[node name="sigil_writing_woh_symbol" type="Node2D"]
+script = ExtResource("1_kfsfp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_jxaj0")
+
+[node name="Spell_hitbox" parent="." instance=ExtResource("3_b02nv")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spell_hitbox"]
+shape = SubResource("CircleShape2D_e10qm")

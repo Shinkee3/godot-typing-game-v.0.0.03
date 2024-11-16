@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://bl0dlxrg1qk1n"]
+
+[ext_resource type="Script" path="res://Player/player_rewrite.gd" id="1_f2d4x"]
+[ext_resource type="Texture2D" uid="uid://ceeatsthmnt54" path="res://Assets/32rogues/rogues.png" id="2_yijag"]
+[ext_resource type="Texture2D" uid="uid://c3kphbnrpc7ql" path="res://Resources/textures/movement_cursor.tres" id="3_c7vef"]
+[ext_resource type="Texture2D" uid="uid://dy52bg2lxyswy" path="res://Resources/textures/aim_cursor.tres" id="3_npigh"]
+[ext_resource type="Texture2D" uid="uid://bpkxrx2fbqdj1" path="res://Assets/white circle.png" id="5_ioiyl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vs2uf"]
+size = Vector2(14, 25)
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 8
+collision_mask = 13
+slide_on_ceiling = false
+script = ExtResource("1_f2d4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_vs2uf")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-4, 0)
+texture = ExtResource("2_yijag")
+region_enabled = true
+region_rect = Rect2(64, 64, 32, 32)
+
+[node name="MovementCursor" type="Sprite2D" parent="."]
+top_level = true
+scale = Vector2(2, 2)
+texture = ExtResource("3_c7vef")
+
+[node name="AimCursor" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 0.290196, 0.384314, 1)
+top_level = true
+scale = Vector2(2, 2)
+texture = ExtResource("3_npigh")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+z_index = 2
+position = Vector2(0, 8.5)
+energy = 0.3
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = ExtResource("5_ioiyl")
+texture_scale = 20.0
