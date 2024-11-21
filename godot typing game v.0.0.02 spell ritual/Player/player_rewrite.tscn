@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bl0dlxrg1qk1n"]
+[gd_scene load_steps=9 format=3 uid="uid://bl0dlxrg1qk1n"]
 
 [ext_resource type="Script" path="res://Player/player_rewrite.gd" id="1_f2d4x"]
 [ext_resource type="Texture2D" uid="uid://ceeatsthmnt54" path="res://Assets/32rogues/rogues.png" id="2_yijag"]
 [ext_resource type="Texture2D" uid="uid://c3kphbnrpc7ql" path="res://Resources/textures/movement_cursor.tres" id="3_c7vef"]
 [ext_resource type="Texture2D" uid="uid://dy52bg2lxyswy" path="res://Resources/textures/aim_cursor.tres" id="3_npigh"]
 [ext_resource type="Texture2D" uid="uid://bpkxrx2fbqdj1" path="res://Assets/white circle.png" id="5_ioiyl"]
+[ext_resource type="Texture2D" uid="uid://c3gwlikwn4wfp" path="res://Assets/Circle Aiming2.png" id="5_quqjm"]
+[ext_resource type="Texture2D" uid="uid://dto6lfnw02dmt" path="res://Assets/circle slice2.png" id="5_rec4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vs2uf"]
 size = Vector2(14, 25)
@@ -38,6 +40,16 @@ modulate = Color(1, 0.290196, 0.384314, 1)
 top_level = true
 scale = Vector2(2, 2)
 texture = ExtResource("3_npigh")
+
+[node name="AimGuideLoose" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.247059)
+z_index = -2
+texture = ExtResource("5_rec4c")
+
+[node name="AimGuideLocked" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.247059)
+z_index = -2
+texture = ExtResource("5_quqjm")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 light_mask = 2

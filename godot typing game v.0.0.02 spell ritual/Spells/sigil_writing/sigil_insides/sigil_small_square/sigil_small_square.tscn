@@ -9,6 +9,9 @@ radius = 98.27
 
 [node name="sigil_writing_small_square" type="Node2D"]
 script = ExtResource("1_g6q42")
+title = "Sigil - Draw Small Square"
+spell_tag = 2
+incantation = "draw symbol small square"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.5, 1.5)

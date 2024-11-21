@@ -9,6 +9,9 @@ radius = 98.27
 
 [node name="sigil_star" type="Node2D"]
 script = ExtResource("1_xgqaj")
+title = "Sigil -Draw Star"
+spell_tag = 2
+incantation = "draw symbol star"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.5, 1.5)

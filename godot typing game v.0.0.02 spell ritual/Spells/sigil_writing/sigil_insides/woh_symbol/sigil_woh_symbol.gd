@@ -12,6 +12,7 @@ var symbol_name: String = "woh"
 func _ready() -> void:
 	hitbox.monitorable = false
 	hide()
+	print(self.title, self.incantation)
 
 
 func cast_spell(target_pos: Vector2) -> void:

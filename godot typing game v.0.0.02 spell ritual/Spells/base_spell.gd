@@ -4,7 +4,7 @@ class_name Spell
 enum Tags { ## for filtering
 	ATTACK,
 	UTILITY,
-	MINION,
+	SIGIL,
 	OTHER,
 }
 

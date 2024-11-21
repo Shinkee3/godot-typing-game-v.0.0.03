@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0w8nevrf4v21"]
+
+[ext_resource type="Script" path="res://Spells/earth_wall_front/earth_wall_front.gd" id="1_ihqg2"]
+[ext_resource type="Texture2D" uid="uid://bpkxrx2fbqdj1" path="res://Assets/white circle.png" id="2_8krv6"]
+
+[node name="earth_wall_front" type="Node2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_ihqg2")
+
+[node name="LifeTime" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(20, 2.08165e-12)
+rotation = 3.14159
+scale = Vector2(0.0104317, 0.0081258)
+texture = ExtResource("2_8krv6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(20, 10)
+rotation = 3.14159
+scale = Vector2(0.0104317, 0.0081258)
+texture = ExtResource("2_8krv6")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(20, 20)
+rotation = 3.14159
+scale = Vector2(0.0104317, 0.0081258)
+texture = ExtResource("2_8krv6")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(20, -10)
+rotation = 3.14159
+scale = Vector2(0.0104317, 0.0081258)
+texture = ExtResource("2_8krv6")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(20, -20)
+rotation = 3.14159
+scale = Vector2(0.0104317, 0.0081258)
+texture = ExtResource("2_8krv6")
+
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

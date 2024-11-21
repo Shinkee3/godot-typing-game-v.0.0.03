@@ -9,6 +9,9 @@ radius = 98.27
 
 [node name="sigil_base" type="Node2D"]
 script = ExtResource("1_wlvst")
+title = "Sigil Base"
+spell_tag = 2
+incantation = "draw sigil base"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.5, 1.5)

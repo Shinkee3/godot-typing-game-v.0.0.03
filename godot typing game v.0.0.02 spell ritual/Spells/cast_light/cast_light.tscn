@@ -11,9 +11,9 @@ region = Rect2(8, 8, 32, 32)
 [node name="cast_light" type="Node2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_iroyi")
-title = "Light"
+title = "Light (decrepit"
 spell_tag = 1
-incantation = "cast light"
+incantation = "flashbang"
 description = "light up the area"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -84,27 +84,24 @@ layout_mode = 2
 
 [node name="Fireball_rewrite" parent="SpellContainer" instance=ExtResource("2_4rhoe")]
 visible = false
+incantation = "cast firedzzz"
 
 [node name="cast_light" parent="SpellContainer" instance=ExtResource("3_777qk")]
 visible = false
-spell_tag = 1
 
 [node name="Curse_of_Rah" parent="SpellContainer" instance=ExtResource("4_sj62c")]
 visible = false
 title = "curse"
-spell_tag = 2
 
 [node name="blessed_aura" parent="SpellContainer" instance=ExtResource("5_u683b")]
 visible = false
 title = "Blessed Aura"
-spell_tag = 1
 incantation = "vect a unocht inimicus"
 
 [node name="magic_missile" parent="SpellContainer" instance=ExtResource("6_d47hr")]
 visible = false
 position = Vector2(-89, -243)
 title = "Magic Missile"
-spell_tag = 0
 incantation = "mm"
 
 [node name="teleport" parent="SpellContainer" instance=ExtResource("7_syhki")]
@@ -116,13 +113,11 @@ incantation = "digredior demovio"
 [node name="earth_wall" parent="SpellContainer" instance=ExtResource("8_motmf")]
 visible = false
 title = "earth wall"
-spell_tag = 1
 incantation = "earth wall 0"
 
 [node name="magic_shield" parent="SpellContainer" instance=ExtResource("9_fh21k")]
 visible = false
 title = "magic shield"
-spell_tag = 1
 incantation = "eye for the enemy"
 
 [node name="sigil_base" parent="SpellContainer" instance=ExtResource("10_d44fm")]
