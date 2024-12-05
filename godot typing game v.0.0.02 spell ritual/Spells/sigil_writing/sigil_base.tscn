@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfwemia6mu77g"]
+[gd_scene load_steps=7 format=3 uid="uid://cfwemia6mu77g"]
 
 [ext_resource type="Script" path="res://Spells/sigil_writing/sigil_base.gd" id="1_wlvst"]
 [ext_resource type="Texture2D" uid="uid://cvo1or1os40l8" path="res://Assets/ritualcircle/ritual_circle.png" id="2_ya2mu"]
 [ext_resource type="PackedScene" uid="uid://dkdhhewiedge0" path="res://Spells/spell_hitbox.tscn" id="3_igrpb"]
+[ext_resource type="Script" path="res://Spells/sigil_writing/SigilMain.gd" id="4_qou4a"]
+[ext_resource type="Texture2D" uid="uid://2ny6ad15t0o0" path="res://Assets/Explosion 2 SpriteSheet.png" id="5_1ayyq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e10qm"]
 radius = 98.27
@@ -25,5 +27,16 @@ shape = SubResource("CircleShape2D_e10qm")
 [node name="lifetime" type="Timer" parent="."]
 wait_time = 100.0
 one_shot = true
+
+[node name="SigilMainHandler" type="Node2D" parent="."]
+script = ExtResource("4_qou4a")
+
+[node name="FireSigil" type="Sprite2D" parent="SigilMainHandler"]
+visible = false
+position = Vector2(-2, -44)
+scale = Vector2(4, 4)
+texture = ExtResource("5_1ayyq")
+hframes = 18
+frame = 8
 
 [connection signal="timeout" from="lifetime" to="." method="_on_lifetime_timeout"]

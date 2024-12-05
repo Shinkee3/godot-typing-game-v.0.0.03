@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bl0dlxrg1qk1n"]
+[gd_scene load_steps=11 format=3 uid="uid://bl0dlxrg1qk1n"]
 
 [ext_resource type="Script" path="res://Player/player_rewrite.gd" id="1_f2d4x"]
 [ext_resource type="Texture2D" uid="uid://ceeatsthmnt54" path="res://Assets/32rogues/rogues.png" id="2_yijag"]
@@ -10,6 +10,11 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vs2uf"]
 size = Vector2(14, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rblp1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_juyvf"]
+radius = 19.5256
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(2, 2)
@@ -41,6 +46,14 @@ top_level = true
 scale = Vector2(2, 2)
 texture = ExtResource("3_npigh")
 
+[node name="AimCursorArea" type="Area2D" parent="AimCursor"]
+collision_layer = 32768
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AimCursor/AimCursorArea"]
+shape = SubResource("RectangleShape2D_rblp1")
+debug_color = Color(0.772549, 0.14902, 1, 0.419608)
+
 [node name="AimGuideLoose" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.247059)
 z_index = -2
@@ -61,3 +74,13 @@ shadow_enabled = true
 shadow_item_cull_mask = 3
 texture = ExtResource("5_ioiyl")
 texture_scale = 20.0
+
+[node name="PlayerHurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox"]
+position = Vector2(1, -1.5)
+shape = SubResource("CircleShape2D_juyvf")
+
+[connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_player_hurtbox_area_entered"]

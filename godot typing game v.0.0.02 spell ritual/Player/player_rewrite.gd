@@ -21,6 +21,8 @@ func _ready() -> void:
 	# connect signals from PlayerInfo:
 	PlayerInfo.TeleportSpell.connect(_teleport_player) ## NOTE: receiver function for this signal
 
+	PlayerInfo.player_health = 100
+	print(PlayerInfo.player_health)
 ## unhandled lets u select searchbar without accidentally moving the character (unlike _input)
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
@@ -51,3 +53,11 @@ func _physics_process(_delta: float) -> void:
 func _teleport_player(target_pos: Vector2) -> void:
 	global_position = target_pos
 	movement_target_pos = target_pos ## just to keep the player from moving back to their initial position
+
+
+func _on_player_hurtbox_area_entered(area):
+	print(area)
+	if area.name == "EnemyHurtbox":
+		print("hurt")
+		PlayerInfo.player_health -= 25
+		print(PlayerInfo.player_health)

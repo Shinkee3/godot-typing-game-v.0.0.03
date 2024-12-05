@@ -8,11 +8,13 @@
 font_size = 20
 
 [node name="SpellBook" type="VBoxContainer"]
-offset_right = 239.0
-offset_bottom = 435.0
+anchors_preset = -1
+anchor_right = 0.207465
+anchor_bottom = 0.671296
 script = ExtResource("1_0jp7s")
 SpellPagePackedScene = ExtResource("2_u75fu")
 filter_button = ExtResource("3_j11h3")
+metadata/_edit_use_anchors_ = true
 
 [node name="spellbook_label" type="Label" parent="."]
 layout_mode = 2
@@ -44,6 +46,7 @@ layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 

@@ -22,6 +22,8 @@ func receive_damage(damage: float) -> void:
 
 func receive_melee_damage(damage: float) -> void:
 	enemy.health -= damage
+	
+
 #func _on_area_entered(area: Area2D) -> void:
 	#if area is SpellHitbox:
 		#var spell: Spell = area.get_parent()
@@ -30,3 +32,5 @@ func receive_melee_damage(damage: float) -> void:
 		#var projectile: Area2D = area
 		#enemy.health -= projectile.damage
 		#projectile.queue_free()
+		
+		

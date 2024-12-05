@@ -153,3 +153,7 @@ func _on_line_edit_text_changed(new_text: String) -> void:
 		## my naive implementation wouldnt work for many possile wrong inputs)
 		#print("probably wrong string")
 		pass
+
+
+func _on_node_health_updater(health):
+	pass # Replace with function body.

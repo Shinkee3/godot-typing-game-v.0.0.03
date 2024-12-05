@@ -1,9 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://cxhs8mky6mys5"]
+[gd_scene load_steps=23 format=3 uid="uid://cxhs8mky6mys5"]
 
 [ext_resource type="PackedScene" uid="uid://clqmjlyciugkd" path="res://Levels/main/main_test_level.tscn" id="1_e15ap"]
 [ext_resource type="Script" path="res://Levels/main/main.gd" id="1_yeh0h"]
+[ext_resource type="Script" path="res://Levels/main/SceneChanger.gd" id="2_64ct0"]
 [ext_resource type="PackedScene" uid="uid://bimkd41ouig5e" path="res://UI/main_ui/ingame_ui.tscn" id="2_ffheu"]
 [ext_resource type="PackedScene" uid="uid://cmku625mxhvvn" path="res://Spells/fireball/fireball_rewrite.tscn" id="4_cvyq6"]
+[ext_resource type="PackedScene" uid="uid://bd2j8dwwrtd2y" path="res://Levels/game_over.tscn" id="4_fkct0"]
 [ext_resource type="PackedScene" uid="uid://bgb50llhrwdqu" path="res://Spells/cast_light/cast_light.tscn" id="5_0pkyi"]
 [ext_resource type="PackedScene" uid="uid://fowttahueitf" path="res://Spells/curse_of_rah/curse_of_rah.tscn" id="6_0nqwv"]
 [ext_resource type="PackedScene" uid="uid://dprtktnhtow1j" path="res://Spells/blessed_aura/blessed_aura.tscn" id="7_waqyl"]
@@ -26,104 +28,115 @@ script = ExtResource("1_yeh0h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ingame_ui" parent="CanvasLayer" instance=ExtResource("2_ffheu")]
-unique_name_in_owner = true
-mouse_filter = 2
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.25
+anchor_right = 1.0
+anchor_bottom = 0.75
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+script = ExtResource("2_64ct0")
+metadata/_edit_use_anchors_ = true
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-offset_left = 288.0
-offset_right = 1152.0
-offset_bottom = 486.0
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(864, 486)
 render_target_update_mode = 4
 
-[node name="main_test_level" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_e15ap")]
+[node name="main_test_level" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("1_e15ap")]
 unique_name_in_owner = true
 
-[node name="SpellContainer" type="Node2D" parent="SubViewportContainer/SubViewport"]
+[node name="game_over" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("4_fkct0")]
+visible = false
+
+[node name="SpellContainer" type="Node2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
 
-[node name="Fireball_rewrite" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("4_cvyq6")]
+[node name="Fireball_rewrite" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("4_cvyq6")]
 visible = false
 
-[node name="cast_light" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("5_0pkyi")]
+[node name="cast_light" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("5_0pkyi")]
 visible = false
 
-[node name="Curse_of_Rah" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("6_0nqwv")]
+[node name="Curse_of_Rah" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("6_0nqwv")]
 visible = false
 title = "curse"
 
-[node name="blessed_aura" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("7_waqyl")]
+[node name="blessed_aura" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("7_waqyl")]
 visible = false
 title = "Blessed Aura"
 incantation = "vect a unocht inimicus"
 
-[node name="magic_missile" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("8_3fjbr")]
+[node name="magic_missile" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("8_3fjbr")]
 position = Vector2(-89, -243)
 title = "Magic Missile"
 incantation = "mm"
 
-[node name="teleport" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("9_iysua")]
+[node name="teleport" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("9_iysua")]
 visible = false
 position = Vector2(508, 819)
 title = "teleport"
 incantation = "digredior demovio"
 
-[node name="earth_wall" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("10_jj1em")]
+[node name="earth_wall" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("10_jj1em")]
 visible = false
 title = "earth wall"
 incantation = "earth wall 0"
 
-[node name="magic_shield" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("11_40o1w")]
+[node name="magic_shield" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("11_40o1w")]
 visible = false
 title = "magic shield"
 incantation = "eye for the enemy"
 
-[node name="sigil_base" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("12_0rhst")]
+[node name="sigil_base" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("12_0rhst")]
 visible = false
 z_as_relative = false
 incantation = "Draw sigil base"
 
-[node name="sigil_writing_eyelid" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("13_xsmsq")]
+[node name="sigil_writing_eyelid" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("13_xsmsq")]
 visible = false
 title = "Draw Symbol: Eyelid"
 incantation = "Draw symbol eyelid"
 
-[node name="sigil_writing_spell_circle" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("14_vw4dj")]
+[node name="sigil_writing_spell_circle" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("14_vw4dj")]
 visible = false
 title = "Sigil Symbol: Spell"
 incantation = "Draw symbol spell"
 
-[node name="sigil_writing_woh_symbol" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("15_phae2")]
+[node name="sigil_writing_woh_symbol" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("15_phae2")]
 visible = false
 title = "Sigil Symbol: WoH"
 incantation = "Draw symbol woh"
 
-[node name="sigil_writing_small_circle" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("16_541m5")]
+[node name="sigil_writing_small_circle" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("16_541m5")]
 visible = false
 title = "Sigil Symbol: Small Circle"
 incantation = "Draw symbol small circle"
 
-[node name="sigil_writing_small_square" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("17_e1j4l")]
+[node name="sigil_writing_small_square" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("17_e1j4l")]
 visible = false
 title = "Sigil Symbol: Small Square"
 incantation = "Draw symbol small square"
 
-[node name="sigil_star" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("18_hqdxn")]
+[node name="sigil_star" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("18_hqdxn")]
 visible = false
 title = "Sigil Symbol: Star"
 incantation = "Draw symbol star"
 
-[node name="earth_wall_front" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("19_nomcb")]
+[node name="earth_wall_front" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("19_nomcb")]
+visible = false
 title = "Earth wall front"
 incantation = "cast earth wall"
 description = "casts wall of earth in front of the you"
 
-[node name="sight" parent="SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("20_g8x7u")]
+[node name="sight" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("20_g8x7u")]
+visible = false
 position = Vector2(900.522, 401.383)
 title = "Extended sight"
 incantation = "cast sight"
 description = "extends your vision into another area"
+
+[node name="ingame_ui" parent="CanvasLayer" instance=ExtResource("2_ffheu")]
+unique_name_in_owner = true
+mouse_filter = 2

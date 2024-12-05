@@ -109,6 +109,7 @@ joystick_attack={
 2d_physics/layer_2="EnemyHurtbox"
 2d_physics/layer_3="EnemyCollisionBox"
 2d_physics/layer_4="PlayerCollisionBox"
+2d_physics/layer_16="UI"
 
 [rendering]
 

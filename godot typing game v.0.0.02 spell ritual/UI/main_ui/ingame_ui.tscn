@@ -1,8 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bimkd41ouig5e"]
+[gd_scene load_steps=14 format=3 uid="uid://bimkd41ouig5e"]
 
+[ext_resource type="Theme" uid="uid://dgfgljj3qelvb" path="res://UI/main_theme.tres" id="1_es7jh"]
 [ext_resource type="Script" path="res://UI/main_ui/ingame_ui.gd" id="1_nsmss"]
 [ext_resource type="PackedScene" uid="uid://behoom6x21d2d" path="res://UI/main_ui/SpellBook.tscn" id="2_56rqe"]
 [ext_resource type="Texture2D" uid="uid://ceeatsthmnt54" path="res://Assets/32rogues/rogues.png" id="2_laq15"]
+[ext_resource type="Script" path="res://UI/main_ui/healthbar.gd" id="3_6nleu"]
+[ext_resource type="Texture2D" uid="uid://cvo1or1os40l8" path="res://Assets/ritualcircle/ritual_circle.png" id="4_bmkm0"]
+[ext_resource type="Texture2D" uid="uid://b75jkdw3cdu3x" path="res://Assets/ritualcircle/ritual_circle_eyelid.png" id="5_xsddh"]
+[ext_resource type="Texture2D" uid="uid://dg5ee5qtycuqp" path="res://Assets/ritualcircle/ritual_circle_woh_shapel.png" id="6_mktxv"]
+[ext_resource type="Texture2D" uid="uid://cxfrondo2f82e" path="res://Assets/body sigils/body sigils white basae.png" id="7_nqbao"]
+[ext_resource type="Texture2D" uid="uid://wn3w1jg37p0n" path="res://Assets/body sigils/body sigils rune 1.png" id="8_piryy"]
+[ext_resource type="Texture2D" uid="uid://ddb2d7fp7g537" path="res://Assets/body sigils/body sigils sigil 1.png" id="11_2030o"]
+[ext_resource type="Texture2D" uid="uid://dgs8wuwqoeekg" path="res://Assets/body sigils/body sigils sigil 3.png" id="13_nqxsp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u314i"]
 atlas = ExtResource("2_laq15")
@@ -15,74 +24,92 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_es7jh")
 script = ExtResource("1_nsmss")
+metadata/_edit_use_anchors_ = true
 
 [node name="BottomBar" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 288.0
-offset_top = 486.0
-offset_right = 1152.0
-offset_bottom = 646.0
+anchor_left = 0.25
+anchor_top = 0.75
+anchor_right = 1.0
+anchor_bottom = 0.996914
+offset_bottom = 1.81198e-05
 color = Color(0.231373, 0.203922, 0.156863, 1)
+metadata/_edit_use_anchors_ = true
 
-[node name="CharacterStatus" type="Panel" parent="."]
+[node name="CharacterStatus" type="PanelContainer" parent="BottomBar"]
 layout_mode = 0
-offset_left = 303.0
-offset_top = 510.0
-offset_right = 531.0
-offset_bottom = 629.0
+anchor_left = 0.0173611
+anchor_top = 0.15
+anchor_right = 0.28125
+anchor_bottom = 0.89375
+metadata/_edit_use_anchors_ = true
 
-[node name="portrait" type="TextureRect" parent="CharacterStatus"]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 8.0
-offset_right = 61.0
-offset_bottom = 44.0
+[node name="MarginContainer" type="MarginContainer" parent="BottomBar/CharacterStatus"]
+layout_mode = 2
+theme = ExtResource("1_es7jh")
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomBar/CharacterStatus/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BottomBar/CharacterStatus/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="portrait" type="TextureRect" parent="BottomBar/CharacterStatus/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 texture = SubResource("AtlasTexture_u314i")
-stretch_mode = 4
+expand_mode = 3
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
-[node name="name" type="Label" parent="CharacterStatus"]
-layout_mode = 0
-offset_left = 68.0
-offset_top = 10.0
-offset_right = 122.0
-offset_bottom = 36.0
+[node name="MarginContainer" type="MarginContainer" parent="BottomBar/CharacterStatus/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_bottom = 14
+
+[node name="name" type="Label" parent="BottomBar/CharacterStatus/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
 text = "Mage"
-horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="VBox" type="VBoxContainer" parent="CharacterStatus"]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 54.0
-offset_right = 210.0
-offset_bottom = 112.0
+[node name="PlayerInfoUI" type="VBoxContainer" parent="BottomBar/CharacterStatus/MarginContainer/VBoxContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="HBox" type="HBoxContainer" parent="CharacterStatus/VBox"]
+[node name="HBox" type="HBoxContainer" parent="BottomBar/CharacterStatus/MarginContainer/VBoxContainer/PlayerInfoUI"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="hp" type="Label" parent="CharacterStatus/VBox/HBox"]
+[node name="hp" type="Label" parent="BottomBar/CharacterStatus/MarginContainer/VBoxContainer/PlayerInfoUI/HBox"]
 layout_mode = 2
 text = "HP:"
 
-[node name="healthbar" type="ProgressBar" parent="CharacterStatus/VBox/HBox"]
+[node name="healthbar" type="ProgressBar" parent="BottomBar/CharacterStatus/MarginContainer/VBoxContainer/PlayerInfoUI/HBox"]
 modulate = Color(0.945098, 0.380392, 0.458824, 1)
 custom_minimum_size = Vector2(140, 18)
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
+step = 10.0
 value = 100.0
 show_percentage = false
+script = ExtResource("3_6nleu")
 
-[node name="HBox2" type="HBoxContainer" parent="CharacterStatus/VBox"]
+[node name="HBox2" type="HBoxContainer" parent="BottomBar/CharacterStatus/MarginContainer/VBoxContainer/PlayerInfoUI"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="mana" type="Label" parent="CharacterStatus/VBox/HBox2"]
+[node name="mana" type="Label" parent="BottomBar/CharacterStatus/MarginContainer/VBoxContainer/PlayerInfoUI/HBox2"]
 layout_mode = 2
 text = "Mana:"
 
-[node name="manabar" type="ProgressBar" parent="CharacterStatus/VBox/HBox2"]
+[node name="manabar" type="ProgressBar" parent="BottomBar/CharacterStatus/MarginContainer/VBoxContainer/PlayerInfoUI/HBox2"]
 modulate = Color(0.45098, 0.74902, 0.984314, 1)
 custom_minimum_size = Vector2(140, 18)
 layout_mode = 2
@@ -91,17 +118,18 @@ size_flags_vertical = 4
 value = 100.0
 show_percentage = false
 
-[node name="Incant" type="PanelContainer" parent="."]
+[node name="Incant" type="PanelContainer" parent="BottomBar"]
 layout_mode = 0
-offset_left = 557.0
-offset_top = 514.0
-offset_right = 1096.0
-offset_bottom = 614.0
+anchor_left = 0.311343
+anchor_top = 0.175
+anchor_right = 0.935185
+anchor_bottom = 0.8
+metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Incant"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomBar/Incant"]
 layout_mode = 2
 
-[node name="MainPrompt" type="RichTextLabel" parent="Incant/VBoxContainer"]
+[node name="MainPrompt" type="RichTextLabel" parent="BottomBar/Incant/VBoxContainer"]
 clip_contents = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -109,14 +137,14 @@ bbcode_enabled = true
 text = "[center] Incantation [/center]"
 fit_content = true
 
-[node name="HBox" type="HBoxContainer" parent="Incant/VBoxContainer"]
+[node name="HBox" type="HBoxContainer" parent="BottomBar/Incant/VBoxContainer"]
 layout_mode = 2
 
-[node name="VBox" type="VBoxContainer" parent="Incant/VBoxContainer/HBox"]
+[node name="VBox" type="VBoxContainer" parent="BottomBar/Incant/VBoxContainer/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TopPrompt1" type="RichTextLabel" parent="Incant/VBoxContainer/HBox/VBox"]
+[node name="TopPrompt1" type="RichTextLabel" parent="BottomBar/Incant/VBoxContainer/HBox/VBox"]
 unique_name_in_owner = true
 clip_contents = false
 custom_minimum_size = Vector2(0, 20)
@@ -124,7 +152,7 @@ layout_mode = 2
 bbcode_enabled = true
 fit_content = true
 
-[node name="BottomPrompt1" type="RichTextLabel" parent="Incant/VBoxContainer/HBox/VBox"]
+[node name="BottomPrompt1" type="RichTextLabel" parent="BottomBar/Incant/VBoxContainer/HBox/VBox"]
 unique_name_in_owner = true
 clip_contents = false
 custom_minimum_size = Vector2(0, 20)
@@ -132,11 +160,11 @@ layout_mode = 2
 bbcode_enabled = true
 fit_content = true
 
-[node name="VBox2" type="VBoxContainer" parent="Incant/VBoxContainer/HBox"]
+[node name="VBox2" type="VBoxContainer" parent="BottomBar/Incant/VBoxContainer/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TopPrompt2" type="RichTextLabel" parent="Incant/VBoxContainer/HBox/VBox2"]
+[node name="TopPrompt2" type="RichTextLabel" parent="BottomBar/Incant/VBoxContainer/HBox/VBox2"]
 unique_name_in_owner = true
 clip_contents = false
 custom_minimum_size = Vector2(0, 20)
@@ -144,7 +172,7 @@ layout_mode = 2
 bbcode_enabled = true
 fit_content = true
 
-[node name="BottomPrompt2" type="RichTextLabel" parent="Incant/VBoxContainer/HBox/VBox2"]
+[node name="BottomPrompt2" type="RichTextLabel" parent="BottomBar/Incant/VBoxContainer/HBox/VBox2"]
 unique_name_in_owner = true
 clip_contents = false
 custom_minimum_size = Vector2(0, 20)
@@ -152,10 +180,10 @@ layout_mode = 2
 bbcode_enabled = true
 fit_content = true
 
-[node name="IncantationBar" type="LineEdit" parent="Incant/VBoxContainer"]
+[node name="IncantationBar" type="LineEdit" parent="BottomBar/Incant/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+theme = ExtResource("1_es7jh")
 placeholder_text = "Input spell title or incantation"
 expand_to_text_length = true
 clear_button_enabled = true
@@ -163,17 +191,108 @@ shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
 
 [node name="SideBar" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 288.0
-offset_bottom = 647.0
+layout_mode = 2
+anchor_right = 0.251736
+anchor_bottom = 0.993827
 color = Color(0.145098, 0.176471, 0.305882, 1)
+metadata/_edit_use_anchors_ = true
 
-[node name="SpellBook" parent="." instance=ExtResource("2_56rqe")]
-unique_name_in_owner = true
+[node name="TabContainer" type="TabContainer" parent="SideBar"]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 30.0
-offset_right = 263.0
-offset_bottom = 620.0
+anchor_right = 0.989655
+anchor_bottom = 0.990683
+offset_bottom = -1.78814e-05
+metadata/_edit_use_anchors_ = true
 
-[connection signal="text_changed" from="Incant/VBoxContainer/IncantationBar" to="." method="_on_line_edit_text_changed"]
+[node name="SpellBook" parent="SideBar/TabContainer" instance=ExtResource("2_56rqe")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Sigils" type="GridContainer" parent="SideBar/TabContainer"]
+visible = false
+layout_mode = 2
+columns = 2
+
+[node name="TextureRect" type="TextureRect" parent="SideBar/TabContainer/Sigils"]
+layout_mode = 2
+texture = ExtResource("4_bmkm0")
+
+[node name="TextureRect2" type="TextureRect" parent="SideBar/TabContainer/Sigils/TextureRect"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("5_xsddh")
+
+[node name="TextureRect3" type="TextureRect" parent="SideBar/TabContainer/Sigils/TextureRect"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("6_mktxv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SideBar/TabContainer/Sigils"]
+layout_mode = 2
+
+[node name="1Sigil" type="Label" parent="SideBar/TabContainer/Sigils/VBoxContainer"]
+layout_mode = 2
+text = "
+HUOGUOSHIHOU"
+
+[node name="Label" type="Label" parent="SideBar/TabContainer/Sigils/VBoxContainer"]
+layout_mode = 2
+text = "Adds a fire rune"
+
+[node name="Body" type="VBoxContainer" parent="SideBar/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SideBar/TabContainer/Body"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="TextureRect" type="TextureRect" parent="SideBar/TabContainer/Body/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("7_nqbao")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="SideBar/TabContainer/Body/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("11_2030o")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="SideBar/TabContainer/Body/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("13_nqxsp")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="TextureRect4" type="TextureRect" parent="SideBar/TabContainer/Body/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("8_piryy")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="SideBar/TabContainer/Body"]
+layout_mode = 2
+text = "YOUR BODY:"
+
+[node name="Label2" type="Label" parent="SideBar/TabContainer/Body"]
+layout_mode = 2
+text = "RUNES - sample sample
+
+HEALTH
+
+DEFENSE
+
+SPELLCASTING
+
+SHORTCUTS"
+
+[node name="TabBar" type="TabBar" parent="SideBar"]
+layout_mode = 0
+anchor_right = 0.137931
+anchor_bottom = 0.0621118
+metadata/_edit_use_anchors_ = true
+
+[connection signal="text_changed" from="BottomBar/Incant/VBoxContainer/IncantationBar" to="." method="_on_line_edit_text_changed"]

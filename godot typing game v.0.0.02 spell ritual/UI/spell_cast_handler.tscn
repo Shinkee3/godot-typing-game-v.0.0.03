@@ -123,7 +123,6 @@ incantation = "eye for the enemy"
 [node name="sigil_base" parent="SpellContainer" instance=ExtResource("10_d44fm")]
 visible = false
 z_as_relative = false
-title = "Sigil Base"
 incantation = "Draw sigil base"
 
 [node name="sigil_writing_eyelid" parent="SpellContainer" instance=ExtResource("11_ivdp5")]

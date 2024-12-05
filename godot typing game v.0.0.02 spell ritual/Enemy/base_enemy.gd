@@ -24,12 +24,12 @@ var speed: float: ## Kait: Added this
 	set(value): 
 		speed = value
 
-@onready var healthbar: Label = $Healthbar ## just a slight nitpick, it's preferable to do this since it's slightly faster performance-wise
-
+@onready var healthbar: ProgressBar = $Healthbar ## just a slight nitpick, it's preferable to do this since it's slightly faster performance-wise
 
 func _ready() -> void:
 	health = max_health ## i moved them here since having "@onready" alone didnt update the new max_health at the start
 	speed = max_speed
+	healthbar.value = max_health
 
 
 func _physics_process(delta: float) -> void: ## Kait: Added this for movement
@@ -51,6 +51,6 @@ func _physics_process(delta: float) -> void: ## Kait: Added this for movement
 
 func health_updated() -> void:
 	#print("HP = %d/%d" % [health, max_health])
-	healthbar.text = str(health)
+	healthbar.value = health
 	if health <= 0:
 		queue_free()

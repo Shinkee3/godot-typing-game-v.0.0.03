@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://clqmjlyciugkd"]
+[gd_scene load_steps=16 format=3 uid="uid://clqmjlyciugkd"]
 
 [ext_resource type="PackedScene" uid="uid://bl0dlxrg1qk1n" path="res://Player/player_rewrite.tscn" id="1_0dlpt"]
 [ext_resource type="Script" path="res://Levels/main/main_test_level.gd" id="1_xas2o"]
@@ -7,12 +7,26 @@
 [ext_resource type="PackedScene" uid="uid://bytbggxc17ka5" path="res://Levels/door.tscn" id="4_bcd0t"]
 [ext_resource type="PackedScene" uid="uid://j787dha03xy1" path="res://Enemy/Skeleton/skeleton.tscn" id="5_vsx7r"]
 [ext_resource type="PackedScene" uid="uid://7ypyy43mejd5" path="res://Enemy/FastEnemy/fast_enemy.tscn" id="6_nsmo8"]
+[ext_resource type="Script" path="res://Levels/main/InteractSample.gd" id="8_4bk1u"]
+[ext_resource type="Texture2D" uid="uid://bpkxrx2fbqdj1" path="res://Assets/white circle.png" id="9_vhlqi"]
+[ext_resource type="Texture2D" uid="uid://b3sjh10q5kp17" path="res://Assets/ritualcircle/ritual_circle_inner_circlel.png" id="10_eaopw"]
+[ext_resource type="Script" path="res://Levels/main/FakeCounterSpellingNpde.gd" id="11_o6ilc"]
+[ext_resource type="PackedScene" uid="uid://cuvr1tofh85yg" path="res://Runes/rune.tscn" id="12_qp768"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5q8am"]
+radius = 48.0104
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q1b0i"]
+radius = 49.163
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4awjg"]
+radius = 55.1453
 
 [node name="main_test_level" type="Node2D"]
 script = ExtResource("1_xas2o")
 
 [node name="Player" parent="." instance=ExtResource("1_0dlpt")]
-position = Vector2(486, 396)
+position = Vector2(506, 391)
 collision_mask = 9
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -29,11 +43,11 @@ z_index = -1
 layer_0/tile_data = PackedInt32Array(6, 196609, 16)
 
 [node name="Wall" parent="Map" instance=ExtResource("3_6eu52")]
-layer_0/tile_data = PackedInt32Array(262144, 1, 0, 327680, 1, 0, 393216, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 1, 0, 262145, 65537, 0, 262146, 65537, 0, 262147, 65537, 0, 262148, 65537, 0, 5, 65537, 0, 262149, 65537, 0, 6, 65537, 0, 262150, 65537, 0, 458758, 65537, 0, 7, 65537, 0, 262151, 65537, 0, 458759, 65537, 0, 8, 65537, 0, 262152, 65537, 0, 458760, 65537, 0, 9, 65537, 0, 262153, 65537, 0, 458761, 65537, 0, 10, 65537, 0, 262154, 65537, 0, 458762, 65537, 0, 11, 65537, 0, 131083, 1, 0, 196619, 1, 0, 262155, 1, 0, 327691, 1, 0, 393227, 1, 0, 458763, 65537, 0, 12, 65537, 0, 458764, 65537, 0, 13, 65537, 0, 458765, 65537, 0, 14, 65537, 0, 196622, 65537, 0, 458766, 65537, 0, 15, 65537, 0, 196623, 65537, 0, 458767, 65537, 0, 16, 65537, 0, 196624, 65537, 0, 17, 1, 0, 65553, 1, 0, 131089, 1, 0, 196625, 1, 0, 262161, 1, 0, 327697, 1, 0, 393233, 1, 0, 458769, 1, 0, 524305, 1, 0, 589841, 1, 0)
+layer_0/tile_data = PackedInt32Array(262144, 1, 0, 327680, 1, 0, 393216, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 1, 0, 262145, 65537, 0, 262146, 65537, 0, 262147, 65537, 0, 262148, 65537, 0, 5, 65537, 0, 262149, 65537, 0, 6, 65537, 0, 262150, 65537, 0, 458758, 65537, 0, 7, 65537, 0, 262151, 65537, 0, 458759, 65537, 0, 8, 65537, 0, 262152, 65537, 0, 458760, 65537, 0, 9, 65537, 0, 262153, 65537, 0, 458761, 65537, 0, 10, 65537, 0, 262154, 65537, 0, 458762, 65537, 0, 11, 65537, 0, 131083, 1, 0, 196619, 1, 0, 262155, 1, 0, 327691, 1, 0, 393227, 1, 0, 458763, 65537, 0, 12, 65537, 0, 458764, 65537, 0, 13, 65537, 0, 458765, 65537, 0, 14, 65537, 0, 196622, 65537, 0, 458766, 65537, 0, 15, 65537, 0, 196623, 65537, 0, 458767, 65537, 0, 16, 65537, 0, 196624, 65537, 0, 17, 1, 0, 65553, 1, 0, 131089, 1, 0, 196625, 1, 0, 262161, 1, 0, 327697, 1, 0, 393233, 1, 0, 458769, 1, 0, 524305, 1, 0, 589841, 1, 0, 655360, 1, 0, 720896, 1, 0, 786432, 1, 0, 851968, 1, 0, 917504, 65537, 0, 917505, 65537, 0, 917506, 65537, 0, 917507, 65537, 0, 917508, 65537, 0, 917509, 65537, 0, 917510, 65537, 0, 917511, 65537, 0, 655377, 1, 0, 720913, 65537, 0, 720903, 1, 0, 786439, 1, 0, 851975, 1, 0, 720912, 65537, 0, 720911, 65537, 0, 720910, 65537, 0, 720909, 65537, 0, 720908, 65537, 0, 720907, 65537, 0, 720906, 65537, 0, 720905, 65537, 0, 720904, 65537, 0, -65532, 65537, 0, -65533, 65537, 0, -65534, 65537, 0, -65535, 65537, 0, -65536, 65537, 0, 0, 1, 0, 65536, 1, 0, 131072, 1, 0, 196608, 1, 0, -65531, 1, 0)
 
 [node name="Floor" parent="Map" instance=ExtResource("3_6eu52")]
 z_index = -3
-layer_0/tile_data = PackedInt32Array(0, 1, 3, 65536, 1, 3, 131072, 1, 3, 196608, 1, 3, 1, 1, 3, 65537, 1, 3, 131073, 1, 3, 196609, 1, 3, 327681, 1, 3, 393217, 1, 3, 458753, 1, 3, 524289, 1, 3, 589825, 1, 3, 2, 1, 3, 65538, 1, 3, 131074, 1, 3, 196610, 1, 3, 327682, 1, 3, 393218, 1, 3, 458754, 1, 3, 524290, 1, 3, 589826, 1, 3, 3, 1, 3, 65539, 1, 3, 131075, 1, 3, 196611, 1, 3, 327683, 1, 3, 393219, 1, 3, 458755, 1, 3, 524291, 1, 3, 589827, 1, 3, 4, 1, 3, 65540, 1, 3, 131076, 1, 3, 196612, 1, 3, 327684, 1, 3, 393220, 1, 3, 458756, 1, 3, 524292, 1, 3, 589828, 1, 3, 65541, 1, 3, 131077, 1, 3, 196613, 1, 3, 327685, 1, 3, 393221, 1, 3, 458757, 1, 3, 524293, 1, 3, 589829, 1, 3, 65542, 1, 3, 131078, 1, 3, 196614, 1, 3, 327686, 1, 3, 393222, 1, 3, 524294, 1, 3, 589830, 1, 3, 65543, 1, 3, 131079, 1, 3, 196615, 1, 3, 327687, 1, 3, 393223, 1, 3, 524295, 1, 3, 589831, 1, 3, 65544, 1, 3, 131080, 1, 3, 196616, 1, 3, 327688, 1, 3, 393224, 1, 3, 524296, 1, 3, 589832, 1, 3, 65545, 1, 3, 131081, 1, 3, 196617, 1, 3, 327689, 1, 3, 393225, 1, 3, 524297, 1, 3, 589833, 1, 3, 65546, 1, 3, 131082, 1, 3, 196618, 1, 3, 327690, 1, 3, 393226, 1, 3, 524298, 1, 3, 589834, 1, 3, 65547, 1, 3, 524299, 1, 3, 589835, 1, 3, 65548, 1, 3, 131084, 1, 3, 196620, 1, 3, 262156, 1, 3, 327692, 1, 3, 393228, 1, 3, 524300, 1, 3, 589836, 1, 3, 65549, 1, 3, 131085, 1, 3, 196621, 1, 3, 262157, 1, 3, 327693, 1, 3, 393229, 1, 3, 524301, 1, 3, 589837, 1, 3, 65550, 1, 3, 131086, 1, 3, 262158, 1, 3, 327694, 1, 3, 393230, 1, 3, 524302, 1, 3, 589838, 1, 3, 65551, 1, 3, 131087, 1, 3, 262159, 1, 3, 327695, 1, 3, 393231, 1, 3, 524303, 1, 3, 589839, 1, 3, 65552, 1, 3, 131088, 1, 3, 262160, 1, 3, 327696, 1, 3, 393232, 1, 3, 458768, 1, 3, 524304, 1, 3, 589840, 1, 3)
+layer_0/tile_data = PackedInt32Array(0, 1, 3, 65536, 1, 3, 131072, 1, 3, 196608, 1, 3, 1, 1, 3, 65537, 1, 3, 131073, 1, 3, 196609, 1, 3, 327681, 1, 3, 393217, 1, 3, 458753, 1, 3, 524289, 1, 3, 589825, 1, 3, 2, 1, 3, 65538, 1, 3, 131074, 1, 3, 196610, 1, 3, 327682, 1, 3, 393218, 1, 3, 458754, 1, 3, 524290, 1, 3, 589826, 1, 3, 3, 1, 3, 65539, 1, 3, 131075, 1, 3, 196611, 1, 3, 327683, 1, 3, 393219, 1, 3, 458755, 1, 3, 524291, 1, 3, 589827, 1, 3, 4, 1, 3, 65540, 1, 3, 131076, 1, 3, 196612, 1, 3, 327684, 1, 3, 393220, 1, 3, 458756, 1, 3, 524292, 1, 3, 589828, 1, 3, 65541, 1, 3, 131077, 1, 3, 196613, 1, 3, 327685, 1, 3, 393221, 1, 3, 458757, 1, 3, 524293, 1, 3, 589829, 1, 3, 65542, 1, 3, 131078, 1, 3, 196614, 1, 3, 327686, 1, 3, 393222, 1, 3, 524294, 1, 3, 589830, 1, 3, 65543, 1, 3, 131079, 1, 3, 196615, 1, 3, 327687, 1, 3, 393223, 1, 3, 524295, 1, 3, 589831, 1, 3, 65544, 1, 3, 131080, 1, 3, 196616, 1, 3, 327688, 1, 3, 393224, 1, 3, 524296, 1, 3, 589832, 1, 3, 65545, 1, 3, 131081, 1, 3, 196617, 1, 3, 327689, 1, 3, 393225, 1, 3, 524297, 1, 3, 589833, 1, 3, 65546, 1, 3, 131082, 1, 3, 196618, 1, 3, 327690, 1, 3, 393226, 1, 3, 524298, 1, 3, 589834, 1, 3, 65547, 1, 3, 524299, 1, 3, 589835, 1, 3, 65548, 1, 3, 131084, 1, 3, 196620, 1, 3, 262156, 1, 3, 327692, 1, 3, 393228, 1, 3, 524300, 1, 3, 589836, 1, 3, 65549, 1, 3, 131085, 1, 3, 196621, 1, 3, 262157, 1, 3, 327693, 1, 3, 393229, 1, 3, 524301, 1, 3, 589837, 1, 3, 65550, 1, 3, 131086, 1, 3, 262158, 1, 3, 327694, 1, 3, 393230, 1, 3, 524302, 1, 3, 589838, 1, 3, 65551, 1, 3, 131087, 1, 3, 262159, 1, 3, 327695, 1, 3, 393231, 1, 3, 524303, 1, 3, 589839, 1, 3, 65552, 1, 3, 131088, 1, 3, 262160, 1, 3, 327696, 1, 3, 393232, 1, 3, 458768, 1, 3, 524304, 1, 3, 589840, 1, 3, 655361, 1, 3, 720898, 1, 3, 720899, 1, 3, 786435, 1, 3, 851972, 1, 3, 851973, 1, 3, 851974, 1, 3, 917510, 1, 3, 917511, 1, 3, 720897, 1, 3, 786433, 1, 3, 851969, 1, 3, 655362, 1, 3, 786434, 1, 3, 851970, 1, 3, 655363, 1, 3, 851971, 1, 3, 655364, 1, 3, 720900, 1, 3, 786436, 1, 3, 655365, 1, 3, 720901, 1, 3, 786437, 1, 3, 655366, 1, 3, 720902, 1, 3, 786438, 1, 3, 655367, 1, 3, 720903, 1, 3, 786439, 1, 3, 851975, 1, 3, 655368, 1, 3, 655369, 1, 3, 655370, 1, 3, 655371, 1, 3, 655372, 1, 3, 655373, 1, 3, 655374, 1, 3, 655375, 1, 3, 655376, 1, 3)
 
 [node name="Door" parent="Map" instance=ExtResource("4_bcd0t")]
 position = Vector2(417, 55)
@@ -66,3 +80,134 @@ position = Vector2(621, 121)
 light_mask = 3
 visibility_layer = 3
 color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="InteractableRune" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(211, 423)
+texture = ExtResource("10_eaopw")
+
+[node name="InteractSample" type="LineEdit" parent="InteractableRune"]
+offset_left = -87.0
+offset_top = -81.0
+offset_right = 80.0
+offset_bottom = -50.0
+text = "Spell Activated Rune"
+placeholder_text = "issefor"
+alignment = 1
+expand_to_text_length = true
+context_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+select_all_on_focus = true
+caret_blink_interval = 10.0
+script = ExtResource("8_4bk1u")
+
+[node name="LifeTime" type="Timer" parent="InteractableRune/InteractSample"]
+wait_time = 4.0
+one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="InteractableRune/InteractSample"]
+visible = false
+position = Vector2(85, 81)
+color = Color(1, 0, 0, 1)
+energy = 3.03
+texture = ExtResource("9_vhlqi")
+texture_scale = 0.5
+
+[node name="EnemyHurtbox" type="Area2D" parent="InteractableRune/InteractSample/PointLight2D"]
+collision_layer = 2
+collision_mask = 2
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableRune/InteractSample/PointLight2D/EnemyHurtbox"]
+shape = SubResource("CircleShape2D_5q8am")
+
+[node name="RuneArea" type="Area2D" parent="InteractableRune/InteractSample"]
+modulate = Color(0.454902, 0.141176, 0.235294, 1)
+position = Vector2(85, 81)
+collision_layer = 32768
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableRune/InteractSample/RuneArea"]
+shape = SubResource("CircleShape2D_5q8am")
+
+[node name="FakeCounterSpellingNpde" type="Node2D" parent="."]
+position = Vector2(56, 299)
+script = ExtResource("11_o6ilc")
+
+[node name="FakeCounterSpelling" type="Sprite2D" parent="FakeCounterSpellingNpde"]
+z_index = -3
+position = Vector2(125, 520)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_vhlqi")
+
+[node name="InteractSample" type="LineEdit" parent="FakeCounterSpellingNpde"]
+offset_left = 40.0
+offset_top = 439.0
+offset_right = 207.0
+offset_bottom = 470.0
+text = "Counter Spell"
+placeholder_text = "see prompt above"
+alignment = 1
+expand_to_text_length = true
+context_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+select_all_on_focus = true
+caret_blink_interval = 10.0
+
+[node name="PanelContainer" type="PanelContainer" parent="FakeCounterSpellingNpde/InteractSample"]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -83.0
+offset_right = 194.0
+offset_bottom = -5.0
+
+[node name="counterspell" type="Label" parent="FakeCounterSpellingNpde/InteractSample/PanelContainer"]
+layout_mode = 2
+text = "long text to counter-spell. If successful, the circle disappears"
+autowrap_mode = 2
+
+[node name="LifeTime" type="Timer" parent="FakeCounterSpellingNpde/InteractSample"]
+wait_time = 4.0
+one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="FakeCounterSpellingNpde/InteractSample"]
+visible = false
+position = Vector2(85, 81)
+color = Color(1, 0, 0, 1)
+energy = 3.03
+texture = ExtResource("9_vhlqi")
+texture_scale = 0.5
+
+[node name="EnemyHurtbox" type="Area2D" parent="FakeCounterSpellingNpde/InteractSample/PointLight2D"]
+collision_layer = 2
+collision_mask = 2
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FakeCounterSpellingNpde/InteractSample/PointLight2D/EnemyHurtbox"]
+shape = SubResource("CircleShape2D_q1b0i")
+
+[node name="RuneArea" type="Area2D" parent="FakeCounterSpellingNpde/InteractSample"]
+modulate = Color(0.454902, 0.141176, 0.235294, 1)
+position = Vector2(85, 81)
+collision_layer = 32768
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FakeCounterSpellingNpde/InteractSample/RuneArea"]
+shape = SubResource("CircleShape2D_4awjg")
+
+[node name="Rune" parent="." instance=ExtResource("12_qp768")]
+position = Vector2(376, 675)
+
+[connection signal="text_submitted" from="InteractableRune/InteractSample" to="InteractableRune/InteractSample" method="_on_text_submitted"]
+[connection signal="timeout" from="InteractableRune/InteractSample/LifeTime" to="InteractableRune/InteractSample" method="_on_life_time_timeout"]
+[connection signal="area_entered" from="InteractableRune/InteractSample/RuneArea" to="InteractableRune/InteractSample" method="_on_rune_area_area_entered"]
+[connection signal="area_exited" from="InteractableRune/InteractSample/RuneArea" to="InteractableRune/InteractSample" method="_on_rune_area_area_exited"]
+[connection signal="text_submitted" from="FakeCounterSpellingNpde/InteractSample" to="FakeCounterSpellingNpde" method="_on_interact_sample_text_submitted"]
+[connection signal="timeout" from="FakeCounterSpellingNpde/InteractSample/LifeTime" to="FakeCounterSpellingNpde/InteractSample" method="_on_life_time_timeout"]
+[connection signal="area_entered" from="FakeCounterSpellingNpde/InteractSample/RuneArea" to="FakeCounterSpellingNpde" method="_on_rune_area_area_entered"]
+[connection signal="area_exited" from="FakeCounterSpellingNpde/InteractSample/RuneArea" to="FakeCounterSpellingNpde" method="_on_rune_area_area_exited"]
+[connection signal="area_exited" from="FakeCounterSpellingNpde/InteractSample/RuneArea" to="FakeCounterSpellingNpde/InteractSample" method="_on_rune_area_area_exited"]

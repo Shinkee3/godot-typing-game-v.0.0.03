@@ -1,4 +1,4 @@
-extends Node
+extends ProgressBar
 
 signal TeleportSpell(target_pos: Vector2) ## used by spells: Teleport
 ## this signal is basically a way for the Teleport spell to call a function in the Player script that does the actual teleporting
@@ -59,3 +59,15 @@ which can be accessed by the spells (and everything else since it's global)
 You can also add more variables here incase you want the spells to get other properties of the player
 You can also add signals if u want ways for nodes to call functions on the player script
 """
+"""
+var player_health: float:
+	set(value): ## setter function, this gets called whenever "health" value is changed
+		player_health = value
+		player_health_updated()
+
+func player_health_updated():
+	self.value = PlayerInfo.player_health
+	pass
+"""
+
+var player_health: float = 100

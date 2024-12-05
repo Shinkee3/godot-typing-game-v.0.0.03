@@ -20,6 +20,24 @@ material = SubResource("CanvasItemMaterial_uf876")
 scale = Vector2(2, 2)
 script = ExtResource("1_426rx")
 
+[node name="Healthbar" type="ProgressBar" parent="."]
+modulate = Color(1, 0, 0, 0.984314)
+visibility_layer = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -26.5
+offset_right = 20.0
+offset_bottom = -21.5
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 10.0
+value = 10.0
+show_percentage = false
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_gs3gr")
@@ -31,18 +49,10 @@ region_enabled = true
 region_rect = Rect2(2.08165e-12, 128, 32, 32)
 
 [node name="EnemyHurtbox" parent="." instance=ExtResource("3_itt4j")]
+collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtbox"]
 shape = SubResource("CircleShape2D_inpqm")
 debug_color = Color(0.937255, 0.207843, 0.356863, 0.419608)
 
-[node name="Healthbar" type="Label" parent="."]
-use_parent_material = true
-offset_left = -26.0
-offset_top = -35.5
-offset_right = 26.0
-offset_bottom = -9.5
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "10"
-horizontal_alignment = 1
-vertical_alignment = 1
+[connection signal="body_entered" from="EnemyHurtbox" to="EnemyHurtbox" method="_on_body_entered"]

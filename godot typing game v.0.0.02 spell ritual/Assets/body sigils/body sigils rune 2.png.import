@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dah2gh71kq5h1"
-path="res://.godot/imported/Circle Aiming triangle2.png-55f731bb68d093ec65beb3e4c78199d4.ctex"
+uid="uid://c4sgm2he4x55s"
+path="res://.godot/imported/body sigils rune 2.png-7813be7e754b25f77d58e92df0abc000.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Circle Aiming triangle2.png"
-dest_files=["res://.godot/imported/Circle Aiming triangle2.png-55f731bb68d093ec65beb3e4c78199d4.ctex"]
+source_file="res://Assets/body sigils/body sigils rune 2.png"
+dest_files=["res://.godot/imported/body sigils rune 2.png-7813be7e754b25f77d58e92df0abc000.ctex"]
 
 [params]
 
