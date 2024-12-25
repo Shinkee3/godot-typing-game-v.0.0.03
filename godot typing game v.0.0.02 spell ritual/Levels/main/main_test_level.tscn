@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Levels/main/InteractSample.gd" id="8_4bk1u"]
 [ext_resource type="Texture2D" uid="uid://bpkxrx2fbqdj1" path="res://Assets/white circle.png" id="9_vhlqi"]
 [ext_resource type="Texture2D" uid="uid://b3sjh10q5kp17" path="res://Assets/ritualcircle/ritual_circle_inner_circlel.png" id="10_eaopw"]
-[ext_resource type="Script" path="res://Levels/main/CounterspellableMagicWall.gd" id="11_78hy4"]
+[ext_resource type="Script" path="res://Levels/Level Parts/CounterspellableMagicWall.gd" id="11_3k0f6"]
 [ext_resource type="Script" path="res://Levels/main/FakeCounterSpellingNpde.gd" id="11_o6ilc"]
 [ext_resource type="PackedScene" uid="uid://cuvr1tofh85yg" path="res://Runes/rune.tscn" id="12_qp768"]
 
@@ -157,7 +157,7 @@ shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
 select_all_on_focus = true
 caret_blink_interval = 10.0
-script = ExtResource("11_78hy4")
+script = ExtResource("11_3k0f6")
 
 [node name="LifeTime" type="Timer" parent="Magic Wall"]
 wait_time = 4.0
@@ -211,7 +211,7 @@ shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
 select_all_on_focus = true
 caret_blink_interval = 10.0
-script = ExtResource("11_78hy4")
+script = ExtResource("11_3k0f6")
 
 [node name="LifeTime" type="Timer" parent="Magic Wall2"]
 wait_time = 4.0

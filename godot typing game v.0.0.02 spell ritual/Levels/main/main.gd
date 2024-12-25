@@ -8,7 +8,11 @@ I split up the UI from the level
 @onready var player: Player ## intentionally left blank, given by "update_main_info" function
 
 ## % here is the "Unique Name" of node (indicated by the % symbol on the scenetree)
-@onready var current_lvl: MainTestLevel = %main_test_level
+## With the unique name, the format is like this: variable_name: class_name = %node_name
+#@onready var current_lvl: MainTestLevel = %main_test_level
+@onready var current_lvl: WallsLevel = %walls_level
+
+
 """
 note, once u start changing levels, change the class here 
 to ## either smthg more general (Node2D) or a dedicated (Level) class if u make one
