@@ -25,7 +25,7 @@ collision_mask = 9
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 light_mask = 3
 visibility_layer = 3
-color = Color(0.14902, 0.14902, 0.14902, 1)
+color = Color(0.364706, 0.364706, 0.364706, 1)
 
 [node name="Player_melee" parent="." instance=ExtResource("3_2cx7n")]
 position = Vector2(253, 508)
