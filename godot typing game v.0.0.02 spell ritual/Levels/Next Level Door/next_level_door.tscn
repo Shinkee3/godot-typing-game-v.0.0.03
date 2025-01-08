@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://dimsony22xe72"]
+
+[ext_resource type="Script" path="res://Levels/Next Level Door/next_level_door.gd" id="1_0lirg"]
+[ext_resource type="Texture2D" uid="uid://b3sjh10q5kp17" path="res://Assets/ritualcircle/ritual_circle_inner_circlel.png" id="2_lxk1m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pycim"]
+radius = 17.0
+
+[node name="NextLevelDoor" type="Node2D"]
+script = ExtResource("1_0lirg")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 10)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_pycim")
+
+[node name="Test" type="Label" parent="."]
+offset_left = -60.0
+offset_top = -68.0
+offset_right = 65.0
+offset_bottom = -16.0
+text = "go here to 
+enter next level "
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.0470588, 0.47451, 0.556863, 1)
+offset_left = -28.0
+offset_top = -28.0
+offset_right = 29.0
+offset_bottom = 29.0
+texture = ExtResource("2_lxk1m")
+expand_mode = 4
+stretch_mode = 4
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

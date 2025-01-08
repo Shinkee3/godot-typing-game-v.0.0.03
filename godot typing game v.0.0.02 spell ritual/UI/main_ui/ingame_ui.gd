@@ -71,10 +71,13 @@ func _input(event: InputEvent) -> void:
 
 
 func handle_cast_spell(chosen_spell: Spell) -> void: ## fire the spell
-	var str: String = "Casted [%s] with [u]%s[/u]" % [chosen_spell.title, chosen_spell.incantation] 
+	chosen_spell.cast_spell(player.aim_target_pos)
+	chosen_spell.increase_use_count() # new
+	var str: String = ("Casted [%s] with [u]%s[/u], used %d times" 
+			% [chosen_spell.title, chosen_spell.incantation, chosen_spell.times_used] 
+			)
 	update_prompts1(str, "")
 	update_prompts2("", "")
-	chosen_spell.cast_spell(player.aim_target_pos)
 
 
 func show_incantation_prompt(chosen_spell_1: Spell, chosen_spell_2: Spell = null) -> void:
