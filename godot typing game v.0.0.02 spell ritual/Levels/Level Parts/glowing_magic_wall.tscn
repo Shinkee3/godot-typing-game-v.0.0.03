@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://by5o5hax0l6no"]
+
+[ext_resource type="Script" path="res://Levels/Level Parts/glowing_magic_wall.gd" id="1_eeli0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dd67f"]
+size = Vector2(80, 30)
+
+[node name="GlowingMagicWall" type="Node2D"]
+script = ExtResource("1_eeli0")
+
+[node name="RigidBody2D" type="StaticBody2D" parent="."]
+rotation = 1.5708
+collision_layer = 13
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_dd67f")
+debug_color = Color(0, 0.6, 0.701961, 0.164706)
+
+[node name="RuneArea" type="Area2D" parent="."]
+modulate = Color(0.454902, 0.141176, 0.235294, 1)
+rotation = 1.5708
+collision_layer = 32768
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RuneArea"]
+shape = SubResource("RectangleShape2D_dd67f")
+debug_color = Color(0, 0.6, 0.701961, 0.164706)
+
+[connection signal="area_entered" from="RuneArea" to="." method="_on_rune_area_area_entered"]
+[connection signal="area_exited" from="RuneArea" to="." method="_on_rune_area_area_exited"]
