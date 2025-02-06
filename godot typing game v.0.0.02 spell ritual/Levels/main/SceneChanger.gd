@@ -11,5 +11,3 @@ extends SubViewportContainer
 func _process(delta):
 	if PlayerInfo.player_health == 0:
 		$"SubViewport/game_over".visible = true
-
-

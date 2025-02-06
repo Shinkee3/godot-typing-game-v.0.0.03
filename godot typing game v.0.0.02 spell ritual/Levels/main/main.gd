@@ -65,6 +65,12 @@ func go_to_next_level(next_level_path: String) -> void:
 			sub_viewport.remove_child(current_lvl)
 		current_lvl = level_reference[next_level_path]
 		sub_viewport.add_child(current_lvl)
+	#	reset_target_pos()
 	else:
 		printerr("ERROR in main.gd: Specified next_level_path has not been instantiated in _instantiate_levels()")
 	# remove previous level
+	
+#func reset_target_pos():
+#	PlayerInfo.$AimCursor
+	
+  # reset target pos but dont use unused param here

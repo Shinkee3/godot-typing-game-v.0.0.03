@@ -16,7 +16,7 @@ enemies in SubViewport have to be killed by spells in SubViewport.
 Spells in MainViewport don't affect enemies in SubViewport (at least from my testing)
 """
 
-@onready var input_line: LineEdit = %IncantationBar
+@onready var input_line: LineEdit = %IncantationBar ## I have to change this to the dialogue box
 @onready var prompt_hint_top1: RichTextLabel = %TopPrompt1 ## show title
 @onready var prompt_hint_bot1: RichTextLabel = %BottomPrompt1 ## show incantation (colored)
 @onready var prompt_hint_top2: RichTextLabel = %TopPrompt2 ## show title
@@ -56,7 +56,7 @@ func initialize_game_ui(_player: Player, spell_container: Node2D) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("enter"):
-		var current_text: String = input_line.text
+		var current_text: String = PlayerSpeech.spell_typed # POG so current text is what we need to connect to the speech bubble
 #		if current_text in titles_array:
 #			var i: int = retrieve_array_index(current_text, titles_array)
 #			show_incantation_prompt(spell_info_array[i])

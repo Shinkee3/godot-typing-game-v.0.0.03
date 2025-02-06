@@ -21,4 +21,3 @@ func _on_area_2d_body_entered(body):
 	else: # to prevent player from getting stuck "teleporting" in between two doors
 		await get_tree().create_timer(1.5).timeout
 		player_entered = false
-
