@@ -56,7 +56,7 @@ func initialize_game_ui(_player: Player, spell_container: Node2D) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("enter"):
-		var current_text: String = PlayerSpeech.spell_typed # POG so current text is what we need to connect to the speech bubble
+		var current_text: String = input_line.text # POG so current text is what we need to connect to the speech bubble
 #		if current_text in titles_array:
 #			var i: int = retrieve_array_index(current_text, titles_array)
 #			show_incantation_prompt(spell_info_array[i])

@@ -6,13 +6,10 @@ extends Control
 
 @onready var gestureDisp = $MarginContainer/Gesture
 
-var spell_typed = ""
-
 var is_gesturing: int = -1 #this is to have a gesturing bool. This will bemultiplied by -1. if gesturing is true, no text will be shown.
 var gesture_string = ""
 
-func _ready() -> void:
-	speechText = spell_typed # this is just so that speechtext does not return null
+var spell_typed: String
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
@@ -30,14 +27,13 @@ func _unhandled_key_input(event: InputEvent) -> void:
 				event.set_echo(false) # this does not work
 				var typed_event = event as InputEventKey #bro idk why this needs event as input event key but idk man
 				var key_typed = (PackedByteArray([typed_event.unicode])).get_string_from_utf8() # so this has an error. looking into removing the echo
-				spell_typed += key_typed
-				print("typed" + key_typed)
-				print(spell_typed)
 				speechText.text += key_typed
-			if speechText.text.length() == 0:
+			if speechBubble.visible && speechText.text.length() == 0:
 				speechBubble.hide()
-			else:
+			elif speechBubble.visible == false:
 				speechBubble.show()
+			spell_typed = speechText.text
+			print(spell_typed)
 
 		else:
 			var typed_event = event as InputEventKey #bro idk why this needs event as input event key but idk man
