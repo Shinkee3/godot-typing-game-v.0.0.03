@@ -25,6 +25,7 @@ PlayerInfo="*res://Autoloads/player_info.gd"
 MeleePlayerInfo="*res://Autoloads/melee_player_info.gd"
 SigilInfo="*res://Spells/sigil_writing/sigil_base.tscn"
 SignalBus="*res://Autoloads/signal_bus.gd"
+PlayerSpeech="*res://Levels/Level Parts/PlayerSpeech.gd"
 
 [debug]
 

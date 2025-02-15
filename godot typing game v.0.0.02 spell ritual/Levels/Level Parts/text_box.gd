@@ -5,6 +5,7 @@ extends Control
 @onready var speechBubble = $VBoxContainer
 
 @onready var gestureDisp = $MarginContainer/Gesture
+@onready var gestureBox = $MarginContainer
 
 var is_gesturing: int = -1 #this is to have a gesturing bool. This will bemultiplied by -1. if gesturing is true, no text will be shown.
 var gesture_string = ""
@@ -17,7 +18,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			is_gesturing *= -1 #hmmm, state machineable... but for now
 			print(is_gesturing)
 		if is_gesturing == -1:
-			if event.is_action_pressed("ui_cancel"): #clear speech bubble
+			gestureBox.hide()
+			#gestureDisp = 
+			if event.is_action_pressed("ui_cancel") or event.is_action_pressed("enter"): #clear speech bubble
 				speechText.text = "" # its working now so thats weird
 			elif event.is_action_pressed("ui_text_backspace"):# delete the last letter
 				speechText.text = speechText.text.left(-1)
@@ -30,12 +33,14 @@ func _unhandled_key_input(event: InputEvent) -> void:
 				speechText.text += key_typed
 			if speechBubble.visible && speechText.text.length() == 0:
 				speechBubble.hide()
-			elif speechBubble.visible == false:
+			elif speechBubble.visible == false && speechText.text.length() > 0:
 				speechBubble.show()
-			spell_typed = speechText.text
+			PlayerSpeech.spell_text = speechText.text
 			print(spell_typed)
 
 		else:
+			gestureBox.show()
+			print("visible gesture")
 			var typed_event = event as InputEventKey #bro idk why this needs event as input event key but idk man
 			var key_typed = (PackedByteArray([typed_event.unicode])).get_string_from_utf8() # so this has an error. looking into removing the echo
 			# this is a very  rudimentary way to look for matching prompts. This will do for now
