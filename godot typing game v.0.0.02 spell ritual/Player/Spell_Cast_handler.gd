@@ -1,5 +1,7 @@
 extends Control
 
+## NOTE: THIS IS OLD, ingame_ui.gd is the new Spell_Cast_handler.gd
+
 @export var player: Player ## set this up at scene (test_level) in the inspector
 
 ## NOTE: if you'll add a new spell here, don't forget to put it as a child of SpellContainer

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bl0dlxrg1qk1n"]
+[gd_scene load_steps=12 format=3 uid="uid://bl0dlxrg1qk1n"]
 
 [ext_resource type="Script" path="res://Player/player_rewrite.gd" id="1_f2d4x"]
 [ext_resource type="Texture2D" uid="uid://ceeatsthmnt54" path="res://Assets/32rogues/rogues.png" id="2_yijag"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bpkxrx2fbqdj1" path="res://Assets/white circle.png" id="5_ioiyl"]
 [ext_resource type="Texture2D" uid="uid://c3gwlikwn4wfp" path="res://Assets/Circle Aiming2.png" id="5_quqjm"]
 [ext_resource type="Texture2D" uid="uid://dto6lfnw02dmt" path="res://Assets/circle slice2.png" id="5_rec4c"]
+[ext_resource type="PackedScene" uid="uid://41wy1k0jr0b0" path="res://Levels/Level Parts/text_box.tscn" id="8_wg8o2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vs2uf"]
 size = Vector2(14, 25)
@@ -82,5 +83,12 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox"]
 position = Vector2(1, -1.5)
 shape = SubResource("CircleShape2D_juyvf")
+
+[node name="Player_Speech_Spell" parent="." instance=ExtResource("8_wg8o2")]
+unique_name_in_owner = true
+offset_left = -13.5
+offset_top = -44.5
+offset_right = 86.5
+offset_bottom = -40.5
 
 [connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_player_hurtbox_area_entered"]

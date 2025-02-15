@@ -253,12 +253,12 @@ animations = [{
 radius = 27.0185
 
 [node name="Fireball_rewrite" type="Node2D"]
-scale = Vector2(4, 4)
+scale = Vector2(8, 8)
 script = ExtResource("1_eo006")
 title = "Fireball"
+spell_tag = 0
 incantation = "cast fire"
 description = "summon an explosion of fire"
-spell_tag = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ieqss")

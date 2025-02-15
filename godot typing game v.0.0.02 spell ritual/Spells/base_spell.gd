@@ -14,6 +14,11 @@ enum Tags { ## for filtering
 @export_category("Multiline strings")
 @export_multiline var incantation: String
 @export_multiline var description: String # flavor text
+var times_used: int = 0 # tracks how many times this spell was used
 
 func cast_spell(target_pos: Vector2) -> void: ## this is to ensure all spells have the function "cast_spell"
 	pass
+
+
+func increase_use_count() -> void:
+	times_used += 1

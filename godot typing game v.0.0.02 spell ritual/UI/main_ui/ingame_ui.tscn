@@ -202,16 +202,19 @@ layout_mode = 0
 anchor_right = 0.989655
 anchor_bottom = 0.990683
 offset_bottom = -1.78814e-05
+current_tab = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="SpellBook" parent="SideBar/TabContainer" instance=ExtResource("2_56rqe")]
 unique_name_in_owner = true
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="Sigils" type="GridContainer" parent="SideBar/TabContainer"]
 visible = false
 layout_mode = 2
 columns = 2
+metadata/_tab_index = 1
 
 [node name="TextureRect" type="TextureRect" parent="SideBar/TabContainer/Sigils"]
 layout_mode = 2
@@ -244,6 +247,7 @@ text = "Adds a fire rune"
 [node name="Body" type="VBoxContainer" parent="SideBar/TabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="SideBar/TabContainer/Body"]
 layout_mode = 2

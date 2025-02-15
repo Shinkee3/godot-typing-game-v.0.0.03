@@ -16,7 +16,7 @@ enemies in SubViewport have to be killed by spells in SubViewport.
 Spells in MainViewport don't affect enemies in SubViewport (at least from my testing)
 """
 
-@onready var input_line: LineEdit = %IncantationBar
+@onready var input_line: LineEdit = %IncantationBar ## I have to change this to the dialogue box
 @onready var prompt_hint_top1: RichTextLabel = %TopPrompt1 ## show title
 @onready var prompt_hint_bot1: RichTextLabel = %BottomPrompt1 ## show incantation (colored)
 @onready var prompt_hint_top2: RichTextLabel = %TopPrompt2 ## show title
@@ -56,7 +56,7 @@ func initialize_game_ui(_player: Player, spell_container: Node2D) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("enter"):
-		var current_text: String = input_line.text
+		var current_text: String = input_line.text # POG so current text is what we need to connect to the speech bubble
 #		if current_text in titles_array:
 #			var i: int = retrieve_array_index(current_text, titles_array)
 #			show_incantation_prompt(spell_info_array[i])
@@ -71,10 +71,13 @@ func _input(event: InputEvent) -> void:
 
 
 func handle_cast_spell(chosen_spell: Spell) -> void: ## fire the spell
-	var str: String = "Casted [%s] with [u]%s[/u]" % [chosen_spell.title, chosen_spell.incantation] 
+	chosen_spell.cast_spell(player.aim_target_pos)
+	chosen_spell.increase_use_count() # new
+	var str: String = ("Casted [%s] with [u]%s[/u], used %d times" 
+			% [chosen_spell.title, chosen_spell.incantation, chosen_spell.times_used] 
+			)
 	update_prompts1(str, "")
 	update_prompts2("", "")
-	chosen_spell.cast_spell(player.aim_target_pos)
 
 
 func show_incantation_prompt(chosen_spell_1: Spell, chosen_spell_2: Spell = null) -> void:

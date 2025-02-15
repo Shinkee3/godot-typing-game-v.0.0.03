@@ -20,9 +20,12 @@ func _ready() -> void:
 	
 	# connect signals from PlayerInfo:
 	PlayerInfo.TeleportSpell.connect(_teleport_player) ## NOTE: receiver function for this signal
+	
+	## cannot initialize player health here since player gets re-instantiated once you transfer
+	## between levels
+	#PlayerInfo.player_health = 100
+	#print(PlayerInfo.player_health)
 
-	PlayerInfo.player_health = 100
-	print(PlayerInfo.player_health)
 ## unhandled lets u select searchbar without accidentally moving the character (unlike _input)
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):

@@ -1,4 +1,4 @@
-extends Node2D
+extends BaseLevel
 class_name WallsLevel
 
-@onready var player: Player = $Player
+# BaseLevel already contains the player node
