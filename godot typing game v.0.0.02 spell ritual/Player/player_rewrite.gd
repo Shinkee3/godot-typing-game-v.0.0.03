@@ -20,7 +20,7 @@ func _ready() -> void:
 	
 	# connect signals from PlayerInfo:
 	PlayerInfo.TeleportSpell.connect(_teleport_player) ## NOTE: receiver function for this signal
-	
+	SignalBus.next_door_entered.connect(_on_next_door_entered)
 	## cannot initialize player health here since player gets re-instantiated once you transfer
 	## between levels
 	#PlayerInfo.player_health = 100
@@ -64,3 +64,16 @@ func _on_player_hurtbox_area_entered(area):
 		print("hurt")
 		PlayerInfo.player_health -= 25
 		print(PlayerInfo.player_health)
+
+
+func _on_next_door_entered(_next_level_path: String) -> void:
+	# _next_level_path is the unused param, since this function doesn't need to use this parameter
+	# however, we still need to keep this here or else godot will complain that this function has no space for the parameter
+	# attached to the signal: "SignalBus.next_door_entered"
+
+	# theres a cleaner way to do it with "SignalBus.next_door_entered.connect(_on_next_door_entered.unbind())" which
+	# removes the need for the unused parameter by letting this function ignore the parameter attached with the signal
+
+	# reset the location of aim_cursor
+	aim_target_pos = Vector2.ZERO
+	aim_cursor.global_position = global_position
