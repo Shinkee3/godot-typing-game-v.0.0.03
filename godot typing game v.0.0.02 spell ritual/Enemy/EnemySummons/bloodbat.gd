@@ -5,14 +5,18 @@ class_name Blood_Bat
 @export var green = Color("#639765")
 @export var red = Color("#a65455")
 
+@export var dispelling_prompt: String = "scaarium aarua" # the nature of the code makes it so that only unicode english gets typed. A chinese ver has to be built from the ground up.
+
 @onready var prompt = $DispellCode
-@onready var prompt_text = prompt.text
+@onready var prompt_text = dispelling_prompt
 
 func get_prompt() -> String:
 	return prompt_text
 
 func _ready() -> void:
 	print(prompt_text)
+	prompt.text = prompt_text
+	
 
 func set_next_character(next_character_index: int):
 	#really long strings, not optimized. but if your game is very small, non-optimized doesnt matter
