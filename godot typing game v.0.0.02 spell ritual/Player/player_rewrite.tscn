@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bl0dlxrg1qk1n"]
+[gd_scene load_steps=13 format=3 uid="uid://bl0dlxrg1qk1n"]
 
 [ext_resource type="Script" path="res://Player/player_rewrite.gd" id="1_f2d4x"]
 [ext_resource type="Texture2D" uid="uid://ceeatsthmnt54" path="res://Assets/32rogues/rogues.png" id="2_yijag"]
@@ -16,6 +16,9 @@ size = Vector2(14, 25)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_juyvf"]
 radius = 19.5256
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1sch7"]
+radius = 35.171
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(2, 2)
@@ -84,11 +87,25 @@ collision_mask = 2
 position = Vector2(1, -1.5)
 shape = SubResource("CircleShape2D_juyvf")
 
-[node name="Player_Speech_Spell" parent="." instance=ExtResource("8_wg8o2")]
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -110.0
+offset_right = 10.0
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_constants/margin_left = -10
+theme_override_constants/margin_bottom = 40
+
+[node name="Player_Speech_Spell" parent="MarginContainer2" instance=ExtResource("8_wg8o2")]
 unique_name_in_owner = true
-offset_left = -13.5
-offset_top = -44.5
-offset_right = 86.5
-offset_bottom = -40.5
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ItemDispellArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDispellArea"]
+shape = SubResource("CircleShape2D_1sch7")
 
 [connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_player_hurtbox_area_entered"]

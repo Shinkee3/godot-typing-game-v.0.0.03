@@ -53,5 +53,10 @@ script = ExtResource("7_qhcp7")
 scale = Vector2(10, 10)
 
 [node name="NextLevelDoor" parent="." instance=ExtResource("12_iuj2p")]
-position = Vector2(338, 394)
-connected_level = "res://Levels/Level Reworked/walls_level.tscn"
+position = Vector2(277, 800)
+scale = Vector2(3, 3)
+connected_level = "res://Levels/Level Reworked/walls_level_2.tscn"
+
+[node name="NextLevelDoor2" parent="." instance=ExtResource("12_iuj2p")]
+position = Vector2(783, 493)
+connected_level = "res://Levels/Level Reworked/WallsLevel.gd"

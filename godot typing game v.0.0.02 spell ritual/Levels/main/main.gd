@@ -17,7 +17,7 @@ I split up the UI from the level
 # add more code in _instantiate_levels() to support the new levels
 var walls_level_path: String = "res://Levels/Level Reworked/walls_level.tscn"
 var walls_level_2_path: String = "res://Levels/Level Reworked/walls_level_2.tscn"
-
+var walls_level_3_path:String = "res://Levels/Level Reworked/walls_level_3.tscn"
 var level_reference: Dictionary = {}
 
 """
@@ -43,8 +43,10 @@ func _instantiate_levels() -> void:
 	"NOTE: WHEN U ADD NEW LEVELS, UPDATE THIS FUNCTION TO SUPPORT THEM"
 	var walls_level: PackedScene = load(walls_level_path)
 	var walls_level_2: PackedScene = load(walls_level_2_path)
+	var walls_level_3: PackedScene = load(walls_level_3_path)
 	level_reference[walls_level_path] = walls_level.instantiate()
 	level_reference[walls_level_2_path] = walls_level_2.instantiate()
+	level_reference[walls_level_3_path] = walls_level_3.instantiate()
 
 
 func _update_main_info() -> void:

@@ -57,6 +57,7 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_gs3gr")
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
+texture_filter = 2
 use_parent_material = true
 texture = ExtResource("2_02va2")
 region_enabled = true

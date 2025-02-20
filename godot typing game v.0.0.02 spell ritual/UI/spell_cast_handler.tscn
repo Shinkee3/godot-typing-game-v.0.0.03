@@ -99,7 +99,6 @@ title = "Blessed Aura"
 incantation = "vect a unocht inimicus"
 
 [node name="magic_missile" parent="SpellContainer" instance=ExtResource("6_d47hr")]
-visible = false
 position = Vector2(-89, -243)
 title = "Magic Missile"
 incantation = "mm"

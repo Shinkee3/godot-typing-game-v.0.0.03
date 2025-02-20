@@ -12,7 +12,7 @@ var aim_target_pos: Vector2
 
 var smoothed_mouse_position: Vector2
 
-var speed: float = 80
+var speed: float = 120
 
 func _ready() -> void:
 	movement_target_pos = global_position
