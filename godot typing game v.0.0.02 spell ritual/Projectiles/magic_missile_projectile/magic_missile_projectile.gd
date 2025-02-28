@@ -13,7 +13,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var projectile_velocity: Vector2 = direction.normalized() * speed
 	translate(projectile_velocity * delta)
-	print_debug(global_position) # print_debug makes it clearer from which node is doing the print
+	#print_debug(global_position) # print_debug makes it clearer from which node is doing the print
 
 
 func _on_lifetime_timeout() -> void: ## NOTE: Lifetime timer node has Autostart and One Shot ON

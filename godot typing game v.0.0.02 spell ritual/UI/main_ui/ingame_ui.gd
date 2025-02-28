@@ -1,8 +1,6 @@
 extends Control
 class_name GameUI
 
-var player: Player = null # now given by Main via initialize_game_ui function (called by main)
-
 ## NOTE: if you'll add a new spell here, don't forget to put it as a child of SpellContainer
 #@onready var SpellContainer: Node2D = $SpellContainer (NOW GIVEN BY MAIN)
 """
@@ -36,10 +34,7 @@ var desired_incant_1: String = "" ## this is updated once possible_incants only 
 var desired_incant_2: String = ""
 var last_valid_input: String = "" ## works alongside desired_incant, used for coloring string
 
-func initialize_game_ui(_player: Player, spell_container: Node2D) -> void:
-	
-	player = _player
-	
+func initialize_game_ui(spell_container: Node2D) -> void:
 	for spell in spell_container.get_children():
 		if spell is Spell: ## skip child if its not a spell
 			spell_info_array.append(spell)
@@ -56,8 +51,9 @@ func initialize_game_ui(_player: Player, spell_container: Node2D) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("enter"):
-		var current_text: String = PlayerSpeech.spell_text # POG so current text is what we need to connect to the speech bubble
-#		if current_text in titles_array:
+		#var current_text: String = PlayerSpeech.spell_text # POG so current text is what we need to connect to the speech bubble
+		var current_text: String  = desired_incant_1 ## TEMP
+		#if current_text in titles_array:
 #			var i: int = retrieve_array_index(current_text, titles_array)
 #			show_incantation_prompt(spell_info_array[i])
 		if current_text in incant_array:
@@ -71,7 +67,7 @@ func _input(event: InputEvent) -> void:
 
 
 func handle_cast_spell(chosen_spell: Spell) -> void: ## fire the spell
-	chosen_spell.cast_spell(player.aim_target_pos)
+	chosen_spell.cast_spell(PlayerInfo.aim_target_pos)
 	chosen_spell.increase_use_count() # new
 	var str: String = ("Casted [%s] with [u]%s[/u], used %d times" 
 			% [chosen_spell.title, chosen_spell.incantation, chosen_spell.times_used] 
@@ -147,7 +143,7 @@ func _on_line_edit_text_changed(new_text: String) -> void:
 		var index_1: int = retrieve_array_index(desired_incant_1, incant_array)
 		show_incantation_prompt(spell_info_array[index_1])
 		var colored_input: String = "[color=lightgreen]%s[/color]" % last_valid_input
-		
+		print("HERE")
 		prompt_hint_bot1.text = desired_incant_1.replace(last_valid_input, colored_input)
 		prompt_hint_bot2.text = ""
 		

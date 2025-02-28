@@ -34,10 +34,11 @@ func cast_spell(target_pos: Vector2) -> void:
 	#show() # 
 
 
-func shoot_projectile(_pos: Vector2, ) -> void:
+func shoot_projectile(_pos: Vector2) -> void:
 	var projectile: MagicMissile_Projectile = MagicMissileProjectileScene.instantiate() ## create a copy of projectile
 	projectile.global_position = PlayerInfo.player_pos ## set starting position
 	projectile.direction = PlayerInfo.player_pos.direction_to(_pos) ## set direction of projectile
+	print_debug(_pos)
 	projectile.top_level = true ## basically to avoid parent node from affecting child node's position
 	
 	## removed "get_tree().root" here since it has to be spawned in the same subviewport as the enemies

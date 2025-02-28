@@ -53,7 +53,7 @@ func _update_main_info() -> void:
 	assert(current_lvl.player, "check if the level scene has a reference to the player")
 	if current_lvl != null:
 		player = current_lvl.player
-		ingame_ui.initialize_game_ui(player, spell_container)
+		ingame_ui.initialize_game_ui(spell_container)
 
 
 # main receiver function for next_door_entered signal

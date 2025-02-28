@@ -33,6 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		movement_cursor.global_position = movement_target_pos
 	if event.is_action_pressed("right_click"):
 		aim_target_pos = get_global_mouse_position()
+		PlayerInfo.aim_target_pos = aim_target_pos 
 		aim_cursor.global_position = aim_target_pos
 		aim_cursor.show()
 		aim_guide_locked.look_at(aim_target_pos)

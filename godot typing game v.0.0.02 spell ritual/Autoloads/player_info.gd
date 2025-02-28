@@ -20,6 +20,7 @@ since signals are a very important aspect of Godot)
 """
 
 var player_pos: Vector2 ## used by spells: blessed_aura, magic_missile
+var aim_target_pos: Vector2 ## used by spells that need aim
 
 ## NOTE:
 """
