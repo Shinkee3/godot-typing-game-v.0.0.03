@@ -10,6 +10,7 @@
 radius = 98.27
 
 [node name="sigil_base" type="Node2D"]
+visible = false
 script = ExtResource("1_wlvst")
 title = "Sigil Base"
 spell_tag = 2

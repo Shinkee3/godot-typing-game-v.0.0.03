@@ -10,6 +10,8 @@ extends Spell
 
 var fire_sigil: Array = ["Eyelid", "woh"]
 
+"""
+
 func _ready() -> void:
 	hitbox.monitorable = false
 	hide()
@@ -50,4 +52,4 @@ func _on_lifetime_timeout() -> void:
 func spell_effect(enemy: Enemy) -> void:
 	pass
 
-		
+		"""

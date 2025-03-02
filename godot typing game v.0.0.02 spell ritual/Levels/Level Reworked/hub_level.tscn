@@ -1,0 +1,208 @@
+[gd_scene load_steps=25 format=3 uid="uid://i17dejdi5wm7"]
+
+[ext_resource type="Script" path="res://Levels/Level Reworked/WallsLevel.gd" id="1_46ghk"]
+[ext_resource type="PackedScene" uid="uid://bl0dlxrg1qk1n" path="res://Player/player_rewrite.tscn" id="2_3wxfi"]
+[ext_resource type="PackedScene" uid="uid://bkh3ujfhdvy0g" path="res://Levels/Level Parts/torch.tscn" id="3_1ti4x"]
+[ext_resource type="PackedScene" uid="uid://dhand6e123x1j" path="res://Levels/test_tilemap.tscn" id="3_rejgr"]
+[ext_resource type="Script" path="res://Levels/Level Reworked/dispellable_enemies_container.gd" id="5_2n46q"]
+[ext_resource type="PackedScene" uid="uid://dimsony22xe72" path="res://Levels/Next Level Door/next_level_door.tscn" id="6_04yg2"]
+[ext_resource type="AudioStream" uid="uid://dejnlaaconvve" path="res://Assets/audio/Dunmeshi/To the Inexperienced Adventurer – Delicious in Dungeon [OST] [xojWyizkJKo].mp3" id="7_pn6bj"]
+[ext_resource type="Texture2D" uid="uid://ceeatsthmnt54" path="res://Assets/32rogues/rogues.png" id="7_pu5y3"]
+[ext_resource type="Texture2D" uid="uid://u4eraug4wr4q" path="res://Assets/custom sprites/speechbubble-sheet.png" id="8_nvxpt"]
+
+[sub_resource type="Gradient" id="Gradient_tanmc"]
+offsets = PackedFloat32Array(0.288889, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yg7oy"]
+gradient = SubResource("Gradient_tanmc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fic3u"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 1)
+angle_min = 1.07288e-05
+angle_max = 361.8
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 52.76
+gravity = Vector3(0, -98, 0)
+color_ramp = SubResource("GradientTexture1D_yg7oy")
+
+[sub_resource type="Gradient" id="Gradient_nhhln"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sgc0a"]
+gradient = SubResource("Gradient_nhhln")
+width = 3
+height = 3
+
+[sub_resource type="Gradient" id="Gradient_0mnql"]
+colors = PackedColorArray(1, 0.713726, 0.25098, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mbwl5"]
+gradient = SubResource("Gradient_0mnql")
+fill = 1
+fill_from = Vector2(0.497835, 0.467532)
+fill_to = Vector2(0.878788, 0.857143)
+
+[sub_resource type="Gradient" id="Gradient_uumvl"]
+offsets = PackedFloat32Array(0.0111111, 1)
+colors = PackedColorArray(0.352941, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6pvdy"]
+gradient = SubResource("Gradient_uumvl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nag6w"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(32, 2, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 10, 1)
+gravity = Vector3(0, -98, 0)
+color_ramp = SubResource("GradientTexture1D_6pvdy")
+hue_variation_min = -2.23517e-08
+hue_variation_max = -2.23517e-08
+
+[sub_resource type="Gradient" id="Gradient_pt86d"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0.615686, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_173a3"]
+gradient = SubResource("Gradient_pt86d")
+width = 4
+height = 4
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8vwpa"]
+light_mode = 1
+
+[sub_resource type="Theme" id="Theme_vquam"]
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kpe82"]
+
+[node name="walls_level" type="Node2D"]
+script = ExtResource("1_46ghk")
+
+[node name="Player" parent="." instance=ExtResource("2_3wxfi")]
+position = Vector2(424, 244)
+collision_mask = 9
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_speed = 0.5
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+light_mask = 3
+visibility_layer = 3
+color = Color(0.364706, 0.364706, 0.364706, 1)
+
+[node name="Map" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Torch" parent="Map" instance=ExtResource("3_1ti4x")]
+position = Vector2(928, -57)
+shadow_enabled = true
+
+[node name="Fireplace" type="GPUParticles2D" parent="Map"]
+position = Vector2(287, 364)
+amount = 20
+sub_emitter = NodePath("GPUParticles2D")
+process_material = SubResource("ParticleProcessMaterial_fic3u")
+texture = SubResource("GradientTexture2D_sgc0a")
+randomness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="Map/Fireplace"]
+position = Vector2(-3, -22)
+scale = Vector2(8.02734, 7.24035)
+energy = 1.43
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_mbwl5")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Map/Fireplace"]
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_nag6w")
+texture = SubResource("GradientTexture2D_173a3")
+
+[node name="Clutter" parent="Map" instance=ExtResource("3_rejgr")]
+z_index = -1
+layer_0/tile_data = PackedInt32Array(196608, 1, 0, 393216, 1, 0, 458752, 1, 0, 262145, 196609, 17, 327681, 786433, 19, 131074, 262145, 19, 196610, 1, 17, 262146, 327681, 17, 327682, 393217, 7, 393218, 1, 19, 131075, 262145, 17, 196611, 262145, 7, 262147, 393217, 7, 327683, 393217, 6, 393219, 393217, 6, 131076, 393217, 17, 196612, 393217, 7, 262148, 327681, 6, 327684, 393217, 17, 393220, 393217, 6, 131077, 393217, 17, 327685, 327681, 6, 327695, 393217, 16, -65523, 327681, 16, -65520, 393217, 16, 327698, 393217, 16, 19, 393217, 16)
+
+[node name="Wall" parent="Map" instance=ExtResource("3_rejgr")]
+layer_0/tile_data = PackedInt32Array(262144, 1, 0, 327680, 1, 0, 65537, 1, 0, 131073, 1, 0, 196609, 1, 0, 393217, 1, 0, 458753, 1, 0, 65538, 1, 0, 458754, 1, 0, 65539, 1, 0, 458755, 1, 0, 65540, 1, 0, 458756, 1, 0, 65541, 1, 0, 458757, 1, 0, 65542, 1, 0, 131078, 1, 0, 393222, 1, 0, 458758, 1, 0, 131079, 1, 0, 196615, 1, 0, 393223, 1, 0, 196616, 1, 0, 393224, 1, 0, 196617, 1, 0, 393225, 1, 0, 196618, 1, 0, 393226, 1, 0, 11, 1, 0, 65547, 1, 0, 131083, 1, 0, 196619, 1, 0, 393227, 1, 0, 393228, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458768, 1, 0, 458769, 1, 0, 196628, 1, 0, 458770, 1, 0, 458771, 1, 0, 458772, 1, 0, -65525, 1, 0, -131060, 1, 0, -131059, 1, 0, -131058, 1, 0, -131057, 1, 0, -131056, 1, 0, -131055, 1, 0, -131054, 1, 0, -65518, 1, 0, 19, 1, 0, 20, 1, 0, 65556, 1, 0, 131092, 1, 0, 262164, 1, 0, 327700, 1, 0, 393236, 1, 0, 393235, 1, 0, -65517, 1, 0)
+
+[node name="Floor" parent="Map" instance=ExtResource("3_rejgr")]
+z_index = -3
+layer_0/tile_data = PackedInt32Array(262144, 196609, 13, 327680, 131073, 14, 65537, 1, 13, 131073, 1, 13, 196609, 1, 13, 262145, 1, 13, 327681, 1, 13, 393217, 1, 13, 458753, 1, 13, 65538, 1, 13, 131074, 1, 13, 196610, 1, 13, 262146, 1, 13, 327682, 1, 13, 393218, 1, 13, 458754, 1, 13, 65539, 1, 13, 131075, 1, 13, 196611, 1, 13, 262147, 1, 13, 327683, 1, 13, 393219, 1, 13, 458755, 1, 13, 65540, 1, 13, 131076, 1, 13, 196612, 1, 13, 262148, 1, 13, 327684, 1, 13, 393220, 1, 13, 458756, 1, 13, 65541, 65537, 14, 131077, 1, 13, 196613, 1, 13, 262149, 65537, 14, 327685, 65537, 14, 393221, 1, 13, 458757, 1, 13, 65542, 1, 13, 131078, 1, 13, 196614, 1, 13, 262150, 1, 13, 327686, 65537, 14, 393222, 1, 13, 458758, 1, 13, 131079, 1, 13, 196615, 1, 13, 262151, 1, 13, 327687, 1, 13, 393223, 1, 13, 196616, 1, 13, 262152, 1, 3, 327688, 1, 13, 393224, 1, 13, 196617, 1, 13, 262153, 1, 3, 327689, 1, 3, 393225, 1, 13, 196618, 1, 13, 262154, 1, 1, 327690, 1, 3, 393226, 1, 13, 11, 1, 3, 65547, 1, 3, 131083, 1, 3, 196619, 1, 3, 262155, 1, 3, 327691, 1, 1, 393227, 1, 2, 12, 1, 3, 65548, 1, 3, 131084, 1, 3, 196620, 1, 3, 262156, 1, 3, 327692, 1, 3, 393228, 1, 3, 458764, 1, 3, 13, 1, 3, 65549, 1, 3, 131085, 1, 3, 196621, 1, 3, 262157, 1, 3, 327693, 1, 3, 393229, 1, 3, 458765, 1, 3, 14, 1, 3, 65550, 1, 3, 131086, 1, 3, 196622, 1, 3, 262158, 1, 3, 327694, 1, 3, 393230, 1, 1, 458766, 1, 1, 15, 1, 3, 65551, 1, 3, 131087, 1, 3, 196623, 1, 3, 262159, 1, 2, 327695, 1, 3, 393231, 1, 3, 458767, 1, 1, 16, 1, 3, 65552, 1, 3, 131088, 1, 3, 196624, 1, 3, 262160, 1, 2, 327696, 1, 3, 393232, 1, 3, 458768, 1, 1, 17, 1, 3, 65553, 1, 3, 131089, 1, 3, 196625, 1, 3, 262161, 1, 2, 327697, 1, 1, 393233, 1, 1, 458769, 1, 3, -131060, 1, 3, -65524, 1, 3, -131059, 1, 3, -65523, 1, 3, -131058, 1, 3, -65522, 1, 3, -131057, 1, 3, -65521, 1, 3, -131056, 1, 3, -65520, 1, 3, -131055, 1, 3, -65519, 1, 3, -131054, 1, 3, -65518, 1, 3, -65517, 1, 3, 19, 1, 3, 65555, 1, 3, 131091, 1, 3, 196627, 1, 3, 262163, 1, 2, 20, 1, 3, 65556, 1, 3, 131092, 1, 3, 18, 1, 3, 65554, 1, 3, 131090, 1, 3, 196626, 1, 3, 262162, 1, 2, 196628, 1, 3, 262164, 1, 3, 327700, 1, 3, 458772, 1, 3, 327698, 1, 1, 327699, 1, 1, 393236, 1, 3, 393234, 1, 1, 458770, 1, 3, 393235, 1, 3, 458771, 1, 3)
+
+[node name="MagicItems" type="Node2D" parent="."]
+
+[node name="DispellableEnemies" type="Node2D" parent="."]
+script = ExtResource("5_2n46q")
+
+[node name="Enemies" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="NextLevelDoor" parent="." instance=ExtResource("6_04yg2")]
+position = Vector2(865, 11)
+connected_level = "res://Levels/Level Reworked/walls_level.tscn"
+
+[node name="Mentor" type="Sprite2D" parent="."]
+position = Vector2(234, 282)
+scale = Vector2(2, 2)
+texture = ExtResource("7_pu5y3")
+region_enabled = true
+region_rect = Rect2(95, 127, 32, 32)
+
+[node name="MarginContainer2" type="MarginContainer" parent="Mentor"]
+visible = false
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -49.0
+offset_right = 189.0
+offset_bottom = -16.0
+grow_vertical = 0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_bottom = 35
+
+[node name="PanelContainer" type="PanelContainer" parent="Mentor/MarginContainer2"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Mentor/MarginContainer2/PanelContainer"]
+material = SubResource("CanvasItemMaterial_8vwpa")
+layout_mode = 2
+texture = ExtResource("8_nvxpt")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 11
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="Mentor/MarginContainer2/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Mentor/MarginContainer2/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = SubResource("Theme_vquam")
+bbcode_enabled = true
+text = "adfa a asdf adf ad"
+fit_content = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Mentor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mentor/StaticBody2D"]
+shape = SubResource("CapsuleShape2D_kpe82")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(879, 222)
+stream = ExtResource("7_pn6bj")
+autoplay = true

@@ -10,7 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://dc502prk7b82g" path="res://Spells/teleport/teleport.tscn" id="9_iysua"]
 [ext_resource type="PackedScene" uid="uid://c2hb3gwneuox7" path="res://Spells/sight/sight.tscn" id="20_g8x7u"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_yeh0h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -29,6 +35,8 @@ metadata/_edit_use_anchors_ = true
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
 unique_name_in_owner = true
 handle_input_locally = false
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
 size = Vector2i(864, 486)
 render_target_update_mode = 4
 
