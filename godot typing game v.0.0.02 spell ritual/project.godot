@@ -14,16 +14,16 @@ config/name="godot typing v.0.0.04 - DUNGEON BUILDING"
 config/description="ADDING THE DUNGEON"
 config/tags=PackedStringArray("medium_project")
 run/main_scene="res://Levels/Level Reworked/Menu and Prologue/mainmenu.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
-boot_splash/image="res://Assets/icon.png"
+config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/fullsize=false
+boot_splash/image="res://Assets/icon.png"
 boot_splash/minimum_display_time=2000
 
 [autoload]
 
 PlayerInfo="*res://Autoloads/player_info.gd"
 MeleePlayerInfo="*res://Autoloads/melee_player_info.gd"
-SigilInfo="res://Spells/sigil_writing/sigil_base.tscn"
+SigilInfo="*res://Spells/sigil_writing/sigil_base.tscn"
 SignalBus="*res://Autoloads/signal_bus.gd"
 PlayerSpeech="*res://Levels/Level Parts/PlayerSpeech.gd"
 

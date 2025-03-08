@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://hm2ybsmp6i55"]
 
-[ext_resource type="Script" path="res://Enemy/EnemySummons/bloodbat.gd" id="1_fbnm4"]
+[ext_resource type="Script" uid="uid://ou87l8ji5x5w" path="res://Enemy/EnemySummons/bloodbat.gd" id="1_fbnm4"]
 [ext_resource type="Texture2D" uid="uid://cfwwke5w61udb" path="res://Assets/32rogues/monsters.png" id="2_mpylk"]
 [ext_resource type="PackedScene" uid="uid://dkmyihsnyob7p" path="res://Enemy/enemy_hurtbox.tscn" id="3_m50xk"]
 

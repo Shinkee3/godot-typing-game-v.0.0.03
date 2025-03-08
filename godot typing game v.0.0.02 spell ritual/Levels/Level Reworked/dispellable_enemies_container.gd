@@ -1,7 +1,5 @@
 extends Node2D
 @onready var dispellable_enemies_container = self
-var time: String
-var info = {"time": time, "dietyname" : "Shelob"}
 var prompt_text
 
 var active_prompt = null

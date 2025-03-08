@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://bimkd41ouig5e"]
 
 [ext_resource type="Theme" uid="uid://dgfgljj3qelvb" path="res://UI/main_theme.tres" id="1_es7jh"]
-[ext_resource type="Script" path="res://UI/main_ui/ingame_ui.gd" id="1_nsmss"]
+[ext_resource type="Script" uid="uid://r3io336l2x78" path="res://UI/main_ui/ingame_ui.gd" id="1_nsmss"]
 [ext_resource type="PackedScene" uid="uid://behoom6x21d2d" path="res://UI/main_ui/SpellBook.tscn" id="2_56rqe"]
 [ext_resource type="Texture2D" uid="uid://ceeatsthmnt54" path="res://Assets/32rogues/rogues.png" id="2_laq15"]
-[ext_resource type="Script" path="res://UI/main_ui/healthbar.gd" id="3_6nleu"]
+[ext_resource type="Script" uid="uid://kvubj5uyw7dd" path="res://UI/main_ui/healthbar.gd" id="3_6nleu"]
 [ext_resource type="Texture2D" uid="uid://cvo1or1os40l8" path="res://Assets/ritualcircle/ritual_circle.png" id="4_bmkm0"]
 [ext_resource type="Texture2D" uid="uid://b75jkdw3cdu3x" path="res://Assets/ritualcircle/ritual_circle_eyelid.png" id="5_xsddh"]
 [ext_resource type="Texture2D" uid="uid://dg5ee5qtycuqp" path="res://Assets/ritualcircle/ritual_circle_woh_shapel.png" id="6_mktxv"]

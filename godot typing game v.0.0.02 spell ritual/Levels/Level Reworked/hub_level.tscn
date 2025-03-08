@@ -1,14 +1,23 @@
-[gd_scene load_steps=25 format=3 uid="uid://i17dejdi5wm7"]
+[gd_scene load_steps=23 format=3 uid="uid://i17dejdi5wm7"]
 
-[ext_resource type="Script" path="res://Levels/Level Reworked/WallsLevel.gd" id="1_46ghk"]
+[ext_resource type="Script" uid="uid://6qrc8sjba4ro" path="res://Levels/Level Reworked/WallsLevel.gd" id="1_46ghk"]
 [ext_resource type="PackedScene" uid="uid://bl0dlxrg1qk1n" path="res://Player/player_rewrite.tscn" id="2_3wxfi"]
 [ext_resource type="PackedScene" uid="uid://bkh3ujfhdvy0g" path="res://Levels/Level Parts/torch.tscn" id="3_1ti4x"]
 [ext_resource type="PackedScene" uid="uid://dhand6e123x1j" path="res://Levels/test_tilemap.tscn" id="3_rejgr"]
-[ext_resource type="Script" path="res://Levels/Level Reworked/dispellable_enemies_container.gd" id="5_2n46q"]
+[ext_resource type="Script" uid="uid://bpmq7ixtp6pw7" path="res://Levels/Level Reworked/dispellable_enemies_container.gd" id="5_2n46q"]
 [ext_resource type="PackedScene" uid="uid://dimsony22xe72" path="res://Levels/Next Level Door/next_level_door.tscn" id="6_04yg2"]
 [ext_resource type="AudioStream" uid="uid://dejnlaaconvve" path="res://Assets/audio/Dunmeshi/To the Inexperienced Adventurer – Delicious in Dungeon [OST] [xojWyizkJKo].mp3" id="7_pn6bj"]
 [ext_resource type="Texture2D" uid="uid://ceeatsthmnt54" path="res://Assets/32rogues/rogues.png" id="7_pu5y3"]
-[ext_resource type="Texture2D" uid="uid://u4eraug4wr4q" path="res://Assets/custom sprites/speechbubble-sheet.png" id="8_nvxpt"]
+[ext_resource type="PackedScene" uid="uid://bjj2kas1vnfto" path="res://Levels/Level Parts/npc_speech.tscn" id="8_81hn0"]
+
+[sub_resource type="Gradient" id="Gradient_nhhln"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sgc0a"]
+gradient = SubResource("Gradient_nhhln")
+width = 3
+height = 3
 
 [sub_resource type="Gradient" id="Gradient_tanmc"]
 offsets = PackedFloat32Array(0.288889, 1)
@@ -28,15 +37,6 @@ initial_velocity_max = 52.76
 gravity = Vector3(0, -98, 0)
 color_ramp = SubResource("GradientTexture1D_yg7oy")
 
-[sub_resource type="Gradient" id="Gradient_nhhln"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_sgc0a"]
-gradient = SubResource("Gradient_nhhln")
-width = 3
-height = 3
-
 [sub_resource type="Gradient" id="Gradient_0mnql"]
 colors = PackedColorArray(1, 0.713726, 0.25098, 1, 0, 0, 0, 1)
 
@@ -45,6 +45,15 @@ gradient = SubResource("Gradient_0mnql")
 fill = 1
 fill_from = Vector2(0.497835, 0.467532)
 fill_to = Vector2(0.878788, 0.857143)
+
+[sub_resource type="Gradient" id="Gradient_pt86d"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0.615686, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_173a3"]
+gradient = SubResource("Gradient_pt86d")
+width = 4
+height = 4
 
 [sub_resource type="Gradient" id="Gradient_uumvl"]
 offsets = PackedFloat32Array(0.0111111, 1)
@@ -63,21 +72,6 @@ gravity = Vector3(0, -98, 0)
 color_ramp = SubResource("GradientTexture1D_6pvdy")
 hue_variation_min = -2.23517e-08
 hue_variation_max = -2.23517e-08
-
-[sub_resource type="Gradient" id="Gradient_pt86d"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 0.615686, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_173a3"]
-gradient = SubResource("Gradient_pt86d")
-width = 4
-height = 4
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8vwpa"]
-light_mode = 1
-
-[sub_resource type="Theme" id="Theme_vquam"]
-RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kpe82"]
 
@@ -100,16 +94,17 @@ color = Color(0.364706, 0.364706, 0.364706, 1)
 metadata/_edit_lock_ = true
 
 [node name="Torch" parent="Map" instance=ExtResource("3_1ti4x")]
-position = Vector2(928, -57)
+position = Vector2(922, -61)
 shadow_enabled = true
 
 [node name="Fireplace" type="GPUParticles2D" parent="Map"]
 position = Vector2(287, 364)
 amount = 20
 sub_emitter = NodePath("GPUParticles2D")
-process_material = SubResource("ParticleProcessMaterial_fic3u")
 texture = SubResource("GradientTexture2D_sgc0a")
 randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_fic3u")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="Map/Fireplace"]
 position = Vector2(-3, -22)
@@ -120,8 +115,8 @@ texture = SubResource("GradientTexture2D_mbwl5")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Map/Fireplace"]
 amount = 200
-process_material = SubResource("ParticleProcessMaterial_nag6w")
 texture = SubResource("GradientTexture2D_173a3")
+process_material = SubResource("ParticleProcessMaterial_nag6w")
 
 [node name="Clutter" parent="Map" instance=ExtResource("3_rejgr")]
 z_index = -1
@@ -153,49 +148,7 @@ texture = ExtResource("7_pu5y3")
 region_enabled = true
 region_rect = Rect2(95, 127, 32, 32)
 
-[node name="MarginContainer2" type="MarginContainer" parent="Mentor"]
-visible = false
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -49.0
-offset_right = 189.0
-offset_bottom = -16.0
-grow_vertical = 0
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_bottom = 35
-
-[node name="PanelContainer" type="PanelContainer" parent="Mentor/MarginContainer2"]
-layout_direction = 2
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Mentor/MarginContainer2/PanelContainer"]
-material = SubResource("CanvasItemMaterial_8vwpa")
-layout_mode = 2
-texture = ExtResource("8_nvxpt")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 11
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 10
-
-[node name="MarginContainer" type="MarginContainer" parent="Mentor/MarginContainer2/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 10
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Mentor/MarginContainer2/PanelContainer/MarginContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-theme = SubResource("Theme_vquam")
-bbcode_enabled = true
-text = "adfa a asdf adf ad"
-fit_content = true
+[node name="MentorSpeech" parent="Mentor" instance=ExtResource("8_81hn0")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Mentor"]
 

@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://bnko63sjwby0s"]
 
-[ext_resource type="Script" path="res://Levels/Level Reworked/WallsLevel.gd" id="1_4fwnd"]
+[ext_resource type="Script" uid="uid://6qrc8sjba4ro" path="res://Levels/Level Reworked/WallsLevel.gd" id="1_4fwnd"]
 [ext_resource type="PackedScene" uid="uid://bl0dlxrg1qk1n" path="res://Player/player_rewrite.tscn" id="2_rhqca"]
 [ext_resource type="PackedScene" uid="uid://dhand6e123x1j" path="res://Levels/test_tilemap.tscn" id="4_lmbjx"]
 [ext_resource type="PackedScene" uid="uid://bytbggxc17ka5" path="res://Levels/door.tscn" id="5_26gmm"]
 [ext_resource type="PackedScene" uid="uid://by5o5hax0l6no" path="res://Levels/Level Parts/glowing_magic_wall.tscn" id="6_inxoe"]
-[ext_resource type="Script" path="res://Levels/Level Reworked/dispellable_enemies_container.gd" id="7_5w338"]
+[ext_resource type="Script" uid="uid://bpmq7ixtp6pw7" path="res://Levels/Level Reworked/dispellable_enemies_container.gd" id="7_5w338"]
 [ext_resource type="PackedScene" uid="uid://dctd2p4dudtjw" path="res://Levels/Level Parts/env_counterspell_input.tscn" id="7_144pu"]
 [ext_resource type="PackedScene" uid="uid://j787dha03xy1" path="res://Enemy/Skeleton/skeleton.tscn" id="8_4honx"]
 [ext_resource type="PackedScene" uid="uid://hm2ybsmp6i55" path="res://Enemy/EnemySummons/bloodbat.tscn" id="8_l4axf"]

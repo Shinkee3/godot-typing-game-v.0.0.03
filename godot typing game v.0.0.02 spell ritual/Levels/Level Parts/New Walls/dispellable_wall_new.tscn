@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2h145atpjeyc"]
+
+[ext_resource type="Script" uid="uid://sl04errn88em" path="res://Levels/Level Parts/New Walls/dispellable_wall_new.gd" id="1_ml27i"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ml27i"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ml27i"]
+
+[node name="DispellableWallNew" type="Sprite2D"]
+texture = SubResource("PlaceholderTexture2D_ml27i")
+script = ExtResource("1_ml27i")
+blue = Color(0.466239, 0.773857, 0.543032, 1)
+green = Color(1, 1, 1, 1)
+red = Color(0.884301, 0.611432, 0.605898, 1)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 9
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_ml27i")

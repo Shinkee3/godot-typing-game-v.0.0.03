@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bl0dlxrg1qk1n"]
 
-[ext_resource type="Script" path="res://Player/player_rewrite.gd" id="1_f2d4x"]
+[ext_resource type="Script" uid="uid://dah7hfgh0q7ao" path="res://Player/player_rewrite.gd" id="1_f2d4x"]
 [ext_resource type="Texture2D" uid="uid://ceeatsthmnt54" path="res://Assets/32rogues/rogues.png" id="2_yijag"]
 [ext_resource type="Texture2D" uid="uid://c3kphbnrpc7ql" path="res://Resources/textures/movement_cursor.tres" id="3_c7vef"]
 [ext_resource type="Texture2D" uid="uid://dy52bg2lxyswy" path="res://Resources/textures/aim_cursor.tres" id="3_npigh"]
