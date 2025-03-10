@@ -87,20 +87,11 @@ collision_mask = 2
 position = Vector2(1, -1.5)
 shape = SubResource("CircleShape2D_juyvf")
 
-[node name="Player_Speech_Spell" parent="." instance=ExtResource("8_wg8o2")]
-unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-
 [node name="ItemDispellArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDispellArea"]
 shape = SubResource("CircleShape2D_1sch7")
+
+[node name="Player_Speech_Spell" parent="." instance=ExtResource("8_wg8o2")]
 
 [connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_player_hurtbox_area_entered"]
