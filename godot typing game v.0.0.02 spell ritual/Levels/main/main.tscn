@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cxhs8mky6mys5"]
 
 [ext_resource type="Script" uid="uid://wxv0a32810ay" path="res://Levels/main/main.gd" id="1_yeh0h"]
-[ext_resource type="Script" uid="uid://dhh5hxh3lc8fd" path="res://Levels/main/SceneChanger.gd" id="2_64ct0"]
+[ext_resource type="Script" uid="uid://u3du5a3wppe1" path="res://Levels/main/SceneChanger.gd" id="2_64ct0"]
 [ext_resource type="PackedScene" uid="uid://bimkd41ouig5e" path="res://UI/main_ui/ingame_ui.tscn" id="2_ffheu"]
 [ext_resource type="PackedScene" uid="uid://cmku625mxhvvn" path="res://Spells/fireball/fireball_rewrite.tscn" id="4_cvyq6"]
 [ext_resource type="PackedScene" uid="uid://bd2j8dwwrtd2y" path="res://Levels/game_over.tscn" id="4_fkct0"]

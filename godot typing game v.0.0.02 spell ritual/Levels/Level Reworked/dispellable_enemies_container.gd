@@ -5,7 +5,8 @@ var prompt_text
 var active_prompt = null
 var current_letter_index = -1
 
-func find_new_active_prompt(typed_character: String):
+func find_new_active_prompt(typed_character: String): # looks for the closest one, the thing is it 
+	#looks through the bloodbats through determining which one is the first one matching the prompt in the node stack
 	for panel in dispellable_enemies_container.get_children():
 		prompt_text = panel.get_prompt()
 		var next_character = prompt_text.substr(0 , 1)

@@ -9,7 +9,7 @@ var current_script #this is to start making space for building up
 var script_1: Array[String] = ["Test", "Anatha test", "Da third test", "fouth test"]
 
 func _ready() -> void:
-	assign_script()
+	assign_script() # placeholder
 
 func _input(event: InputEvent) -> void:
 	"""This could use some more finesse. Perhaps once two-three keys 
@@ -25,7 +25,9 @@ func _input(event: InputEvent) -> void:
 	#if not event.is_action_pressed("enter"): #Does not work. 
 	#	self.hide()
 	if event.is_action_pressed("enter"):
-		if script_counter < script_length && current_script != null:
+		if script_counter < script_length && current_script != null: # just a lil bit to get the prompt. Does not have
+			# anything for more robust text i.e prompts for starting it. May be able to be done from a singleton? Then
+			# perhaps a dictionary, or an array of arrays, for the prompts
 			if self.visible == false:
 				self.show()
 			script_counter += 1
@@ -38,5 +40,5 @@ func _input(event: InputEvent) -> void:
 
 			
 func assign_script():
-	current_script = script_1
+	current_script = script_1 # made this for possible expansion
 	script_length = current_script.size() - 1

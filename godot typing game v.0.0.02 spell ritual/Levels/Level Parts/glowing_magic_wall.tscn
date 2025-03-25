@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://by5o5hax0l6no"]
 
-[ext_resource type="Script" path="res://Levels/Level Parts/glowing_magic_wall.gd" id="1_eeli0"]
+[ext_resource type="Script" uid="uid://pcf5u8cloy5f" path="res://Levels/Level Parts/glowing_magic_wall.gd" id="1_eeli0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dd67f"]
 size = Vector2(80, 30)
