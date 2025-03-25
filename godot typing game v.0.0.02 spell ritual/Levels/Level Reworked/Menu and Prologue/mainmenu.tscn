@@ -1,9 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://ds2u4t32fsbux"]
+[gd_scene load_steps=9 format=3 uid="uid://ds2u4t32fsbux"]
 
-[ext_resource type="Script" path="res://Levels/Level Reworked/Menu and Prologue/mainmenu.gd" id="1_e0eyy"]
+[ext_resource type="Script" uid="uid://bd77klxsfkwaf" path="res://Levels/Level Reworked/Menu and Prologue/mainmenu.gd" id="1_e0eyy"]
 [ext_resource type="Texture2D" uid="uid://cwun68cfc7pdk" path="res://Assets/icon.png" id="1_wvugp"]
 [ext_resource type="AudioStream" uid="uid://brbbbi1fj6n2s" path="res://Assets/audio/MENU THEME.mp3" id="2_0trh8"]
+[ext_resource type="Script" uid="uid://cssttuejbft5d" path="res://Levels/Level Reworked/Menu and Prologue/credits_button.gd" id="3_0cooi"]
 [ext_resource type="AudioStream" uid="uid://rfushswwrph7" path="res://Assets/audio/sapirica whisper.wav" id="3_75l0m"]
+
+[sub_resource type="Gradient" id="Gradient_kf0r8"]
+offsets = PackedFloat32Array(0, 0.948529)
+colors = PackedColorArray(0, 0, 0, 1, 0.252028, 0.252028, 0.252028, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_72r42"]
+gradient = SubResource("Gradient_kf0r8")
+fill_from = Vector2(0.030303, 0.378788)
+fill_to = Vector2(0.0227273, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5xke4"]
+texture = SubResource("GradientTexture2D_72r42")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -58,6 +71,54 @@ text = "SETTINGS"
 [node name="CreditsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "CREDITS"
+script = ExtResource("3_0cooi")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="VBoxContainer/CreditsButton"]
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/CreditsButton/CanvasLayer"]
+custom_minimum_size = Vector2(1000, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_5xke4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/CreditsButton/CanvasLayer/PanelContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "
+
+
+
+Creator, Programmer
+WANTEN
+
+Programmer
+(UI, Spellcasting System, Door System)
+Parkah
+
+Art
+(Sprite Packs)
+pimen, Seth
+(Additional assets)
+WANTEN
+
+Music from Dungeon Meshi and Frieren, Original Music
+
+Special Thanks to:
+SqeakyToy, Rau, Jo, Miguel Abella"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/CreditsButton/CanvasLayer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "back"
 
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -76,3 +137,5 @@ stream = ExtResource("3_75l0m")
 autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="VBoxContainer/CreditsButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton/CanvasLayer/PanelContainer/Button" to="VBoxContainer/CreditsButton" method="_on_button_pressed"]

@@ -59,12 +59,14 @@ func _input(event: InputEvent) -> void:
 		if current_text in incant_array:
 			var i: int = retrieve_array_index(current_text, incant_array)
 			handle_cast_spell(spell_info_array[i])
+			print(i)
 		else:
 			update_prompts1("Unknown incantation.", "")
 			update_prompts2("", "")
-	
-		input_line.clear() ## clear the searchbar
 
+	if PlayerSpeech.gesturing == true && event.is_action_pressed("Gesture Shoot"):
+		if PlayerSpeech.gesture_combo == "WW":
+			handle_cast_spell(spell_info_array[2])
 
 func handle_cast_spell(chosen_spell: Spell) -> void: ## fire the spell
 	chosen_spell.cast_spell(PlayerInfo.aim_target_pos)

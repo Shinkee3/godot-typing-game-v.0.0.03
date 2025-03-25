@@ -181,3 +181,4 @@ scale = Vector2(4, 4)
 
 [node name="NextLevelDoor" parent="." instance=ExtResource("11_8wwel")]
 position = Vector2(1627, 164)
+connected_level = "uid://i17dejdi5wm7"

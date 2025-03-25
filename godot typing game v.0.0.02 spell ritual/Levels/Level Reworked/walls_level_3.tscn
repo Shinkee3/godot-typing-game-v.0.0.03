@@ -13,7 +13,7 @@
 script = ExtResource("1_h4jm3")
 
 [node name="Player" parent="." instance=ExtResource("2_eordm")]
-position = Vector2(626, 2021)
+position = Vector2(745, 404)
 collision_mask = 9
 metadata/_edit_group_ = true
 

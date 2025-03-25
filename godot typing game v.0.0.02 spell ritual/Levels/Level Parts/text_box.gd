@@ -14,11 +14,12 @@ var spell_typed: String
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
-		if event.is_action_pressed("capslock"): # gesturing check, imperfect since this will depend on the capslock's starting position
+		if event.is_action_pressed("controlkey"): # gesturing check, imperfect since this will depend on the capslock's starting position
 			is_gesturing *= -1 #hmmm, state machineable... but for now
 			print(is_gesturing)
 			
 		if is_gesturing == -1: # Yhis is for everything else
+			PlayerSpeech.gesturing = false
 			gestureBox.hide()
 			#gestureDisp = 
 			if event.is_action_pressed("ui_cancel") or event.is_action_pressed("enter"): #clear speech bubble
@@ -41,17 +42,20 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 
 		else:
+			PlayerSpeech.gesturing = true
 			gestureBox.show()
 			print("visible gesture")
 			var typed_event = event as InputEventKey #bro idk why this needs event as input event key but idk man
-			var key_typed = (PackedByteArray([typed_event.unicode])).get_string_from_utf8() # so this has an error. looking into removing the echo
+			var key_typed = (PackedByteArray([typed_event.unicode])).get_string_from_utf8().to_upper() # so this has an error. looking into removing the echo
 			# this is a very  rudimentary way to look for matching prompts. This will do for now
 			# WAZXD + S
 			if key_typed == "S": # just to have a way to remove strings
 				# suggestion: remove the gesture component. This woul dmake the game extremely complicated. You can save this for hte future, but not for this game
 				# instead, make one letter = one attack. Or two letters being nothing but one attack. There are only a set amount of spells you can use for this
 				gestureDisp.text = "🙏"
-				clear_gesture()
+				PlayerSpeech.gesture_combo = gesture_string
+				print("gesture combo is " + PlayerSpeech.gesture_combo)
+				clear_gesture() #this causes the input to be a bit delayed. kasi same ng s and ui
 			elif key_typed == "A":
 				gestureDisp.text = "👈"
 				add_gesture(key_typed)
@@ -70,9 +74,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			# Gesture spells + max length
 			if gesture_string.length() > 5:
 				clear_gesture()
-			elif gesture_string == "WD":
-				print("wd gesture")
-				clear_gesture()
+			#elif gesture_string == "WW":
+			#	print("wd gesture")
+				
+			#	clear_gesture()
 			
 func clear_gesture():
 	gesture_string = ""
