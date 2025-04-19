@@ -16,10 +16,12 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
 		if event.is_action_pressed("controlkey"): # gesturing check, imperfect since this will depend on the capslock's starting position
 			is_gesturing *= -1 #hmmm, state machineable... but for now
+			speechBubble.hide()
 			print(is_gesturing)
 			
 		if is_gesturing == -1: # Yhis is for everything else
 			PlayerSpeech.gesturing = false
+			speechBubble.show()
 			gestureBox.hide()
 			#gestureDisp = 
 			if event.is_action_pressed("ui_cancel") or event.is_action_pressed("enter"): #clear speech bubble

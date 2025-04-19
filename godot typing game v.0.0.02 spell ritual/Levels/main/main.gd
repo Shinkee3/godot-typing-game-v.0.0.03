@@ -16,9 +16,9 @@ I split up the UI from the level
 # NOTE: Make sure to update level_reference with new levels you want to add, 
 # add more code in _instantiate_levels() to support the new levels
 var hub_level_path: String = "res://Levels/Level Reworked/hub_level.tscn"
-var walls_level_path: String = "res://Levels/Level Reworked/walls_level.tscn"
-var walls_level_2_path: String = "res://Levels/Level Reworked/walls_level_2.tscn"
-var walls_level_3_path:String = "res://Levels/Level Reworked/walls_level_3.tscn"
+var walls_level_path: String = "uid://bso42iqvnnufr"
+var walls_level_2_path: String = "uid://bnko63sjwby0s"
+var walls_level_3_path:String = "uid://bu4jy8avck3pf"
 var level_reference: Dictionary = {}
 
 """
@@ -61,8 +61,8 @@ func _update_main_info() -> void:
 
 # main receiver function for next_door_entered signal
 func on_next_door_entered(path: String) -> void:
+	print(path)
 	call_deferred("go_to_next_level", path) # has to be deferred due to nodes shenanigens
-
 
 func go_to_next_level(next_level_path: String) -> void:
 	if next_level_path in level_reference.keys():

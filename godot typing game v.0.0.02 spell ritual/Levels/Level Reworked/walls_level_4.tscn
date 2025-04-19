@@ -20,6 +20,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.798781, 0.280488)
 
 [node name="walls_level2" type="Node2D"]
+texture_filter = 2
 script = ExtResource("1_bc526")
 
 [node name="Player" parent="." instance=ExtResource("2_awv8p")]

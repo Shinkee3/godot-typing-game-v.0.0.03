@@ -22,6 +22,7 @@ script = ExtResource("1_yeh0h")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+texture_filter = 2
 anchors_preset = -1
 anchor_left = 0.25
 anchor_right = 1.0

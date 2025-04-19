@@ -10,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://7ypyy43mejd5" path="res://Enemy/FastEnemy/fast_enemy.tscn" id="9_evogd"]
 [ext_resource type="PackedScene" uid="uid://dimsony22xe72" path="res://Levels/Next Level Door/next_level_door.tscn" id="11_vamtb"]
 
-[node name="walls_level" type="Node2D"]
+[node name="walls_level_2" type="Node2D"]
+texture_filter = 2
 script = ExtResource("1_4fwnd")
 
 [node name="Player" parent="." instance=ExtResource("2_rhqca")]

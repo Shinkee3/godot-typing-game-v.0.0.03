@@ -3,7 +3,7 @@ extends Button
 var credits_page
 
 func _ready() -> void:
-	credits_page = $CanvasLayer
+	credits_page = $CreditsPage
 
 func _on_pressed() -> void:
 	credits_page.show()

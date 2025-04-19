@@ -18,6 +18,7 @@ func _on_area_2d_body_entered(body):
 		player_entered = true
 		print_debug("Next Level door entered")
 		SignalBus.next_door_entered.emit(connected_level)
+		print(connected_level)
 	else: # to prevent player from getting stuck "teleporting" in between two doors
 		await get_tree().create_timer(1.5).timeout
 		player_entered = false

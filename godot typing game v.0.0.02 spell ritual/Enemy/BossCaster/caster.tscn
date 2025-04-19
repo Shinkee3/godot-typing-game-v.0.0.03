@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=3 uid="uid://beptldo7qwemn"]
 
-[ext_resource type="Script" path="res://Enemy/BossCaster/caster.gd" id="1_bot8y"]
+[ext_resource type="Script" uid="uid://mgtsceanrqxc" path="res://Enemy/BossCaster/caster.gd" id="1_bot8y"]
 [ext_resource type="Texture2D" uid="uid://cfwwke5w61udb" path="res://Assets/32rogues/monsters.png" id="2_02va2"]
 [ext_resource type="PackedScene" uid="uid://dkmyihsnyob7p" path="res://Enemy/enemy_hurtbox.tscn" id="3_x24mn"]
 [ext_resource type="Texture2D" uid="uid://bpkxrx2fbqdj1" path="res://Assets/white circle.png" id="4_x37fs"]
-[ext_resource type="Script" path="res://Enemy/BossCaster/EnemySpells.gd" id="4_yo2ev"]
-[ext_resource type="Script" path="res://Enemy/BossCaster/SpellEvilOrb.gd" id="5_ckwn1"]
+[ext_resource type="Script" uid="uid://d0qryljqewy6h" path="res://Enemy/BossCaster/EnemySpells.gd" id="4_yo2ev"]
+[ext_resource type="Script" uid="uid://3yb3oew6if6r" path="res://Enemy/BossCaster/SpellEvilOrb.gd" id="5_ckwn1"]
 [ext_resource type="PackedScene" uid="uid://dctd2p4dudtjw" path="res://Levels/Level Parts/env_counterspell_input.tscn" id="7_7p5jh"]
-[ext_resource type="Script" path="res://Enemy/BossCaster/EnemyCounterSpell.gd" id="7_rtanm"]
+[ext_resource type="Script" uid="uid://c5ciej3qmaj27" path="res://Enemy/BossCaster/EnemyCounterSpell.gd" id="7_rtanm"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uf876"]
 light_mode = 2
