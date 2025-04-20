@@ -23,7 +23,6 @@ boot_splash/minimum_display_time=2000
 
 PlayerInfo="*res://Autoloads/player_info.gd"
 MeleePlayerInfo="*res://Autoloads/melee_player_info.gd"
-SigilInfo="*res://Spells/sigil_writing/sigil_base.tscn"
 SignalBus="*res://Autoloads/signal_bus.gd"
 PlayerSpeech="*res://Autoloads/player_speech.gd"
 

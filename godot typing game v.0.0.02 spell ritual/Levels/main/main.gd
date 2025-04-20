@@ -16,9 +16,11 @@ I split up the UI from the level
 # NOTE: Make sure to update level_reference with new levels you want to add, 
 # add more code in _instantiate_levels() to support the new levels
 var hub_level_path: String = "res://Levels/Level Reworked/hub_level.tscn"
-var walls_level_path: String = "uid://bso42iqvnnufr"
+var walls_level_path: String = "res://Levels/Level Reworked/walls_level.tscn"
 var walls_level_2_path: String = "uid://bnko63sjwby0s"
-var walls_level_3_path:String = "uid://bu4jy8avck3pf"
+var walls_level_3_path:String = "res://Levels/Level Reworked/walls_level_3.tscn"
+var walls_level_4_path:String = "uid://bb1g6ix2mk6ym"
+#var special_level_path:String = "res://Levels/Level Reworked/special_level.tscn"
 var level_reference: Dictionary = {}
 
 """
@@ -46,11 +48,14 @@ func _instantiate_levels() -> void:
 	var walls_level: PackedScene = load(walls_level_path)
 	var walls_level_2: PackedScene = load(walls_level_2_path)
 	var walls_level_3: PackedScene = load(walls_level_3_path)
+	var walls_level_4: PackedScene = load(walls_level_4_path)
+#	var special_level: PackedScene = load(special_level_path)
 	level_reference[hub_level_path] = hub_level.instantiate()
 	level_reference[walls_level_path] = walls_level.instantiate()
 	level_reference[walls_level_2_path] = walls_level_2.instantiate()
 	level_reference[walls_level_3_path] = walls_level_3.instantiate()
-
+	level_reference[walls_level_4_path] = walls_level_4.instantiate()
+#	level_reference[special_level_path] = special_level.instantiate()
 
 func _update_main_info() -> void:
 	assert(current_lvl.player, "check if the level scene has a reference to the player")
@@ -79,3 +84,7 @@ func go_to_next_level(next_level_path: String) -> void:
 #	PlayerInfo.$AimCursor
 	
   # reset target pos but dont use unused param here
+
+
+func _on_game_over_retry() -> void:
+	go_to_next_level(hub_level_path)

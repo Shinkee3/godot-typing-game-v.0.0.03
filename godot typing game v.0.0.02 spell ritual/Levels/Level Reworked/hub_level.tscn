@@ -1,14 +1,14 @@
-[gd_scene load_steps=23 format=3 uid="uid://i17dejdi5wm7"]
+[gd_scene load_steps=24 format=3 uid="uid://i17dejdi5wm7"]
 
 [ext_resource type="Script" uid="uid://6qrc8sjba4ro" path="res://Levels/Level Reworked/WallsLevel.gd" id="1_46ghk"]
 [ext_resource type="PackedScene" uid="uid://bl0dlxrg1qk1n" path="res://Player/player_rewrite.tscn" id="2_3wxfi"]
 [ext_resource type="PackedScene" uid="uid://bkh3ujfhdvy0g" path="res://Levels/Level Parts/torch.tscn" id="3_1ti4x"]
-[ext_resource type="PackedScene" uid="uid://dhand6e123x1j" path="res://Levels/test_tilemap.tscn" id="3_rejgr"]
+[ext_resource type="PackedScene" uid="uid://dhand6e123x1j" path="res://Levels/Level Parts/base_tilemap.tscn" id="3_rejgr"]
 [ext_resource type="Script" uid="uid://bpmq7ixtp6pw7" path="res://Levels/Level Reworked/dispellable_enemies_container.gd" id="5_2n46q"]
 [ext_resource type="PackedScene" uid="uid://dimsony22xe72" path="res://Levels/Next Level Door/next_level_door.tscn" id="6_04yg2"]
 [ext_resource type="AudioStream" uid="uid://dejnlaaconvve" path="res://Assets/audio/Dunmeshi/To the Inexperienced Adventurer – Delicious in Dungeon [OST] [xojWyizkJKo].mp3" id="7_pn6bj"]
 [ext_resource type="Texture2D" uid="uid://ceeatsthmnt54" path="res://Assets/32rogues/rogues.png" id="7_pu5y3"]
-[ext_resource type="PackedScene" uid="uid://bjj2kas1vnfto" path="res://Levels/Level Parts/npc_speech.tscn" id="8_81hn0"]
+[ext_resource type="PackedScene" uid="uid://bjj2kas1vnfto" path="res://Levels/Level Parts/NPC Speech/npc_speech.tscn" id="8_81hn0"]
 
 [sub_resource type="Gradient" id="Gradient_nhhln"]
 offsets = PackedFloat32Array(0)
@@ -73,7 +73,11 @@ color_ramp = SubResource("GradientTexture1D_6pvdy")
 hue_variation_min = -2.23517e-08
 hue_variation_max = -2.23517e-08
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kpe82"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_81hn0"]
+radius = 21.5928
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cq0lh"]
+radius = 37.0135
 
 [node name="walls_level" type="Node2D"]
 script = ExtResource("1_46ghk")
@@ -142,6 +146,7 @@ position = Vector2(865, 11)
 connected_level = "res://Levels/Level Reworked/walls_level.tscn"
 
 [node name="Mentor" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(234, 282)
 scale = Vector2(2, 2)
 texture = ExtResource("7_pu5y3")
@@ -153,9 +158,20 @@ region_rect = Rect2(95, 127, 32, 32)
 [node name="StaticBody2D" type="StaticBody2D" parent="Mentor"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mentor/StaticBody2D"]
-shape = SubResource("CapsuleShape2D_kpe82")
+shape = SubResource("CircleShape2D_81hn0")
+
+[node name="Area2D" type="Area2D" parent="Mentor"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mentor/Area2D"]
+shape = SubResource("CircleShape2D_cq0lh")
+debug_color = Color(0.169942, 0.627588, 0.416614, 0.42)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(879, 222)
 stream = ExtResource("7_pn6bj")
 autoplay = true
+
+[connection signal="body_entered" from="Mentor/Area2D" to="Mentor/MentorSpeech" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Mentor/Area2D" to="Mentor/MentorSpeech" method="_on_area_2d_body_exited"]

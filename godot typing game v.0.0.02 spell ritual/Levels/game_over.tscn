@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bd2j8dwwrtd2y"]
 
-[ext_resource type="Script" path="res://Levels/game_over.gd" id="1_a6f05"]
+[ext_resource type="Script" uid="uid://ckd7d0casask5" path="res://Levels/game_over.gd" id="1_a6f05"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_uxjer"]
 size = Vector2(1080, 1080)

@@ -27,13 +27,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e0eyy")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-layout_mode = 0
-offset_left = 190.0
-offset_top = 37.0
-offset_right = 230.0
-offset_bottom = 77.0
-
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 5
@@ -136,3 +129,4 @@ autoplay = true
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="VBoxContainer/CreditsButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton/CreditsPage/PanelContainer/Button" to="VBoxContainer/CreditsButton" method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

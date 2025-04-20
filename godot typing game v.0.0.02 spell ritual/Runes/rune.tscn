@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cuvr1tofh85yg"]
 
 [ext_resource type="Texture2D" uid="uid://b3sjh10q5kp17" path="res://Assets/ritualcircle/ritual_circle_inner_circlel.png" id="1_hlyvn"]
-[ext_resource type="Script" path="res://Levels/main/InteractSample.gd" id="2_kmcgh"]
+[ext_resource type="Script" uid="uid://dktvq4fjulvf4" path="res://Levels/Level Parts/Old Runes/InteractSample.gd" id="2_kmcgh"]
 [ext_resource type="Texture2D" uid="uid://bpkxrx2fbqdj1" path="res://Assets/white circle.png" id="3_k6bnf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dvfjs"]
