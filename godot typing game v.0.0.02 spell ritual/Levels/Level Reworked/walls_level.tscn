@@ -1,17 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://bso42iqvnnufr"]
+[gd_scene load_steps=17 format=3 uid="uid://bso42iqvnnufr"]
 
 [ext_resource type="Script" uid="uid://6qrc8sjba4ro" path="res://Levels/Level Reworked/WallsLevel.gd" id="1_xwiuu"]
 [ext_resource type="PackedScene" uid="uid://bl0dlxrg1qk1n" path="res://Player/player_rewrite.tscn" id="2_u0fu2"]
 [ext_resource type="PackedScene" uid="uid://dhand6e123x1j" path="res://Levels/Level Parts/base_tilemap.tscn" id="4_l0vxp"]
 [ext_resource type="PackedScene" uid="uid://3px68828xf3i" path="res://Levels/Level Parts/New Walls/dispellable_walls_container.tscn" id="4_r674g"]
 [ext_resource type="PackedScene" uid="uid://d2h145atpjeyc" path="res://Levels/Level Parts/New Walls/dispellable_wall_new.tscn" id="5_q32lo"]
-[ext_resource type="PackedScene" uid="uid://by5o5hax0l6no" path="res://Levels/Level Parts/Old Walls/glowing_magic_wall.tscn" id="6_2kj04"]
-[ext_resource type="PackedScene" uid="uid://dctd2p4dudtjw" path="res://Levels/Level Parts/Old Walls/env_counterspell_input.tscn" id="6_bsmbn"]
+[ext_resource type="Script" uid="uid://cfivcum64igrb" path="res://Levels/Level Reworked/exit_dispell_detector.gd" id="7_q32lo"]
+[ext_resource type="Script" uid="uid://b7xjv8wj2g02f" path="res://Levels/Level Reworked/spawn_dispell_detector.gd" id="8_588t8"]
 [ext_resource type="PackedScene" uid="uid://j787dha03xy1" path="res://Enemy/Skeleton/skeleton.tscn" id="8_b5xba"]
 [ext_resource type="PackedScene" uid="uid://7ypyy43mejd5" path="res://Enemy/FastEnemy/fast_enemy.tscn" id="9_gmywy"]
 [ext_resource type="PackedScene" uid="uid://dimsony22xe72" path="res://Levels/Next Level Door/next_level_door.tscn" id="11_8wwel"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x0h4y"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q32lo"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_851xl"]
 width = 8
@@ -21,15 +21,30 @@ invert = true
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yn4d6"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
+emission_box_extents = Vector3(8, 4, 1)
 gravity = Vector3(0, -98, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q32lo"]
+radius = 33.2415
+
+[sub_resource type="Gradient" id="Gradient_588t8"]
+offsets = PackedFloat32Array(0, 0.800905, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ad8wj"]
+gradient = SubResource("Gradient_588t8")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.858974, 0.903846)
 
 [node name="walls_level" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_xwiuu")
 
 [node name="Player" parent="." groups=["PlayerMarker", "SkeletonHOs"] instance=ExtResource("2_u0fu2")]
-position = Vector2(552, 374)
+position = Vector2(592, 360)
 collision_mask = 9
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -61,88 +76,77 @@ layer_0/tile_data = PackedInt32Array(0, 1, 3, 65536, 1, 3, 131072, 1, 3, 196608,
 
 [node name="MagicItems" type="Node2D" parent="."]
 
-[node name="MWallItemExit" type="Node2D" parent="MagicItems"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(-417, -816)
-metadata/_edit_group_ = true
-
-[node name="GlowingMagicItem" parent="MagicItems/MWallItemExit" node_paths=PackedStringArray("Counterspell") instance=ExtResource("6_2kj04")]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(2, 0)
-Counterspell = NodePath("../ExitIncant")
-
-[node name="PointLight2D" type="PointLight2D" parent="MagicItems/MWallItemExit/GlowingMagicItem"]
-visible = false
-position = Vector2(5.30658, 14.0446)
-rotation = 1.5708
-scale = Vector2(45.993, 18.3609)
-texture = SubResource("PlaceholderTexture2D_x0h4y")
-
-[node name="Sprite2D" type="Sprite2D" parent="MagicItems/MWallItemExit/GlowingMagicItem"]
-visible = false
-position = Vector2(0, 0.884094)
-rotation = 1.5708
-scale = Vector2(19.6721, 7.74761)
-texture = SubResource("PlaceholderTexture2D_x0h4y")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="MagicItems/MWallItemExit/GlowingMagicItem"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(5.30658, 14.0446)
-rotation = 1.5708
-scale = Vector2(45.993, 18.3609)
-texture = SubResource("NoiseTexture2D_851xl")
-explosiveness = 0.27
-randomness = 0.27
-process_material = SubResource("ParticleProcessMaterial_yn4d6")
-
-[node name="GlowingMagicWall2" parent="MagicItems/MWallItemExit" node_paths=PackedStringArray("Counterspell") instance=ExtResource("6_2kj04")]
-position = Vector2(1798, 945)
-scale = Vector2(1, 3)
-Counterspell = NodePath("../ExitIncant")
-metadata/_edit_group_ = true
-
-[node name="PointLight2D" type="PointLight2D" parent="MagicItems/MWallItemExit/GlowingMagicWall2"]
-position = Vector2(0.481506, -0.290283)
-rotation = 1.5708
-scale = Vector2(19.6721, 7.74761)
-color = Color(0.756863, 0, 0.298039, 1)
-energy = 0.3
-texture = SubResource("PlaceholderTexture2D_x0h4y")
-
-[node name="Sprite2D" type="Sprite2D" parent="MagicItems/MWallItemExit/GlowingMagicWall2"]
-self_modulate = Color(1, 1, 1, 0.423529)
-position = Vector2(0.222229, 0.145081)
-rotation = 1.5708
-scale = Vector2(74, 30)
-texture = SubResource("PlaceholderTexture2D_x0h4y")
-
-[node name="ExitIncant" parent="MagicItems/MWallItemExit" node_paths=PackedStringArray("queue_free_parent") instance=ExtResource("6_bsmbn")]
-offset_left = 12.0
-offset_top = -54.0
-offset_right = 179.0
-offset_bottom = -23.0
-queue_free_parent = NodePath("..")
-
 [node name="DispellableWallsContainer" parent="MagicItems" instance=ExtResource("4_r674g")]
 
-[node name="DispellableWallNew" parent="MagicItems/DispellableWallsContainer" instance=ExtResource("5_q32lo")]
+[node name="SpawnDispell" parent="MagicItems/DispellableWallsContainer" node_paths=PackedStringArray("prompt") instance=ExtResource("5_q32lo")]
 position = Vector2(420, 380)
 scale = Vector2(1, 5)
 blue = Color(0.996129, 0.698861, 1.15514e-06, 1)
 red = Color(0.996333, 0.98648, 0.986021, 1)
 dispelling_prompt = "Beldane Laww"
+prompt = NodePath("SpawnDispellDetector/SpawnDispellCode")
 
-[node name="DispellCode" type="RichTextLabel" parent="MagicItems/DispellableWallsContainer/DispellableWallNew"]
-offset_left = -135.0
+[node name="SpawnDispellDetector" type="Area2D" parent="MagicItems/DispellableWallsContainer/SpawnDispell"]
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource("8_588t8")
+
+[node name="SpawnDispellCode" type="RichTextLabel" parent="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector"]
+light_mask = 0
+offset_left = -136.0
 offset_top = -10.6
-offset_right = -8.0
+offset_right = -9.0
 offset_bottom = 45.4
 scale = Vector2(1, 0.2)
 bbcode_enabled = true
-text = "rsdfdsg"
+text = "text"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector"]
+scale = Vector2(2.12, 2.04)
+shape = SubResource("RectangleShape2D_q32lo")
+debug_color = Color(1.92523e-07, 0.62774, 0.499035, 0.42)
+
+[node name="ExitDispell" parent="MagicItems/DispellableWallsContainer" node_paths=PackedStringArray("prompt") instance=ExtResource("5_q32lo")]
+position = Vector2(1324, 119)
+scale = Vector2(1, 5)
+blue = Color(0.996129, 0.698861, 1.15514e-06, 1)
+red = Color(0.996333, 0.98648, 0.986021, 1)
+dispelling_prompt = "Extant Removal"
+prompt = NodePath("ExitDispellDetector/ExitDispellCode")
+
+[node name="ExitDispellDetector" type="Area2D" parent="MagicItems/DispellableWallsContainer/ExitDispell"]
+position = Vector2(-1737, -184)
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource("7_q32lo")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="MagicItems/DispellableWallsContainer/ExitDispell/ExitDispellDetector"]
+light_mask = 3
+visibility_layer = 3
+skew = -1.74046e-05
+texture = SubResource("NoiseTexture2D_851xl")
+explosiveness = 0.27
+randomness = 0.27
+process_material = SubResource("ParticleProcessMaterial_yn4d6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagicItems/DispellableWallsContainer/ExitDispell/ExitDispellDetector"]
+scale = Vector2(1, 0.2)
+shape = SubResource("CircleShape2D_q32lo")
+
+[node name="PointLight2D" type="PointLight2D" parent="MagicItems/DispellableWallsContainer/ExitDispell/ExitDispellDetector"]
+scale = Vector2(5, 1)
+texture = SubResource("GradientTexture2D_ad8wj")
+
+[node name="ExitDispellCode" type="RichTextLabel" parent="MagicItems/DispellableWallsContainer/ExitDispell/ExitDispellDetector"]
+light_mask = 0
+offset_left = -48.0
+offset_top = -11.8
+offset_right = 79.0
+offset_bottom = 28.2
+scale = Vector2(1, 0.2)
+bbcode_enabled = true
+text = "text 2
+"
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -183,3 +187,12 @@ scale = Vector2(4, 4)
 [node name="NextLevelDoor" parent="." instance=ExtResource("11_8wwel")]
 position = Vector2(1627, 164)
 connected_level = "uid://bnko63sjwby0s"
+
+[connection signal="area_entered" from="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" to="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" method="_on_area_entered"]
+[connection signal="area_exited" from="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" to="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" method="_on_area_exited"]
+[connection signal="mouse_entered" from="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" to="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" to="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" method="_on_mouse_exited"]
+[connection signal="area_entered" from="MagicItems/DispellableWallsContainer/ExitDispell/ExitDispellDetector" to="MagicItems/DispellableWallsContainer/ExitDispell/ExitDispellDetector" method="_on_area_entered"]
+[connection signal="area_exited" from="MagicItems/DispellableWallsContainer/ExitDispell/ExitDispellDetector" to="MagicItems/DispellableWallsContainer/ExitDispell/ExitDispellDetector" method="_on_area_exited"]
+[connection signal="mouse_entered" from="MagicItems/DispellableWallsContainer/ExitDispell/ExitDispellDetector" to="MagicItems/DispellableWallsContainer/ExitDispell/ExitDispellDetector" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MagicItems/DispellableWallsContainer/ExitDispell/ExitDispellDetector" to="MagicItems/DispellableWallsContainer/ExitDispell/ExitDispellDetector" method="_on_mouse_exited"]

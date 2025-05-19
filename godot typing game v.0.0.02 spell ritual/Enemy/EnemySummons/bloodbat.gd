@@ -1,5 +1,4 @@
-extends Enemy
-class_name Blood_Bat
+extends CharacterBody2D
 
 @export var blue = Color("#4682b4") 
 @export var green = Color("#639765")
@@ -10,14 +9,52 @@ class_name Blood_Bat
 @onready var prompt = $DispellCode
 @onready var prompt_text = dispelling_prompt
 
-func get_prompt() -> String:
-	return prompt_text
+const speed = 100
+
+@export var timer_length = 2
+
+@export var player: Node2D
+
+@onready var navigation_agent = $NavigationAgent2D
+
+var on_target = false
 
 func _ready() -> void:
 	print(prompt_text)
 	prompt.text = prompt_text
+
+	$Timer.wait_time = timer_length
 	
 
+func _physics_process(delta: float) -> void:
+	if on_target == false:
+		var dir = to_local(navigation_agent.get_next_path_position()).normalized()
+		velocity = dir * speed
+		
+		move_and_slide()
+	
+func make_path() -> void:
+	navigation_agent.target_position = player.global_position
+
+func _on_timer_timeout() -> void:
+	make_path()
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	on_target = true
+	print("target detected")
+
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	on_target = false
+	print("target left")
+	
+	
+# BELOW IS DISPELLING 
+func get_prompt() -> String:
+	return prompt_text
+
+	
 func set_next_character(next_character_index: int):
 	#really long strings, not optimized. but if your game is very small, non-optimized doesnt matter
 	var blue_text = get_bbcode_color_tag(blue) + prompt_text.substr(0, next_character_index) + get_bbcode_end_color_tag() #this one makes the starting letter to the current letter blue! (inxex zero with the length of 1 that increses per character typed) blue is for typed 

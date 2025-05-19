@@ -7,7 +7,7 @@ class_name Wall
 
 @export var dispelling_prompt: String = "Shakalaka boomboom" # the nature of the code makes it so that only unicode english gets typed. A chinese ver has to be built from the ground up.
 
-@onready var prompt = $DispellCode
+@export var prompt: RichTextLabel
 @onready var prompt_text = dispelling_prompt
 
 func get_prompt() -> String:
