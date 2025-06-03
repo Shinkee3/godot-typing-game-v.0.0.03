@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxhs8mky6mys5"]
+[gd_scene load_steps=11 format=3 uid="uid://cxhs8mky6mys5"]
 
 [ext_resource type="Script" uid="uid://wxv0a32810ay" path="res://Levels/main/main.gd" id="1_yeh0h"]
 [ext_resource type="Script" uid="uid://u3du5a3wppe1" path="res://Levels/main/SceneChanger.gd" id="2_64ct0"]
 [ext_resource type="PackedScene" uid="uid://bimkd41ouig5e" path="res://UI/main_ui/ingame_ui.tscn" id="2_ffheu"]
+[ext_resource type="PackedScene" uid="uid://bckt54388ph6s" path="res://Levels/Level Parts/Dialogue Test/dialogueOverlay.tscn" id="2_ih4eg"]
 [ext_resource type="PackedScene" uid="uid://cmku625mxhvvn" path="res://Spells/explosion_spell/fireball_rewrite.tscn" id="4_cvyq6"]
 [ext_resource type="PackedScene" uid="uid://bd2j8dwwrtd2y" path="res://Levels/game_over.tscn" id="4_fkct0"]
 [ext_resource type="PackedScene" uid="uid://dprtktnhtow1j" path="res://Spells/blessed_aura/blessed_aura.tscn" id="7_waqyl"]
@@ -20,6 +21,10 @@ grow_vertical = 2
 script = ExtResource("1_yeh0h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueOverlay" parent="CanvasLayer" instance=ExtResource("2_ih4eg")]
+z_index = 100
+z_as_relative = false
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
 texture_filter = 2

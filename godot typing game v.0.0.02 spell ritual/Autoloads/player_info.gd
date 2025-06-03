@@ -29,6 +29,8 @@ var aim_target_pos: Vector2 ## used by spells that need aim
 ## singleton = only one instance of this script can exist
 """
 
+var currentdialogue = "firstspawnin"
+
 ## Motivation: 
 ## @onready var player: Player = get_parent().get_parent().get_parent().get_parent().get_node("Player")
 """

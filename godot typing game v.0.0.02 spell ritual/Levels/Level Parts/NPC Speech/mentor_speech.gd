@@ -13,6 +13,10 @@ var script_length: int
 var current_script #this is to start making space for building up
 var script_1: Array[String] = ["Test", "Anatha test", "Da third test", "fouth test"]
 
+var script_list: Dictionary = {"Test": ["Test", "Anatha test", "Da third test", "fouth test"],
+"firstspawninrandomreminisce" : ["Y-you have grown so much.", "I-if only I-I d-didn't have a st-stutter.", "The st-state of the town is n-not so good... Y-you must go... Quickly."]
+}
+#update this to something idk
 
 func _ready() -> void:
 	assign_script() # placeholder
