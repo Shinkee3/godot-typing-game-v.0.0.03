@@ -1,7 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://bso42iqvnnufr"]
+[gd_scene load_steps=20 format=3 uid="uid://bso42iqvnnufr"]
 
 [ext_resource type="Script" uid="uid://6qrc8sjba4ro" path="res://Levels/Level Reworked/WallsLevel.gd" id="1_xwiuu"]
 [ext_resource type="PackedScene" uid="uid://bl0dlxrg1qk1n" path="res://Player/player_rewrite.tscn" id="2_u0fu2"]
+[ext_resource type="Script" uid="uid://bnjjk3vd40k33" path="res://Levels/Level Reworked/dialogue_area.gd" id="4_588t8"]
+[ext_resource type="Script" uid="uid://btoayyk8u6bng" path="res://Levels/Level Reworked/dialogue_2_area.gd" id="4_ad8wj"]
 [ext_resource type="PackedScene" uid="uid://dhand6e123x1j" path="res://Levels/Level Parts/base_tilemap.tscn" id="4_l0vxp"]
 [ext_resource type="PackedScene" uid="uid://3px68828xf3i" path="res://Levels/Level Parts/New Walls/dispellable_walls_container.tscn" id="4_r674g"]
 [ext_resource type="PackedScene" uid="uid://d2h145atpjeyc" path="res://Levels/Level Parts/New Walls/dispellable_wall_new.tscn" id="5_q32lo"]
@@ -10,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://j787dha03xy1" path="res://Enemy/Skeleton/skeleton.tscn" id="8_b5xba"]
 [ext_resource type="PackedScene" uid="uid://7ypyy43mejd5" path="res://Enemy/FastEnemy/fast_enemy.tscn" id="9_gmywy"]
 [ext_resource type="PackedScene" uid="uid://dimsony22xe72" path="res://Levels/Next Level Door/next_level_door.tscn" id="11_8wwel"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_588t8"]
+size = Vector2(70, 200)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q32lo"]
 
@@ -63,6 +68,41 @@ color = Color(0.579921, 0.636542, 0.84097, 1)
 [node name="Map" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
+[node name="Dialogue1Area" type="Area2D" parent="Map"]
+position = Vector2(476, 357)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("4_588t8")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Dialogue1Area"]
+shape = SubResource("RectangleShape2D_588t8")
+
+[node name="Label" type="Label" parent="Map/Dialogue1Area"]
+offset_left = -41.0
+offset_top = -159.0
+offset_right = 65.0
+offset_bottom = -136.0
+text = "Press [ENTER]"
+
+[node name="Dialogue2Area" type="Area2D" parent="Map"]
+position = Vector2(323, 376)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("4_ad8wj")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Dialogue2Area"]
+shape = SubResource("RectangleShape2D_588t8")
+
+[node name="Label" type="Label" parent="Map/Dialogue2Area"]
+visible = false
+offset_left = -114.0
+offset_top = -69.0
+offset_right = -8.0
+offset_bottom = -46.0
+text = "Press [ENTER]"
+
 [node name="Clutter" parent="Map" instance=ExtResource("4_l0vxp")]
 z_index = -1
 layer_0/tile_data = PackedInt32Array(262151, 327681, 17, -393219, 131073, 17, -458759, 131073, 17, -458760, 196609, 17, -720903, 131073, 17, 720887, 65537, 22, 786423, 65537, 22, 786416, 1, 22, 393205, 1, 22, 720890, 65537, 21, 131069, 1, 17, 917486, 65537, 22, -458753, 393217, 17, -393218, 393217, 17, -327682, 393217, 17, -393220, 262145, 17, -458754, 262145, 17, -720904, 262145, 17, -786439, 131073, 17, -786438, 327681, 17, -786440, 262145, 17, 327708, 327681, 17, 393239, 327681, 8, 131099, 393217, 6, 131097, 458753, 16, 65560, 1, 17, 24, 393217, 6, 458736, 393217, 6, 524272, 327681, 6, 589806, 327681, 6, 786413, 1, 21, 851950, 1, 21, 1114096, 393217, 10, 1048562, 262145, 10, 1048563, 65537, 21, 786420, 65537, 21, 458745, 1, 21, 458746, 1, 22, 458747, 1, 21, 458748, 327681, 6, 524282, 1, 18, 393211, 1, 21, 458751, 1, 18, 1048583, 1, 17, -589829, 393217, 10, -655367, 1, 18, -655368, 1, 18, -524290, 393217, 6, -393223, 327681, 10, -393222, 262145, 10, -458757, 327681, 10)
@@ -92,6 +132,7 @@ collision_mask = 32768
 script = ExtResource("8_588t8")
 
 [node name="SpawnDispellCode" type="RichTextLabel" parent="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector"]
+visible = false
 light_mask = 0
 offset_left = -136.0
 offset_top = -10.6
@@ -138,6 +179,7 @@ scale = Vector2(5, 1)
 texture = SubResource("GradientTexture2D_ad8wj")
 
 [node name="ExitDispellCode" type="RichTextLabel" parent="MagicItems/DispellableWallsContainer/ExitDispell/ExitDispellDetector"]
+visible = false
 light_mask = 0
 offset_left = -48.0
 offset_top = -11.8
@@ -188,6 +230,9 @@ scale = Vector2(4, 4)
 position = Vector2(1627, 164)
 connected_level = "uid://bnko63sjwby0s"
 
+[connection signal="body_entered" from="Map/Dialogue1Area" to="Map/Dialogue1Area" method="_on_body_entered"]
+[connection signal="body_entered" from="Map/Dialogue2Area" to="Map/Dialogue2Area" method="_on_body_entered"]
+[connection signal="child_exiting_tree" from="MagicItems/DispellableWallsContainer" to="MagicItems/DispellableWallsContainer" method="_on_child_exiting_tree"]
 [connection signal="area_entered" from="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" to="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" to="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" method="_on_area_exited"]
 [connection signal="mouse_entered" from="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" to="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" method="_on_mouse_entered"]

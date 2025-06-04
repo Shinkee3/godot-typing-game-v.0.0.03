@@ -42,12 +42,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+
+	smoothed_mouse_position = lerp(smoothed_mouse_position, get_global_mouse_position(), 0.3)
+	aim_guide_loose.look_at(smoothed_mouse_position)
+	
+	velocity = position.direction_to(movement_target_pos) * speed
 	indialogue = PlayerInfo.indialogue
+	
 	if indialogue == false:
-		smoothed_mouse_position = lerp(smoothed_mouse_position, get_global_mouse_position(), 0.3)
-		aim_guide_loose.look_at(smoothed_mouse_position)
-		velocity = position.direction_to(movement_target_pos) * speed
-		
 		# NOTE: the PlayerInfo.player_pos variable is intended to share the Player's global_position to other scripts
 		PlayerInfo.player_pos = global_position # You need the Player script to manually update the PlayerInfo autoload
 		

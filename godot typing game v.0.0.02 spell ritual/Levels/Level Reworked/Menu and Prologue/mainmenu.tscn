@@ -1,10 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://ds2u4t32fsbux"]
+[gd_scene load_steps=12 format=3 uid="uid://ds2u4t32fsbux"]
 
 [ext_resource type="Script" uid="uid://bd77klxsfkwaf" path="res://Levels/Level Reworked/Menu and Prologue/mainmenu.gd" id="1_e0eyy"]
 [ext_resource type="Texture2D" uid="uid://cwun68cfc7pdk" path="res://Assets/icon.png" id="1_wvugp"]
 [ext_resource type="AudioStream" uid="uid://brbbbi1fj6n2s" path="res://Assets/audio/MENU THEME.mp3" id="2_0trh8"]
+[ext_resource type="Theme" uid="uid://dgfgljj3qelvb" path="res://UI/main_theme.tres" id="2_kf0r8"]
 [ext_resource type="Script" uid="uid://cssttuejbft5d" path="res://Levels/Level Reworked/Menu and Prologue/credits_button.gd" id="3_0cooi"]
 [ext_resource type="AudioStream" uid="uid://rfushswwrph7" path="res://Assets/audio/sapirica whisper.wav" id="3_75l0m"]
+
+[sub_resource type="Gradient" id="Gradient_72r42"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5xke4"]
+gradient = SubResource("Gradient_72r42")
 
 [sub_resource type="Gradient" id="Gradient_kf0r8"]
 offsets = PackedFloat32Array(0, 0.948529)
@@ -26,6 +34,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e0eyy")
+
+[node name="LoadingScreen" type="TextureRect" parent="."]
+visible = false
+z_index = 5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_5xke4")
+
+[node name="Label" type="Label" parent="LoadingScreen"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 29.0
+offset_top = -103.0
+offset_right = 262.0
+offset_bottom = -34.0
+grow_vertical = 0
+theme = ExtResource("2_kf0r8")
+theme_override_font_sizes/font_size = 50
+text = "Loading..."
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

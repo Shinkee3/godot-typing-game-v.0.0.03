@@ -70,7 +70,7 @@ curve = SubResource("Curve2D_jhgwf")
 curve = SubResource("Curve2D_brbia")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="BossCaster/BossPath2"]
-position = Vector2(1658.67, 100)
+position = Vector2(2202, -433)
 scale = Vector2(8.29333, 10)
 rotates = false
 script = ExtResource("5_brbia")

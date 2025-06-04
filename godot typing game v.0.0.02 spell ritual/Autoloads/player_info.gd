@@ -29,6 +29,7 @@ var aim_target_pos: Vector2 ## used by spells that need aim
 ## singleton = only one instance of this script can exist
 """
 
+signal GlobalDialogue(currentdialogue) ## Used by dialogue overlay, currently not connected, see https://www.reddit.com/r/godot/comments/12b5e01/comment/lshj48k/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 var currentdialogue = "firstspawnin"
 var indialogue: bool = true
 

@@ -30,9 +30,14 @@ func _unhandled_input(event: InputEvent) -> void: #you can do this instead of pu
 				current_letter_index += 1
 				active_prompt.set_next_character(current_letter_index) # everytime it updates the count, the colors are updated, also when the enemy is first discovered
 				if current_letter_index == prompt_text.length():
-					print("done")
+					print(active_prompt.name)
 					current_letter_index = -1
+					
 					active_prompt.queue_free()
 					active_prompt = null
 			else:
 				print("incorrectly typed %s instead of %s" %[key_typed, next_character])
+
+
+func _on_child_exiting_tree(node: Node) -> void:
+	print(node.name)
