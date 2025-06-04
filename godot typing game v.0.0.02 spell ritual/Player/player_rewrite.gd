@@ -14,6 +14,8 @@ var smoothed_mouse_position: Vector2
 
 var speed: float = 120
 
+var indialogue: bool = true
+
 func _ready() -> void:
 	movement_target_pos = global_position
 	aim_cursor.hide()
@@ -40,18 +42,21 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	smoothed_mouse_position = lerp(smoothed_mouse_position, get_global_mouse_position(), 0.3)
-	aim_guide_loose.look_at(smoothed_mouse_position)
-	velocity = position.direction_to(movement_target_pos) * speed
-	
-	# NOTE: the PlayerInfo.player_pos variable is intended to share the Player's global_position to other scripts
-	PlayerInfo.player_pos = global_position # You need the Player script to manually update the PlayerInfo autoload
-	
-	if position.distance_to(movement_target_pos) > 10:
-		move_and_slide()
-		movement_cursor.show()
-	else:
-		movement_cursor.hide()
+	indialogue = PlayerInfo.indialogue
+	if indialogue == false:
+		smoothed_mouse_position = lerp(smoothed_mouse_position, get_global_mouse_position(), 0.3)
+		aim_guide_loose.look_at(smoothed_mouse_position)
+		velocity = position.direction_to(movement_target_pos) * speed
+		
+		# NOTE: the PlayerInfo.player_pos variable is intended to share the Player's global_position to other scripts
+		PlayerInfo.player_pos = global_position # You need the Player script to manually update the PlayerInfo autoload
+		
+		if position.distance_to(movement_target_pos) > 10:
+			move_and_slide()
+			movement_cursor.show()
+		else:
+			movement_cursor.hide()
+	else: pass
 
 
 func _teleport_player(target_pos: Vector2) -> void:

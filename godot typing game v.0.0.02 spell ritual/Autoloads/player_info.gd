@@ -30,6 +30,8 @@ var aim_target_pos: Vector2 ## used by spells that need aim
 """
 
 var currentdialogue = "firstspawnin"
+var indialogue: bool = true
+
 
 ## Motivation: 
 ## @onready var player: Player = get_parent().get_parent().get_parent().get_parent().get_node("Player")

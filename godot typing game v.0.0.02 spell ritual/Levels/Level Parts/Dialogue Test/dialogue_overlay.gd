@@ -22,6 +22,8 @@ func _ready() -> void:
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("enter") == true && PlayerInfo.currentdialogue != null:
+		if PlayerInfo.indialogue == false:
+			PlayerInfo.indialogue = true
 		if dialoguepagecounter != currentdialogue.size() - 1:
 			dialoguepagecounter += 1
 			dialoguebox.text = currentdialogue[dialoguepagecounter]
@@ -29,4 +31,5 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			print("end of the line")
 			self.hide()
 			PlayerInfo.currentdialogue = null
+			PlayerInfo.indialogue = false
 			print(PlayerInfo.currentdialogue)

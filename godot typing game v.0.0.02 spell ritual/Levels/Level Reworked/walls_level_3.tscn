@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bu4jy8avck3pf"]
+[gd_scene load_steps=11 format=3 uid="uid://bu4jy8avck3pf"]
 
 [ext_resource type="Script" uid="uid://6qrc8sjba4ro" path="res://Levels/Level Reworked/WallsLevel.gd" id="1_h4jm3"]
 [ext_resource type="PackedScene" uid="uid://bl0dlxrg1qk1n" path="res://Player/player_rewrite.tscn" id="2_eordm"]
@@ -12,6 +12,12 @@
 [sub_resource type="Curve2D" id="Curve2D_jhgwf"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 200, 10, 0, 0, 0, 0, 0, 0, -50, -50, 0, 0, -10, 50, 400, 300, 0, 0, 50, -50, 0, -100, 0, 0, 200, 10)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_brbia"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2202, -433, 0, 0, 0, 0, -793, -261, 0, 0, 0, 0, -834, 1101, 0, 0, 0, 0, 2194, 1097, 0, 0, 0, 0, 2202, -433)
 }
 point_count = 5
 
@@ -56,16 +62,20 @@ script = ExtResource("7_qhcp7")
 
 [node name="BossCaster" type="Node2D" parent="."]
 
-[node name="BossPath" type="Path2D" parent="BossCaster"]
+[node name="BossPath1" type="Path2D" parent="BossCaster"]
 scale = Vector2(8.29333, 10)
 curve = SubResource("Curve2D_jhgwf")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="BossCaster/BossPath"]
-position = Vector2(200, 10)
+[node name="BossPath2" type="Path2D" parent="BossCaster"]
+curve = SubResource("Curve2D_brbia")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="BossCaster/BossPath2"]
+position = Vector2(1658.67, 100)
+scale = Vector2(8.29333, 10)
 rotates = false
 script = ExtResource("5_brbia")
 
-[node name="Caster" parent="BossCaster/BossPath/PathFollow2D" instance=ExtResource("11_a364o")]
+[node name="Caster" parent="BossCaster/BossPath2/PathFollow2D" instance=ExtResource("11_a364o")]
 texture_filter = 2
 scale = Vector2(1.20579, 1)
 max_health = 30.0

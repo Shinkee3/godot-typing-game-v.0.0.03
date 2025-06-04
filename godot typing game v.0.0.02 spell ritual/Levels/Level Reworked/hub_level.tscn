@@ -155,6 +155,7 @@ region_enabled = true
 region_rect = Rect2(95, 127, 32, 32)
 
 [node name="MentorSpeech" parent="Mentor" instance=ExtResource("8_81hn0")]
+scenescript = "firstspawnin"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Mentor"]
 
