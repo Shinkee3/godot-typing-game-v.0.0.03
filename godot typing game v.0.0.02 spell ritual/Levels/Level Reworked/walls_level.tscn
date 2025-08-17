@@ -1,9 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://bso42iqvnnufr"]
+[gd_scene load_steps=22 format=3 uid="uid://bso42iqvnnufr"]
 
 [ext_resource type="Script" uid="uid://6qrc8sjba4ro" path="res://Levels/Level Reworked/WallsLevel.gd" id="1_xwiuu"]
 [ext_resource type="PackedScene" uid="uid://bl0dlxrg1qk1n" path="res://Player/player_rewrite.tscn" id="2_u0fu2"]
-[ext_resource type="Script" uid="uid://bnjjk3vd40k33" path="res://Levels/Level Reworked/dialogue_area.gd" id="4_588t8"]
-[ext_resource type="Script" uid="uid://btoayyk8u6bng" path="res://Levels/Level Reworked/dialogue_2_area.gd" id="4_ad8wj"]
+[ext_resource type="PackedScene" uid="uid://0txkwacw3iki" path="res://Levels/Level Parts/Dialogue Test/dialogue_area.tscn" id="3_ad8wj"]
 [ext_resource type="PackedScene" uid="uid://dhand6e123x1j" path="res://Levels/Level Parts/base_tilemap.tscn" id="4_l0vxp"]
 [ext_resource type="PackedScene" uid="uid://3px68828xf3i" path="res://Levels/Level Parts/New Walls/dispellable_walls_container.tscn" id="4_r674g"]
 [ext_resource type="PackedScene" uid="uid://d2h145atpjeyc" path="res://Levels/Level Parts/New Walls/dispellable_wall_new.tscn" id="5_q32lo"]
@@ -13,8 +12,17 @@
 [ext_resource type="PackedScene" uid="uid://7ypyy43mejd5" path="res://Enemy/FastEnemy/fast_enemy.tscn" id="9_gmywy"]
 [ext_resource type="PackedScene" uid="uid://dimsony22xe72" path="res://Levels/Next Level Door/next_level_door.tscn" id="11_8wwel"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ad8wj"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fitdq"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ws4aa"]
+size = Vector2(200, 200)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_588t8"]
-size = Vector2(70, 200)
+size = Vector2(500, 500)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q32lo"]
 
@@ -68,40 +76,39 @@ color = Color(0.579921, 0.636542, 0.84097, 1)
 [node name="Map" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
-[node name="Dialogue1Area" type="Area2D" parent="Map"]
-position = Vector2(476, 357)
-collision_layer = 0
-collision_mask = 8
-script = ExtResource("4_588t8")
-metadata/_edit_group_ = true
+[node name="Dialogues" type="Node" parent="Map"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Dialogue1Area"]
+[node name="DialogueArea1" parent="Map/Dialogues" instance=ExtResource("3_ad8wj")]
+position = Vector2(478, 356)
+dialogue = "wallslevel"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Dialogues/DialogueArea1"]
+position = Vector2(-7, 1)
+shape = SubResource("RectangleShape2D_ad8wj")
+
+[node name="DialogueArea2" parent="Map/Dialogues" instance=ExtResource("3_ad8wj")]
+position = Vector2(290, 412)
+dialogue = "firstdispellsuccessful"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Dialogues/DialogueArea2"]
+position = Vector2(-7, 1)
+shape = SubResource("RectangleShape2D_fitdq")
+
+[node name="DialogueArea3" parent="Map/Dialogues" instance=ExtResource("3_ad8wj")]
+position = Vector2(1236, 125)
+dialogue = "firstlevellockeddoor"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Dialogues/DialogueArea3"]
+position = Vector2(-7, 1)
+shape = SubResource("RectangleShape2D_ws4aa")
+
+[node name="DialogueArea4" parent="Map/Dialogues" instance=ExtResource("3_ad8wj")]
+position = Vector2(-299, -622)
+dialogue = "firstlevelnearjar"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Dialogues/DialogueArea4"]
+position = Vector2(38, 32)
 shape = SubResource("RectangleShape2D_588t8")
-
-[node name="Label" type="Label" parent="Map/Dialogue1Area"]
-offset_left = -41.0
-offset_top = -159.0
-offset_right = 65.0
-offset_bottom = -136.0
-text = "Press [ENTER]"
-
-[node name="Dialogue2Area" type="Area2D" parent="Map"]
-position = Vector2(323, 376)
-collision_layer = 0
-collision_mask = 8
-script = ExtResource("4_ad8wj")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Dialogue2Area"]
-shape = SubResource("RectangleShape2D_588t8")
-
-[node name="Label" type="Label" parent="Map/Dialogue2Area"]
-visible = false
-offset_left = -114.0
-offset_top = -69.0
-offset_right = -8.0
-offset_bottom = -46.0
-text = "Press [ENTER]"
 
 [node name="Clutter" parent="Map" instance=ExtResource("4_l0vxp")]
 z_index = -1
@@ -225,13 +232,12 @@ position = Vector2(292, 56)
 [node name="Skeleton_rewrite8" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(-554, 149)
 scale = Vector2(4, 4)
+max_health = 30.0
 
 [node name="NextLevelDoor" parent="." instance=ExtResource("11_8wwel")]
 position = Vector2(1627, 164)
 connected_level = "uid://bnko63sjwby0s"
 
-[connection signal="body_entered" from="Map/Dialogue1Area" to="Map/Dialogue1Area" method="_on_body_entered"]
-[connection signal="body_entered" from="Map/Dialogue2Area" to="Map/Dialogue2Area" method="_on_body_entered"]
 [connection signal="child_exiting_tree" from="MagicItems/DispellableWallsContainer" to="MagicItems/DispellableWallsContainer" method="_on_child_exiting_tree"]
 [connection signal="area_entered" from="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" to="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" to="MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" method="_on_area_exited"]

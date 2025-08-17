@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://hm2ybsmp6i55" path="res://Enemy/EnemySummons/bloodbat.tscn" id="8_kn0ww"]
 [ext_resource type="PackedScene" uid="uid://j787dha03xy1" path="res://Enemy/Skeleton/skeleton.tscn" id="9_rnrdh"]
 [ext_resource type="PackedScene" uid="uid://7ypyy43mejd5" path="res://Enemy/FastEnemy/fast_enemy.tscn" id="10_d5tsl"]
-[ext_resource type="PackedScene" uid="uid://beptldo7qwemn" path="res://Enemy/BossCaster/caster.tscn" id="11_djkgk"]
+[ext_resource type="PackedScene" uid="uid://beptldo7qwemn" path="res://Enemy/BossCaster/BossCaster.tscn" id="11_djkgk"]
 [ext_resource type="PackedScene" uid="uid://dimsony22xe72" path="res://Levels/Next Level Door/next_level_door.tscn" id="12_7hywx"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x0h4y"]

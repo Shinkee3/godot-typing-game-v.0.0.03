@@ -77,7 +77,7 @@ func go_to_next_level(next_level_path: String) -> void:
 		sub_viewport.add_child(current_lvl)
 	#	reset_target_pos()
 	else:
-		printerr("ERROR in main.gd: Specified next_level_path has not been instantiated in _instantiate_levels()")
+		print("ERROR in main.gd: Specified next_level_path has not been instantiated in _instantiate_levels()")
 	# remove previous level
 	
 #func reset_target_pos():

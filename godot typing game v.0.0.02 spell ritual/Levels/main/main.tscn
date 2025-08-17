@@ -23,6 +23,7 @@ script = ExtResource("1_yeh0h")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogueOverlay" parent="CanvasLayer" instance=ExtResource("2_ih4eg")]
+visible = false
 z_index = 100
 z_as_relative = false
 
