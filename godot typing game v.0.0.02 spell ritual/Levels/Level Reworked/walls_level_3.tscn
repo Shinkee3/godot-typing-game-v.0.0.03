@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bu4jy8avck3pf"]
+[gd_scene load_steps=15 format=3 uid="uid://bu4jy8avck3pf"]
 
 [ext_resource type="Script" uid="uid://6qrc8sjba4ro" path="res://Levels/Level Reworked/WallsLevel.gd" id="1_h4jm3"]
 [ext_resource type="PackedScene" uid="uid://bl0dlxrg1qk1n" path="res://Player/player_rewrite.tscn" id="2_eordm"]
+[ext_resource type="PackedScene" uid="uid://bl2vnvvq66kej" path="res://Enemy/BossCaster/Attacks/rectangle_attacks.tscn" id="3_cqexd"]
 [ext_resource type="PackedScene" uid="uid://dhand6e123x1j" path="res://Levels/Level Parts/base_tilemap.tscn" id="3_rx3as"]
 [ext_resource type="PackedScene" uid="uid://0txkwacw3iki" path="res://Levels/Level Parts/Dialogue Test/dialogue_area.tscn" id="4_brbia"]
 [ext_resource type="Script" uid="uid://bduum7asx76s3" path="res://Levels/Level Reworked/boss_caster_path_follow_2d.gd" id="5_brbia"]
@@ -27,12 +28,12 @@ point_count = 5
 script = ExtResource("1_h4jm3")
 
 [node name="Player" parent="." instance=ExtResource("2_eordm")]
-position = Vector2(657, -181)
+position = Vector2(718, 2103)
 collision_mask = 9
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(0.7, 0.7)
+zoom = Vector2(0.3, 0.3)
 position_smoothing_speed = 0.5
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -41,28 +42,29 @@ light_mask = 3
 visibility_layer = 3
 color = Color(0.364706, 0.364706, 0.364706, 1)
 
-[node name="Map" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
-
-[node name="Attack" parent="Map" instance=ExtResource("10_xni1s")]
+[node name="Attacks" type="Node2D" parent="."]
 position = Vector2(637, 713)
 scale = Vector2(2, 2)
 
-[node name="Attack2" parent="Map" instance=ExtResource("10_xni1s")]
-position = Vector2(942, 65)
-scale = Vector2(2, 2)
+[node name="RectangleAttacks" parent="Attacks" instance=ExtResource("3_cqexd")]
+position = Vector2(-506, -136)
 
-[node name="AOE" parent="Map" instance=ExtResource("10_xni1s")]
-position = Vector2(415, 86)
-scale = Vector2(2, 2)
+[node name="AOE4" parent="Attacks" instance=ExtResource("10_xni1s")]
 
-[node name="AOE2" parent="Map" instance=ExtResource("10_xni1s")]
-position = Vector2(247, 558)
-scale = Vector2(2, 2)
+[node name="AOE5" parent="Attacks" instance=ExtResource("10_xni1s")]
+position = Vector2(152.5, -324)
 
-[node name="AOE3" parent="Map" instance=ExtResource("10_xni1s")]
-position = Vector2(1141, 492)
-scale = Vector2(2, 2)
+[node name="AOE" parent="Attacks" instance=ExtResource("10_xni1s")]
+position = Vector2(-111, -313.5)
+
+[node name="AOE2" parent="Attacks" instance=ExtResource("10_xni1s")]
+position = Vector2(-195, -77.5)
+
+[node name="AOE3" parent="Attacks" instance=ExtResource("10_xni1s")]
+position = Vector2(252, -110.5)
+
+[node name="Map" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Clutter" parent="Map" instance=ExtResource("3_rx3as")]
 z_index = -1
@@ -80,7 +82,7 @@ layer_0/tile_data = PackedInt32Array(0, 196609, 11, 65536, 196609, 11, 131072, 1
 [node name="DialogueAreas" type="Node" parent="Map"]
 
 [node name="DialogueArea" parent="Map/DialogueAreas" instance=ExtResource("4_brbia")]
-position = Vector2(655, 1425)
+position = Vector2(659, 1423)
 dialogue = "bossstagearrival"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/DialogueAreas/DialogueArea"]

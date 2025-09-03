@@ -1,13 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkbk4blw87sno"]
+[gd_scene load_steps=9 format=3 uid="uid://ca0kkb180ch62"]
 
-[ext_resource type="Script" uid="uid://cqnadcqst410q" path="res://EnemyProjectiles/attack.gd" id="1_oq1rk"]
+[ext_resource type="Script" uid="uid://j21wrsxiwdwc" path="res://EnemyProjectiles/aoe_indicator_type_2.gd" id="1_lxbyg"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oq1rk"]
-radius = 51.0098
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sx6em"]
+size = Vector2(125, 125)
 
 [sub_resource type="Gradient" id="Gradient_ws70x"]
-offsets = PackedFloat32Array(0.937799, 1)
-colors = PackedColorArray(0, 0, 0, 0.705882, 0, 0, 0, 0)
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 0, 0.705882)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_oq1rk"]
 gradient = SubResource("Gradient_ws70x")
@@ -17,9 +17,18 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
+[sub_resource type="Gradient" id="Gradient_uxghi"]
+offsets = PackedFloat32Array(0.0239234, 0.0287081, 0.966507, 0.976077)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h4iih"]
+gradient = SubResource("Gradient_uxghi")
+width = 128
+height = 128
+
 [sub_resource type="Gradient" id="Gradient_rfmir"]
-offsets = PackedFloat32Array(0.937799, 1)
-colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 0)
+offsets = PackedFloat32Array(0.937799)
+colors = PackedColorArray(1, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gq3dq"]
 gradient = SubResource("Gradient_rfmir")
@@ -29,10 +38,11 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0.05)
 
-[node name="Attack" type="Node2D"]
+[node name="RectangleAttack" type="Node2D"]
 z_index = -1
 z_as_relative = false
-script = ExtResource("1_oq1rk")
+scale = Vector2(1.12, 3.28)
+script = ExtResource("1_lxbyg")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -41,7 +51,7 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_oq1rk")
+shape = SubResource("RectangleShape2D_sx6em")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 anchors_preset = 8
@@ -55,11 +65,12 @@ offset_right = 32.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.00164, 1)
 max_value = 3.0
 step = 0.2
 value = 1.0
-fill_mode = 4
 texture_under = SubResource("GradientTexture2D_oq1rk")
+texture_over = SubResource("GradientTexture2D_h4iih")
 texture_progress = SubResource("GradientTexture2D_gq3dq")
 
 [node name="Label" type="Label" parent="."]
