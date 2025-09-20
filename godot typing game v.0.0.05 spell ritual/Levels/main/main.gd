@@ -91,5 +91,5 @@ func _on_game_over_retry() -> void:
 	
 # adding some cheatcodes to skip things
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_up"):
+	if event.is_action_pressed("skiptolevel3"):
 		go_to_next_level("res://Levels/Level Reworked/walls_level_3.tscn")

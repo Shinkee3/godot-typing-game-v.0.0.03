@@ -30,15 +30,17 @@ func _ready() -> void:
 
 ## unhandled lets u select searchbar without accidentally moving the character (unlike _input)
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click"):
-		movement_target_pos = get_global_mouse_position()
-		movement_cursor.global_position = movement_target_pos
+	#changing movement to mouse input
+	#if event.is_action_pressed("left_click"):
+	#	movement_target_pos = get_global_mouse_position()
+	#	movement_cursor.global_position = movement_target_pos
 	if event.is_action_pressed("right_click"):
 		aim_target_pos = get_global_mouse_position()
 		PlayerInfo.aim_target_pos = aim_target_pos 
 		aim_cursor.global_position = aim_target_pos
 		aim_cursor.show()
 		aim_guide_locked.look_at(aim_target_pos)
+	
 
 
 func _physics_process(_delta: float) -> void:
@@ -46,18 +48,23 @@ func _physics_process(_delta: float) -> void:
 	smoothed_mouse_position = lerp(smoothed_mouse_position, get_global_mouse_position(), 0.3)
 	aim_guide_loose.look_at(smoothed_mouse_position)
 	
-	velocity = position.direction_to(movement_target_pos) * speed
+	#velocity = position.direction_to(movement_target_pos) * speed
 	indialogue = PlayerInfo.indialogue
 	
 	if indialogue == false:
 		# NOTE: the PlayerInfo.player_pos variable is intended to share the Player's global_position to other scripts
 		PlayerInfo.player_pos = global_position # You need the Player script to manually update the PlayerInfo autoload
 		
-		if position.distance_to(movement_target_pos) > 10:
-			move_and_slide()
-			movement_cursor.show()
-		else:
-			movement_cursor.hide()
+		var direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
+		print(direction)
+		velocity = direction * speed
+		move_and_slide()
+
+		#if position.distance_to(movement_target_pos) > 10:
+		#	move_and_slide()
+		#	movement_cursor.show()
+		#else:
+		#	movement_cursor.hide()
 	else: pass
 
 
