@@ -112,4 +112,4 @@ position = Vector2(353, 692)
 [node name="NextLevel" parent="." instance=ExtResource("11_vamtb")]
 position = Vector2(683, 1567)
 scale = Vector2(2, 2)
-connected_level = "res://Levels/Level Reworked/walls_level_3.tscn"
+connected_level = "uid://bu4jy8avck3pf"

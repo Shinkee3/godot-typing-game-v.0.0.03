@@ -4,63 +4,62 @@
 [ext_resource type="PackedScene" uid="uid://ca0kkb180ch62" path="res://EnemyProjectiles/AOE_Indicator_type2.tscn" id="1_vuwg5"]
 
 [node name="RectangleAttacks" type="Node2D"]
-scale = Vector2(1.12, 3.28)
 script = ExtResource("1_aktuo")
 
 [node name="RectangleAttack" parent="." instance=ExtResource("1_vuwg5")]
-position = Vector2(66.0714, 0)
-scale = Vector2(1, 1)
+position = Vector2(38, 0)
 
 [node name="RectangleAttack2" parent="." instance=ExtResource("1_vuwg5")]
-position = Vector2(267.857, -7.62939e-06)
-scale = Vector2(1, 1)
+position = Vector2(78, -7.62939e-06)
 
 [node name="RectangleAttack3" parent="." instance=ExtResource("1_vuwg5")]
-position = Vector2(466.964, 0)
-scale = Vector2(1, 1)
+position = Vector2(118, 0)
 
 [node name="RectangleAttack4" parent="." instance=ExtResource("1_vuwg5")]
-position = Vector2(668.75, -5.96046e-08)
-scale = Vector2(1, 1)
+position = Vector2(158, -5.96046e-08)
 
 [node name="RectangleAttack5" parent="." instance=ExtResource("1_vuwg5")]
-position = Vector2(867.857, -1.19209e-07)
-scale = Vector2(1, 1)
+position = Vector2(198, -1.19209e-07)
 
-[node name="FloorWipeWhole" type="Marker2D" parent="."]
-position = Vector2(245.536, 0)
+[node name="Markers" type="Marker2D" parent="."]
+scale = Vector2(1, 0.99999994)
 
-[node name="Marker2D" type="Marker2D" parent="FloorWipeWhole"]
-position = Vector2(-245.536, 0)
+[node name="FloorWipeWhole" type="Marker2D" parent="Markers"]
+scale = Vector2(1, 1.0000001)
 
-[node name="Marker2D2" type="Marker2D" parent="FloorWipeWhole"]
-position = Vector2(-122.321, 0)
+[node name="Marker2D" type="Marker2D" parent="Markers/FloorWipeWhole"]
+position = Vector2(38, 0)
 
-[node name="Marker2D3" type="Marker2D" parent="FloorWipeWhole"]
+[node name="Marker2D2" type="Marker2D" parent="Markers/FloorWipeWhole"]
+position = Vector2(78, 0)
 
-[node name="Marker2D4" type="Marker2D" parent="FloorWipeWhole"]
-position = Vector2(123.214, 0)
+[node name="Marker2D3" type="Marker2D" parent="Markers/FloorWipeWhole"]
+position = Vector2(118, 0)
 
-[node name="Marker2D5" type="Marker2D" parent="FloorWipeWhole"]
-position = Vector2(244.643, 0)
+[node name="Marker2D4" type="Marker2D" parent="Markers/FloorWipeWhole"]
+position = Vector2(158, 0)
 
-[node name="FloorWipeSpace" type="Marker2D" parent="."]
+[node name="Marker2D5" type="Marker2D" parent="Markers/FloorWipeWhole"]
+position = Vector2(198, 0)
+
+[node name="FloorWipeSpace" type="Marker2D" parent="Markers"]
 visible = false
-position = Vector2(400.893, 0)
+scale = Vector2(1, 1.0000001)
 
-[node name="Marker2D" type="Marker2D" parent="FloorWipeSpace"]
-position = Vector2(-400.893, 0)
+[node name="Marker2D" type="Marker2D" parent="Markers/FloorWipeSpace"]
+position = Vector2(38, 0)
 
-[node name="Marker2D2" type="Marker2D" parent="FloorWipeSpace"]
-position = Vector2(-199.107, 0)
+[node name="Marker2D2" type="Marker2D" parent="Markers/FloorWipeSpace"]
+position = Vector2(100, 0)
 
-[node name="Marker2D3" type="Marker2D" parent="FloorWipeSpace"]
+[node name="Marker2D3" type="Marker2D" parent="Markers/FloorWipeSpace"]
+position = Vector2(163, 0)
 
-[node name="Marker2D4" type="Marker2D" parent="FloorWipeSpace"]
-position = Vector2(201.786, 0)
+[node name="Marker2D4" type="Marker2D" parent="Markers/FloorWipeSpace"]
+position = Vector2(224, 0)
 
-[node name="Marker2D5" type="Marker2D" parent="FloorWipeSpace"]
-position = Vector2(400.893, 0)
+[node name="Marker2D5" type="Marker2D" parent="Markers/FloorWipeSpace"]
+position = Vector2(288, 0)
 
 [node name="SpaceBetweenAttacks" type="Timer" parent="."]
 wait_time = 5.0

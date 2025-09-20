@@ -55,6 +55,13 @@ func _unhandled_key_input(event: InputEvent) -> void: #ideally maybe there;s lik
 			PlayerInfo.currentdialogue = null
 			PlayerInfo.indialogue = false
 			print(PlayerInfo.currentdialogue)
+	elif event.is_action_pressed("ui_cancel") &&  PlayerInfo.currentdialogue != null:
+			print("Skipped")
+			self.hide()
+			dialoguepagecounter = 0
+			PlayerInfo.currentdialogue = null
+			PlayerInfo.indialogue = false
+			print(PlayerInfo.currentdialogue)
 
 func _check_portraits():
 	if PlayerInfo.currentdialogue in ["bossbattlepre"]:

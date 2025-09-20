@@ -36,6 +36,7 @@ func _on_fade_timer_timeout() -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "PlayerHurtbox":
 		PlayerInfo.player_health -= 40
-		print("Player health is now " + str(PlayerInfo.player_health) + " and monitoring should be off.")
-		$Area2D.monitoring = false
+		PlayerInfo.immunity_frames()
+		print("Player health is now " + str(PlayerInfo.player_health) + " and player should have immunity.")
+		
 		

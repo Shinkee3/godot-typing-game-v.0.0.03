@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://beptldo7qwemn"]
+[gd_scene load_steps=15 format=3 uid="uid://beptldo7qwemn"]
 
 [ext_resource type="Script" uid="uid://mgtsceanrqxc" path="res://Enemy/BossCaster/bosscaster.gd" id="1_bot8y"]
 [ext_resource type="Texture2D" uid="uid://cfwwke5w61udb" path="res://Assets/32rogues/monsters.png" id="2_02va2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://3yb3oew6if6r" path="res://Enemy/BossCaster/SpellEvilOrb.gd" id="5_ckwn1"]
 [ext_resource type="PackedScene" uid="uid://dctd2p4dudtjw" path="res://Levels/Level Parts/Old Walls/env_counterspell_input.tscn" id="7_7p5jh"]
 [ext_resource type="Script" uid="uid://c5ciej3qmaj27" path="res://Enemy/BossCaster/EnemyCounterSpell.gd" id="7_rtanm"]
+[ext_resource type="PackedScene" uid="uid://bl2vnvvq66kej" path="res://Enemy/BossCaster/Attacks/rectangle_attacks.tscn" id="9_tqvsg"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uf876"]
 light_mode = 2
@@ -112,6 +113,8 @@ queue_free_parent = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CounterSpell"]
 shape = SubResource("CircleShape2D_5cbhi")
+
+[node name="RectangleAttacks" parent="." instance=ExtResource("9_tqvsg")]
 
 [connection signal="body_entered" from="EnemyHurtbox" to="EnemyHurtbox" method="_on_body_entered"]
 [connection signal="timeout" from="EnemySpells/Cooldown" to="EnemySpells/EvilOrbCaster/EvilOrbProjectile" method="_on_cooldown_timeout"]

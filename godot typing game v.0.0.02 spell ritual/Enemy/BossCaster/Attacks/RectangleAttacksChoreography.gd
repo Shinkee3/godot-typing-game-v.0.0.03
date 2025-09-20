@@ -33,22 +33,29 @@ func spawnRects():
 
 func getSpacedAttacksPos():
 	FloorWipeSpace = []
-	for marker in $FloorWipeSpace.get_children(): # get_children needs to be added as there isnt really anything to find if you just go for marker in node
+	for marker in $Markers/FloorWipeSpace.get_children(): # get_children needs to be added as there isnt really anything to find if you just go for marker in node
 		FloorWipeSpace.append(marker.position)
 
 func getWholeAttackPos():
 	FloorWipeWhole = []
-	for marker in $FloorWipeWhole.get_children(): # get_children needs to be added as there isnt really anything to find if you just go for marker in node
+	for marker in $Markers/FloorWipeWhole.get_children(): # get_children needs to be added as there isnt really anything to find if you just go for marker in node
 		FloorWipeWhole.append(marker.position)
 
 func spawnRectsSpaced(): #good... goood... it works.... muahahahaha
 	print(FloorWipeSpace)
 	#for position in FloorWipeSpace:
-	rect1.position = FloorWipeSpace[0]
-	rect2.position = FloorWipeSpace[1]
-	rect3.position = FloorWipeSpace[2]
-	rect4.position = FloorWipeSpace[3]
-	rect5.position = FloorWipeSpace[4]
+	print(FloorWipeWhole)
+	
+	var indexcount = 0
+	for pos in FloorWipeSpace: # this one makes the rectangles spawn in gradually
+		print(indexcount)
+		rectsArray[indexcount].position = FloorWipeSpace[indexcount]
+		
+		rectsArray[indexcount]._spawn_at_position_and_start()
+		
+		indexcount += 1
+		
+		await get_tree().create_timer(0.4).timeout
 
 func spawnRectsWhole(): #good... goood... it works.... muahahahaha
 	print(FloorWipeWhole)
@@ -70,11 +77,14 @@ func spawnRectsWhole(): #good... goood... it works.... muahahahaha
 	#rect5.position = FloorWipeWhole[4]
 
 func _unhandled_input(event: InputEvent) -> void:
+	
 	if event.is_action_pressed("enter"):
+		look_at(PlayerInfo.player_pos)
 		print("enter pressed")
 		getSpacedAttacksPos()
 		spawnRectsSpaced()
 	if event.is_action_pressed("controlkey"):
+		look_at(PlayerInfo.player_pos)
 		print("controlkey pressed")
 		getWholeAttackPos()
 		spawnRectsWhole()

@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://0ybasyxgmauw"]
+
+[ext_resource type="Script" path="res://Levels/Experiment Levels/final screen/control.gd" id="1_u5glu"]
+[ext_resource type="Script" path="res://Levels/Level Parts/end_screen_timesetprompt.gd" id="2_ycb5c"]
+[ext_resource type="Script" path="res://Levels/Level Parts/normal_selectable_prompt.gd" id="3_ho2ne"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u5glu")
+
+[node name="PromptContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="PromptContainer"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ycb5c")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PromptContainer/Panel"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -69.0
+offset_right = 250.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "My name is ______. My journey ends today. On the God's time of {time} I shall, both in body and in soul, receive divine grace and become a vessel for {dietyname}'s wrath over the dark creatures that plague this continent."
+fit_content = true
+
+[node name="Panel2" type="Panel" parent="PromptContainer"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_ho2ne")
+green = Color(0.878431, 0.839216, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PromptContainer/Panel2"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -69.0
+offset_right = 250.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "Test str"
+fit_content = true

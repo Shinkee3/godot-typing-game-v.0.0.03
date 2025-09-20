@@ -77,3 +77,8 @@ func player_health_updated():
 """
 
 var player_health: float = 100
+var player_invincible : bool = true
+func invincibility_frames():
+	player_invincible = true
+	
+	
