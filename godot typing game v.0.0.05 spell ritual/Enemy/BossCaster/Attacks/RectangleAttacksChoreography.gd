@@ -11,26 +11,23 @@ extends Node2D
 @onready var FloorWipeWhole : Array = []
 @onready var FloorWipeSpace : Array = []
 
-var attack_array : Array = ["shoot", "5", "circles", "5", "rectangle"]
+### CALLABLE FUNCTIONS ###
 
-func _attacks():
-	_shoot()
-	await get_tree().create_timer(3).timeout
-	_circles()
-	
-func _shoot():
-	pass
+func spaced_attack_sequence():
+		look_at(PlayerInfo.player_pos)
+		getSpacedAttacksPos()
+		spawnRectsSpaced()
+		print("spaced attack sequence")
+		return
 
-func _circles():
-	pass
+func whole_attack_sequence():
+		look_at(PlayerInfo.player_pos)
+		getWholeAttackPos()
+		spawnRectsWhole()
+		print("whole attack sequence")
+		return
 
-func _rectangles():
-	pass
-
-func spawnRects():
-	pass
-
-
+#### COMPONENT PARTS BELOW ###
 func getSpacedAttacksPos():
 	FloorWipeSpace = []
 	for marker in $Markers/FloorWipeSpace.get_children(): # get_children needs to be added as there isnt really anything to find if you just go for marker in node
@@ -42,13 +39,13 @@ func getWholeAttackPos():
 		FloorWipeWhole.append(marker.position)
 
 func spawnRectsSpaced(): #good... goood... it works.... muahahahaha
-	print(FloorWipeSpace)
+	#print(FloorWipeSpace)
 	#for position in FloorWipeSpace:
-	print(FloorWipeWhole)
+	#print(FloorWipeWhole)
 	
 	var indexcount = 0
 	for pos in FloorWipeSpace: # this one makes the rectangles spawn in gradually
-		print(indexcount)
+		#print(indexcount)
 		rectsArray[indexcount].position = FloorWipeSpace[indexcount]
 		
 		rectsArray[indexcount]._spawn_at_position_and_start()
@@ -58,11 +55,11 @@ func spawnRectsSpaced(): #good... goood... it works.... muahahahaha
 		await get_tree().create_timer(0.4).timeout
 
 func spawnRectsWhole(): #good... goood... it works.... muahahahaha
-	print(FloorWipeWhole)
+	#print(FloorWipeWhole)
 	
 	var indexcount = 0
 	for pos in FloorWipeWhole: # this one makes the rectangles spawn in gradually
-		print(indexcount)
+		#print(indexcount)
 		rectsArray[indexcount].position = FloorWipeWhole[indexcount]
 		
 		rectsArray[indexcount]._spawn_at_position_and_start()

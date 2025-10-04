@@ -50,7 +50,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	print(area.name)
 	if area.name == "PlayerHurtbox":
 		PlayerInfo.player_health -= 40
+		
 		print("Player health is now " + str(PlayerInfo.player_health) + " and monitoring should be off.")
+		
 		#$Area2D.monitoring = false
 		
 

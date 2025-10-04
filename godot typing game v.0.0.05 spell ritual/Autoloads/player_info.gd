@@ -81,4 +81,16 @@ var player_invincible : bool = true
 func invincibility_frames():
 	player_invincible = true
 	
+func player_health_change(change, type):
+	if change < 0:
+		player_health += change
+	
+		if type == null:
+			player_invincible = true
+			"""PLAY HURT PARTICLE/SOUND"""
+			
+	if change >= 0:
+		player_health += change
+		"""PLAY HEALED PARTICLE/SOUND"""
+		
 	
