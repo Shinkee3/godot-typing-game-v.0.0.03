@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://6qrc8sjba4ro" path="res://Levels/Level Reworked/WallsLevel.gd" id="1_bc526"]
 [ext_resource type="PackedScene" uid="uid://bl0dlxrg1qk1n" path="res://Player/player_rewrite.tscn" id="2_awv8p"]
-[ext_resource type="PackedScene" uid="uid://dhand6e123x1j" path="res://Levels/Level Parts/base_tilemap.tscn" id="3_2i6uk"]
+[ext_resource type="PackedScene" uid="uid://dhand6e123x1j" path="res://Resources/Tilemaps/base_tilemap.tscn" id="3_2i6uk"]
 [ext_resource type="Script" uid="uid://bpmq7ixtp6pw7" path="res://Levels/Level Reworked/dispellable_enemies_container.gd" id="7_d0xtk"]
-[ext_resource type="PackedScene" uid="uid://dimsony22xe72" path="res://Levels/Next Level Door/next_level_door.tscn" id="12_umrhq"]
+[ext_resource type="PackedScene" uid="uid://dimsony22xe72" path="res://Resources/Next Level Door/next_level_door.tscn" id="12_umrhq"]
 
 [sub_resource type="Gradient" id="Gradient_wyl8t"]
 offsets = PackedFloat32Array(0.185, 0.39, 0.48, 0.63, 1)

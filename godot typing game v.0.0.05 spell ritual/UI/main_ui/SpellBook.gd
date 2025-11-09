@@ -71,3 +71,7 @@ func enable_filter(pressed: bool, tag: String) -> void:
 	if filter_dict.has(tag):
 		filter_dict[tag] = pressed
 	update_displayed_spellpages()
+
+
+
+		

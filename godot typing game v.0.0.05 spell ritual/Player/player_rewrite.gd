@@ -6,7 +6,7 @@ class_name Player
 @onready var aim_cursor: Sprite2D = $AimCursor
 @onready var aim_guide_locked: Sprite2D = $AimGuideLocked
 @onready var aim_guide_loose: Sprite2D = $AimGuideLoose
-
+@onready var sprite = $PlayerSprite
 var movement_target_pos: Vector2
 var aim_target_pos: Vector2
 
@@ -56,7 +56,15 @@ func _physics_process(_delta: float) -> void:
 		PlayerInfo.player_pos = global_position # You need the Player script to manually update the PlayerInfo autoload
 		
 		var direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
-		print(direction)
+		
+		print(direction.x)
+		if direction.x == 1.0:
+			sprite.flip_h = true
+
+			
+		elif direction.x == -1.0:
+			sprite.flip_h = false
+
 		velocity = direction * speed
 		move_and_slide()
 
@@ -74,7 +82,7 @@ func _teleport_player(target_pos: Vector2) -> void:
 
 # this needs to be changed
 func _on_player_hurtbox_area_entered(area):
-	print(area)
+	#print(area)
 	if area.name == "EnemyHurtbox":
 		print("hurt")
 		PlayerInfo.player_health -= 25

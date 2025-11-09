@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://j787dha03xy1"]
 
 [ext_resource type="Script" uid="uid://dcwf54uq5mcyo" path="res://Enemy/Skeleton/skeleton.gd" id="1_426rx"]
-[ext_resource type="Texture2D" uid="uid://cfwwke5w61udb" path="res://Assets/32rogues/monsters.png" id="1_gbgqe"]
+[ext_resource type="Texture2D" uid="uid://cfwwke5w61udb" path="res://Assets/Characters And Tiles/Mobs/monsters.png" id="1_gbgqe"]
 [ext_resource type="PackedScene" uid="uid://dkmyihsnyob7p" path="res://Enemy/enemy_hurtbox.tscn" id="3_itt4j"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uf876"]
@@ -62,6 +62,7 @@ shape = SubResource("CircleShape2D_inpqm")
 debug_color = Color(0.937255, 0.207843, 0.356863, 0.419608)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
 
 [node name="MarkerDetector" type="Area2D" parent="NavigationAgent2D"]
 

@@ -18,7 +18,7 @@ general/version="0.0.0"
 config/name="Sapirica"
 config/version="0.0.05"
 config/tags=PackedStringArray("medium_project")
-run/main_scene="res://Levels/Level Reworked/Menu and Prologue/mainmenu.tscn"
+run/main_scene="uid://ds2u4t32fsbux"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/fullsize=false
 boot_splash/image="res://Assets/icon.png"
@@ -28,7 +28,6 @@ boot_splash/minimum_display_time=2000
 [autoload]
 
 PlayerInfo="*res://Autoloads/player_info.gd"
-MeleePlayerInfo="*res://Autoloads/melee_player_info.gd"
 SignalBus="*res://Autoloads/signal_bus.gd"
 PlayerSpeech="*res://Autoloads/player_speech.gd"
 

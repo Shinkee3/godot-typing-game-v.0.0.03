@@ -31,24 +31,6 @@ func _ready() -> void:
 	speed = max_speed
 	healthbar.value = max_health
 
-
-func _physics_process(delta: float) -> void: ## Kait: Added this for movement
-	p1_distance = position.distance_to(PlayerInfo.player_pos)
-	p2_distance = position.distance_to(MeleePlayerInfo.melee_player_pos)
-	
-	if p1_distance < p2_distance:
-		direction = (PlayerInfo.player_pos - position).normalized()
-		target = p1_distance
-		
-	elif p1_distance > p2_distance:
-		direction = (MeleePlayerInfo.melee_player_pos - position).normalized()
-		target = p2_distance
-	
-	if target > 5:
-		velocity = direction * speed
-		move_and_slide()
-
-
 func health_updated() -> void:
 	#print("HP = %d/%d" % [health, max_health])
 	healthbar.value = health

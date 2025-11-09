@@ -1,16 +1,53 @@
-[gd_scene load_steps=13 format=3 uid="uid://bl0dlxrg1qk1n"]
+[gd_scene load_steps=19 format=3 uid="uid://bl0dlxrg1qk1n"]
 
 [ext_resource type="Script" uid="uid://dah7hfgh0q7ao" path="res://Player/player_rewrite.gd" id="1_f2d4x"]
-[ext_resource type="Texture2D" uid="uid://ceeatsthmnt54" path="res://Assets/32rogues/rogues.png" id="2_yijag"]
+[ext_resource type="Texture2D" uid="uid://ceeatsthmnt54" path="res://Assets/Characters And Tiles/Characters/rogues.png" id="2_yijag"]
 [ext_resource type="Texture2D" uid="uid://c3kphbnrpc7ql" path="res://Resources/textures/movement_cursor.tres" id="3_c7vef"]
+[ext_resource type="Texture2D" uid="uid://qfhi4ehhqew6" path="res://Assets/Characters And Tiles/Environment/animated-tiles.png" id="3_l0hey"]
 [ext_resource type="Texture2D" uid="uid://dy52bg2lxyswy" path="res://Resources/textures/aim_cursor.tres" id="3_npigh"]
-[ext_resource type="Texture2D" uid="uid://bpkxrx2fbqdj1" path="res://Assets/white circle.png" id="5_ioiyl"]
-[ext_resource type="Texture2D" uid="uid://c3gwlikwn4wfp" path="res://Assets/Circle Aiming2.png" id="5_quqjm"]
-[ext_resource type="Texture2D" uid="uid://dto6lfnw02dmt" path="res://Assets/circle slice2.png" id="5_rec4c"]
+[ext_resource type="Texture2D" uid="uid://bpkxrx2fbqdj1" path="res://Assets/Characters And Tiles/light/light circle.png" id="5_ioiyl"]
+[ext_resource type="Texture2D" uid="uid://c3gwlikwn4wfp" path="res://Assets/UI/Circle Aiming2.png" id="5_quqjm"]
+[ext_resource type="Texture2D" uid="uid://dto6lfnw02dmt" path="res://Assets/UI/circle slice2.png" id="5_rec4c"]
 [ext_resource type="PackedScene" uid="uid://41wy1k0jr0b0" path="res://Player/Player Textbox/text_box.tscn" id="8_wg8o2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vs2uf"]
 size = Vector2(14, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orysy"]
+atlas = ExtResource("3_l0hey")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0hey"]
+atlas = ExtResource("3_l0hey")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uutlm"]
+atlas = ExtResource("3_l0hey")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8oqh"]
+atlas = ExtResource("3_l0hey")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rd1mv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orysy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0hey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uutlm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8oqh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rblp1"]
 
@@ -38,6 +75,14 @@ position = Vector2(-4, 0)
 texture = ExtResource("2_yijag")
 region_enabled = true
 region_rect = Rect2(64, 64, 32, 32)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerSprite"]
+position = Vector2(10.5, 8)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_rd1mv")
+autoplay = "default"
+frame_progress = 0.7133359
+speed_scale = 1.5
 
 [node name="MovementCursor" type="Sprite2D" parent="."]
 top_level = true

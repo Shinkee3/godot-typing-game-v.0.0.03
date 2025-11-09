@@ -2,16 +2,16 @@
 
 [ext_resource type="Script" uid="uid://6qrc8sjba4ro" path="res://Levels/Level Reworked/WallsLevel.gd" id="1_nhb7y"]
 [ext_resource type="PackedScene" uid="uid://bl0dlxrg1qk1n" path="res://Player/player_rewrite.tscn" id="2_nwape"]
-[ext_resource type="PackedScene" uid="uid://dhand6e123x1j" path="res://Levels/Level Parts/base_tilemap.tscn" id="3_ipnyk"]
+[ext_resource type="PackedScene" uid="uid://dhand6e123x1j" path="res://Resources/Tilemaps/base_tilemap.tscn" id="3_ipnyk"]
 [ext_resource type="PackedScene" path="res://Levels/door.tscn" id="4_bl211"]
-[ext_resource type="PackedScene" uid="uid://by5o5hax0l6no" path="res://Levels/Level Parts/Old Walls/glowing_magic_wall.tscn" id="5_kts8t"]
-[ext_resource type="PackedScene" uid="uid://dctd2p4dudtjw" path="res://Levels/Level Parts/Old Walls/env_counterspell_input.tscn" id="6_yp5nn"]
+[ext_resource type="PackedScene" path="res://Levels/Level Parts/Old Walls/glowing_magic_wall.tscn" id="5_kts8t"]
+[ext_resource type="PackedScene" path="res://Levels/Level Parts/Old Walls/env_counterspell_input.tscn" id="6_yp5nn"]
 [ext_resource type="Script" uid="uid://bpmq7ixtp6pw7" path="res://Levels/Level Reworked/dispellable_enemies_container.gd" id="7_8cela"]
 [ext_resource type="PackedScene" uid="uid://hm2ybsmp6i55" path="res://Enemy/EnemySummons/bloodbat.tscn" id="8_kn0ww"]
 [ext_resource type="PackedScene" uid="uid://j787dha03xy1" path="res://Enemy/Skeleton/skeleton.tscn" id="9_rnrdh"]
 [ext_resource type="PackedScene" uid="uid://7ypyy43mejd5" path="res://Enemy/FastEnemy/fast_enemy.tscn" id="10_d5tsl"]
-[ext_resource type="PackedScene" uid="uid://beptldo7qwemn" path="res://Enemy/BossCaster/BossCaster.tscn" id="11_djkgk"]
-[ext_resource type="PackedScene" uid="uid://dimsony22xe72" path="res://Levels/Next Level Door/next_level_door.tscn" id="12_7hywx"]
+[ext_resource type="PackedScene" path="res://Enemy/BossCaster/BossCaster.tscn" id="11_djkgk"]
+[ext_resource type="PackedScene" uid="uid://dimsony22xe72" path="res://Resources/Next Level Door/next_level_door.tscn" id="12_7hywx"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x0h4y"]
 

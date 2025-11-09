@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://wxv0a32810ay" path="res://Levels/main/main.gd" id="1_yeh0h"]
 [ext_resource type="Script" uid="uid://u3du5a3wppe1" path="res://Levels/main/SceneChanger.gd" id="2_64ct0"]
 [ext_resource type="PackedScene" uid="uid://bimkd41ouig5e" path="res://UI/main_ui/ingame_ui.tscn" id="2_ffheu"]
-[ext_resource type="PackedScene" uid="uid://bckt54388ph6s" path="res://Levels/Level Parts/Dialogue Test/dialogueOverlay.tscn" id="2_ih4eg"]
+[ext_resource type="PackedScene" uid="uid://bckt54388ph6s" path="res://Resources/Dialogue/Dialogue Old/dialogueOverlay.tscn" id="2_ih4eg"]
 [ext_resource type="PackedScene" uid="uid://cmku625mxhvvn" path="res://Spells/explosion_spell/fireball_rewrite.tscn" id="4_cvyq6"]
-[ext_resource type="PackedScene" uid="uid://bd2j8dwwrtd2y" path="res://Levels/game_over.tscn" id="4_fkct0"]
+[ext_resource type="PackedScene" uid="uid://bd2j8dwwrtd2y" path="res://Levels/main/game_over.tscn" id="4_fkct0"]
 [ext_resource type="PackedScene" uid="uid://dprtktnhtow1j" path="res://Spells/blessed_aura/blessed_aura.tscn" id="7_waqyl"]
 [ext_resource type="PackedScene" uid="uid://drlj5p7tiypmf" path="res://Spells/magic_missile/magic_missile.tscn" id="8_3fjbr"]
 [ext_resource type="PackedScene" uid="uid://dc502prk7b82g" path="res://Spells/teleport/teleport.tscn" id="9_iysua"]
@@ -33,6 +33,9 @@ anchors_preset = -1
 anchor_left = 0.25
 anchor_right = 1.0
 anchor_bottom = 0.75
+offset_left = -314.0
+offset_right = 22.0
+offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
@@ -45,7 +48,7 @@ handle_input_locally = false
 audio_listener_enable_2d = true
 audio_listener_enable_3d = true
 physics_object_picking = true
-size = Vector2i(864, 486)
+size = Vector2i(1200, 500)
 render_target_update_mode = 4
 
 [node name="game_over" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("4_fkct0")]

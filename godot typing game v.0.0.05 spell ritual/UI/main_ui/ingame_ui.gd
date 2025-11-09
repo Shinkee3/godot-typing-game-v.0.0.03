@@ -1,6 +1,8 @@
 extends Control
 class_name GameUI
 
+@onready var sidebar = $SplitContainer/SideBar
+
 ## NOTE: if you'll add a new spell here, don't forget to put it as a child of SpellContainer
 #@onready var SpellContainer: Node2D = $SpellContainer (NOW GIVEN BY MAIN)
 """
@@ -158,3 +160,10 @@ func _on_line_edit_text_changed(new_text: String) -> void:
 
 func _on_node_health_updater(health):
 	pass # Replace with function body.
+
+
+func _on_spellbook_button_pressed() -> void:
+	if sidebar.visible == false:
+		sidebar.show()
+	else:
+		sidebar.hide()
