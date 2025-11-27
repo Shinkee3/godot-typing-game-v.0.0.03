@@ -1,0 +1,123 @@
+[gd_scene load_steps=6 format=3 uid="uid://3573ebtqt6td"]
+
+[ext_resource type="Texture2D" uid="uid://bmat5stgwva4l" path="res://Assets/Portraits/Detritus All.png" id="1_0wpl5"]
+[ext_resource type="Texture2D" uid="uid://bb1djp8mqk2y6" path="res://Assets/Portraits/sapirica_mc.png" id="2_1fbru"]
+
+[sub_resource type="Gradient" id="Gradient_0wpl5"]
+offsets = PackedFloat32Array(0, 0.6268116, 0.6594203)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1fbru"]
+gradient = SubResource("Gradient_0wpl5")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Theme" id="Theme_61j3t"]
+
+[node name="Fight Scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Enemy"]
+position = Vector2(879, 376)
+scale = Vector2(0.2888889, 0.2888889)
+texture = ExtResource("1_0wpl5")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Enemy"]
+offset_left = 584.0
+offset_top = 180.0
+offset_right = 729.0
+offset_bottom = 258.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Spell"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Enemy"]
+offset_left = 684.0
+offset_top = 58.0
+offset_right = 829.0
+offset_bottom = 136.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Spell"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Enemy"]
+offset_left = 918.0
+offset_top = 58.0
+offset_right = 1063.0
+offset_bottom = 136.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Spell"
+
+[node name="MC" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="MC"]
+position = Vector2(235, 563)
+scale = Vector2(0.4347222, 0.43472221)
+texture = ExtResource("2_1fbru")
+flip_h = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MC"]
+offset_left = 24.0
+offset_top = 201.0
+offset_right = 169.0
+offset_bottom = 279.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Spell"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MC/RichTextLabel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.5
+offset_top = -33.0
+offset_right = 38.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+fill_mode = 4
+texture_progress = SubResource("GradientTexture2D_1fbru")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MC"]
+offset_left = 124.0
+offset_top = 79.0
+offset_right = 269.0
+offset_bottom = 157.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Spell"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="MC"]
+offset_left = 358.0
+offset_top = 79.0
+offset_right = 503.0
+offset_bottom = 157.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Spell"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_61j3t")
+rounded = true
