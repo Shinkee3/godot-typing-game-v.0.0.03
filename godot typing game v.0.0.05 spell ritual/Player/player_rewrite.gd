@@ -57,7 +57,6 @@ func _physics_process(_delta: float) -> void:
 		
 		var direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 		
-		print(direction.x)
 		if direction.x == 1.0:
 			sprite.flip_h = true
 
@@ -81,12 +80,12 @@ func _teleport_player(target_pos: Vector2) -> void:
 	movement_target_pos = target_pos ## just to keep the player from moving back to their initial position
 
 # this needs to be changed
-func _on_player_hurtbox_area_entered(area):
+"""func _on_player_hurtbox_area_entered(area):
 	#print(area)
 	if area.name == "EnemyHurtbox":
 		print("hurt")
 		PlayerInfo.player_health -= 25
-		print(PlayerInfo.player_health)
+		print(PlayerInfo.player_health)"""
 
 
 func _on_next_door_entered(_next_level_path: String) -> void:
