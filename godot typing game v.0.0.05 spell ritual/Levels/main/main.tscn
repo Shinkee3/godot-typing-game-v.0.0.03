@@ -61,13 +61,13 @@ texture_filter = 1
 [node name="Fireball_rewrite" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("4_cvyq6")]
 visible = false
 title = "Explosion"
-incantation = "flamme explosio ibi"
+incantation = "reicio es ibi"
 description = "summon an explosion of fire at your target location"
 
 [node name="blessed_aura" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("7_waqyl")]
 visible = false
 title = "Blessed Aura"
-incantation = "quies circa inimicus"
+incantation = "quies inimicus"
 description = "a holy incantation that temporary blesses the aura around a player, rooting the undead in their tracks."
 
 [node name="magic_missile" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("8_3fjbr")]

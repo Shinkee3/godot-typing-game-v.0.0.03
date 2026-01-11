@@ -1,29 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2h145atpjeyc"]
+[gd_scene load_steps=2 format=3 uid="uid://d2h145atpjeyc"]
 
 [ext_resource type="Script" uid="uid://sl04errn88em" path="res://Levels/Dispellable Walls/dispellable_wall_new.gd" id="1_ml27i"]
 
-[sub_resource type="Gradient" id="Gradient_ml27i"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_5mwgo"]
-gradient = SubResource("Gradient_ml27i")
-width = 32
-height = 32
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ml27i"]
-size = Vector2(32, 32)
-
-[node name="DispellableWallNew" type="Sprite2D"]
-texture = SubResource("GradientTexture2D_5mwgo")
+[node name="DispellableWallNew" type="StaticBody2D"]
 script = ExtResource("1_ml27i")
 blue = Color(0.466239, 0.773857, 0.543032, 1)
 green = Color(1, 1, 1, 1)
 red = Color(0.884301, 0.611432, 0.605898, 1)
-
-[node name="RigidBody2D" type="StaticBody2D" parent="."]
-collision_layer = 13
-collision_mask = 13
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("RectangleShape2D_ml27i")

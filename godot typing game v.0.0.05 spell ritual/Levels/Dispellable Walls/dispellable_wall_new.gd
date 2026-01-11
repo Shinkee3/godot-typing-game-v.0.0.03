@@ -1,4 +1,4 @@
-extends Sprite2D
+extends StaticBody2D
 class_name Wall
 
 @export var blue = Color("#4682b4") 

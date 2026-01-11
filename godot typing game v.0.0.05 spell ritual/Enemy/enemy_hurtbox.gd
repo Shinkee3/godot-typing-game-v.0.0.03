@@ -1,6 +1,7 @@
 extends Area2D
 class_name Hurtbox
 
+signal health_changed()
 
 @onready var enemy: Enemy = owner ## get a reference to parent
 @onready var col_shape: CollisionShape2D = $CollisionShape2D ## or possibly check for typos if the assert error pops up
@@ -19,6 +20,7 @@ func receive_spell_effect(spell: Spell) -> void:
 
 func receive_damage(damage: float) -> void:
 	enemy.health -= damage
+	emit_signal("health_changed")
 
 func receive_melee_damage(damage: float) -> void:
 	enemy.health -= damage

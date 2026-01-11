@@ -48,7 +48,7 @@ fill_to = Vector2(0.878788, 0.857143)
 
 [sub_resource type="Gradient" id="Gradient_pt86d"]
 offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 0.615686, 0, 1)
+colors = PackedColorArray(1, 0.6156863, 0, 0.5176471)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_173a3"]
 gradient = SubResource("Gradient_pt86d")
@@ -83,7 +83,7 @@ radius = 37.0135
 script = ExtResource("1_46ghk")
 
 [node name="Player" parent="." instance=ExtResource("2_3wxfi")]
-position = Vector2(424, 244)
+position = Vector2(362, 284)
 collision_mask = 9
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -106,7 +106,7 @@ position = Vector2(865, 11)
 connected_level = "res://Levels/Level Reworked/walls_level.tscn"
 
 [node name="Torch" parent="Map" instance=ExtResource("3_1ti4x")]
-position = Vector2(929, -21)
+position = Vector2(929, -23)
 shadow_enabled = true
 
 [node name="Fireplace" type="GPUParticles2D" parent="Map"]

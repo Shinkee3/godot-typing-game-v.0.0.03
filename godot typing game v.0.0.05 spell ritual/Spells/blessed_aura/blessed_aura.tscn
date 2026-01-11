@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dprtktnhtow1j"]
+[gd_scene load_steps=7 format=3 uid="uid://dprtktnhtow1j"]
 
 [ext_resource type="PackedScene" uid="uid://dkdhhewiedge0" path="res://Spells/spell_hitbox.tscn" id="1_6tqxw"]
-[ext_resource type="Texture2D" uid="uid://bpkxrx2fbqdj1" path="res://Assets/white circle.png" id="2_w6de1"]
+[ext_resource type="Texture2D" uid="uid://bpkxrx2fbqdj1" path="res://Assets/Characters And Tiles/light/light circle.png" id="2_w6de1"]
 
 [sub_resource type="GDScript" id="GDScript_58uty"]
 script/source = "extends Spell
@@ -49,6 +49,15 @@ func spell_effect(enemy: Enemy) -> void:
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwxvy"]
 radius = 64.3593
 
+[sub_resource type="Gradient" id="Gradient_ite5t"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_is7fd"]
+gradient = SubResource("Gradient_ite5t")
+width = 10
+height = 10
+
 [node name="blessed_aura" type="Node2D"]
 scale = Vector2(4, 4)
 script = SubResource("GDScript_58uty")
@@ -67,5 +76,12 @@ texture = ExtResource("2_w6de1")
 [node name="lifetime" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+texture = SubResource("GradientTexture2D_is7fd")
+emission_shape = 4
+emission_points = PackedVector2Array(65, 0, 0, 65, -65, 0, 0, -65)
+emission_colors = PackedColorArray()
+gravity = Vector2(0, -100)
 
 [connection signal="timeout" from="lifetime" to="." method="_on_lifetime_timeout"]

@@ -13,6 +13,7 @@ var aim_target_pos: Vector2
 var smoothed_mouse_position: Vector2
 
 var speed: float = 120
+var sprint_speed: float = 170
 
 var indialogue: bool = true
 
@@ -63,8 +64,10 @@ func _physics_process(_delta: float) -> void:
 			
 		elif direction.x == -1.0:
 			sprite.flip_h = false
-
-		velocity = direction * speed
+		if !Input.is_action_pressed("run"):
+			velocity = direction * speed
+		elif Input.is_action_pressed("run"):
+			velocity = direction * sprint_speed
 		move_and_slide()
 
 		#if position.distance_to(movement_target_pos) > 10:

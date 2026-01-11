@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://j787dha03xy1"]
+[gd_scene load_steps=10 format=3 uid="uid://j787dha03xy1"]
 
 [ext_resource type="Material" uid="uid://bqfuchpii1667" path="res://Enemy/EnemyMaterial.tres" id="1_1satn"]
 [ext_resource type="Script" uid="uid://dcwf54uq5mcyo" path="res://Enemy/Skeleton/skeleton.gd" id="1_426rx"]
 [ext_resource type="Texture2D" uid="uid://cfwwke5w61udb" path="res://Assets/Characters And Tiles/Mobs/monsters.png" id="1_gbgqe"]
 [ext_resource type="PackedScene" uid="uid://dkmyihsnyob7p" path="res://Enemy/enemy_hurtbox.tscn" id="3_itt4j"]
+[ext_resource type="Texture2D" uid="uid://bjglo6q1vsfgg" path="res://Assets/Particles/magicParticles.tres" id="5_lbsvm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e6jpj"]
 radius = 34.5254
@@ -16,7 +17,7 @@ height = 28.0
 radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1dde7"]
-radius = 50.0
+radius = 100.0
 
 [node name="Skeleton_rewrite" type="CharacterBody2D"]
 light_mask = 3
@@ -25,7 +26,7 @@ material = ExtResource("1_1satn")
 scale = Vector2(2, 2)
 motion_mode = 1
 script = ExtResource("1_426rx")
-max_speed = 100.0
+max_speed = 70.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_postprocessing = 1
@@ -36,6 +37,7 @@ path_postprocessing = 1
 shape = SubResource("CircleShape2D_e6jpj")
 
 [node name="Healthbar" type="ProgressBar" parent="."]
+visible = false
 modulate = Color(1, 0, 0, 0.984314)
 light_mask = 3
 visibility_layer = 3
@@ -84,18 +86,31 @@ shape = SubResource("CircleShape2D_1dde7")
 [node name="RayContainer" type="Node2D" parent="PlayerDetection"]
 
 [node name="RayCast2D" type="RayCast2D" parent="PlayerDetection/RayContainer"]
-target_position = Vector2(50, 0)
+target_position = Vector2(100, 0)
 collision_mask = 9
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="PlayerDetection/RayContainer"]
+visible = false
+position = Vector2(53, 0.5)
+amount = 20
+texture = ExtResource("5_lbsvm")
+lifetime = 0.09999999999999999
+randomness = 0.65
+emission_shape = 3
+emission_rect_extents = Vector2(50, 1)
+direction = Vector2(1, 1)
+gravity = Vector2(0, -980)
+
 [node name="Line2D" type="Line2D" parent="PlayerDetection/RayContainer"]
+visible = false
 points = PackedVector2Array(50, 0, 0, 0)
 width = 2.0
 texture_mode = 2
 
 [node name="NavTimer" type="Timer" parent="PlayerDetection"]
-wait_time = 0.1
 one_shot = true
 
 [connection signal="body_entered" from="EnemyHurtbox" to="EnemyHurtbox" method="_on_body_entered"]
+[connection signal="health_changed" from="EnemyHurtbox" to="." method="_on_enemy_hurtbox_health_changed"]
 [connection signal="body_entered" from="PlayerDetection/DetectionRange" to="." method="_on_detection_range_body_entered"]
 [connection signal="timeout" from="PlayerDetection/NavTimer" to="." method="_on_nav_timer_timeout"]
