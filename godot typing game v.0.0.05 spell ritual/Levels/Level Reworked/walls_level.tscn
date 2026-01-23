@@ -198,6 +198,7 @@ debug_color = Color(1.92523e-07, 0.62774, 0.499035, 0.42)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Map/MagicItems/DispellableWallsContainer/SpawnDispell"]
 shape = SubResource("RectangleShape2D_py0pk")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Map/MagicItems/DispellableWallsContainer/SpawnDispell/CollisionShape2D2"]
 texture = SubResource("GradientTexture2D_bcf1s")
@@ -296,12 +297,15 @@ color = Color(0.579921, 0.636542, 0.84097, 1)
 
 [node name="Skeleton_rewrite2" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(-728, 876)
+max_health = 10.0
 
 [node name="Skeleton_rewrite3" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(-1027, 793)
+max_health = 10.0
 
 [node name="Skeleton_rewrite4" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(-803, 404)
+max_health = 10.0
 
 [node name="Fast" parent="Enemies" instance=ExtResource("9_gmywy")]
 position = Vector2(312, 1179)
@@ -311,15 +315,19 @@ position = Vector2(1218, 1127)
 
 [node name="Skeleton_rewrite" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(-843, 1068)
+max_health = 10.0
 
 [node name="Skeleton_rewrite5" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(918, 566)
+max_health = 10.0
 
 [node name="Skeleton_rewrite6" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(1009, 178)
+max_health = 10.0
 
 [node name="Skeleton_rewrite7" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(161, 164)
+max_health = 10.0
 
 [node name="Fast3" parent="Enemies" instance=ExtResource("9_gmywy")]
 position = Vector2(292, 56)

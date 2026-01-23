@@ -1,6 +1,7 @@
 extends ProgressBar
 
 signal TeleportSpell(target_pos: Vector2) ## used by spells: Teleport
+signal ChangeModulation(colorMod: Color)
 ## this signal is basically a way for the Teleport spell to call a function in the Player script that does the actual teleporting
 ## quick analogy of this signal:
 """
@@ -76,21 +77,36 @@ func player_health_updated():
 	pass
 """
 
+# [[[DAMAGE HANDLING AND STATUSES]]] #
 var player_health: float = 100
 var player_invincible : bool = true
+
+enum States {
+	ROCK,
+	INVINCIBLE
+}
+
+var statuses: Array = []
+
 func invincibility_frames():
 	player_invincible = true
 	
 func player_health_change(change, type):
 	if change < 0:
-		player_health += change
-	
-		if type == null:
-			player_invincible = true
+		if statuses == []:
+			player_health += change
+			print("attacked")
+		elif 0 in statuses:
+			pass
+		#if type == null:
+		#	player_invincible = true
 			"""PLAY HURT PARTICLE/SOUND"""
 			
 	if change >= 0:
 		player_health += change
 		"""PLAY HEALED PARTICLE/SOUND"""
+
+func player_change_modulation(mod):
+	pass
 		
 	

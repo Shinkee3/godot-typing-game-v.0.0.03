@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dto6lfnw02dmt" path="res://Assets/UI/circle slice2.png" id="5_rec4c"]
 [ext_resource type="PackedScene" uid="uid://41wy1k0jr0b0" path="res://Player/Player Textbox/text_box.tscn" id="8_wg8o2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vs2uf"]
-size = Vector2(14, 25)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_orysy"]
+radius = 7.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_orysy"]
 atlas = ExtResource("3_l0hey")
@@ -67,21 +67,24 @@ script = ExtResource("1_f2d4x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0.5)
-shape = SubResource("RectangleShape2D_vs2uf")
+shape = SubResource("CapsuleShape2D_orysy")
 
-[node name="PlayerSprite" type="Sprite2D" parent="."]
+[node name="Sprites" type="Node2D" parent="."]
+position = Vector2(0.5, 0)
+
+[node name="PlayerSprite" type="Sprite2D" parent="Sprites"]
 texture_filter = 1
-position = Vector2(-4, 0)
+position = Vector2(-8, 0)
 texture = ExtResource("2_yijag")
 region_enabled = true
 region_rect = Rect2(64, 64, 32, 32)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerSprite"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprites/PlayerSprite"]
 position = Vector2(10.5, 8)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_rd1mv")
 autoplay = "default"
-frame_progress = 0.7133359
+frame_progress = 0.29852355
 speed_scale = 1.5
 
 [node name="MovementCursor" type="Sprite2D" parent="."]
@@ -118,7 +121,8 @@ texture = ExtResource("5_quqjm")
 light_mask = 2
 visibility_layer = 2
 z_index = 2
-energy = 0.1
+color = Color(1, 0.93333334, 0.39607844, 1)
+energy = 0.2
 shadow_enabled = true
 shadow_item_cull_mask = 3
 texture = ExtResource("5_ioiyl")

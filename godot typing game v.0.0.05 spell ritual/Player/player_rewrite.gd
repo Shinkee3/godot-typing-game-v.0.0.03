@@ -6,7 +6,7 @@ class_name Player
 @onready var aim_cursor: Sprite2D = $AimCursor
 @onready var aim_guide_locked: Sprite2D = $AimGuideLocked
 @onready var aim_guide_loose: Sprite2D = $AimGuideLoose
-@onready var sprite = $PlayerSprite
+@onready var sprite = $Sprites
 var movement_target_pos: Vector2
 var aim_target_pos: Vector2
 
@@ -23,6 +23,7 @@ func _ready() -> void:
 	
 	# connect signals from PlayerInfo:
 	PlayerInfo.TeleportSpell.connect(_teleport_player) ## NOTE: receiver function for this signal
+	#PlayerInfo.ChangeModulation.connect(_modulation)
 	SignalBus.next_door_entered.connect(_on_next_door_entered)
 	## cannot initialize player health here since player gets re-instantiated once you transfer
 	## between levels
@@ -58,12 +59,14 @@ func _physics_process(_delta: float) -> void:
 		
 		var direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 		
-		if direction.x == 1.0:
-			sprite.flip_h = true
+		if direction.x > 0.4:
+			#sprite.flip_h = true
+			sprite.scale.x = -1 # TEMP WHILE HACKY SPRITES
 
 			
-		elif direction.x == -1.0:
-			sprite.flip_h = false
+		elif direction.x < -0.4:
+			sprite.scale.x = 1
+			#sprite.flip_h = false
 		if !Input.is_action_pressed("run"):
 			velocity = direction * speed
 		elif Input.is_action_pressed("run"):
