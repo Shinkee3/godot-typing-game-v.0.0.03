@@ -1,0 +1,32 @@
+[background arg="res://Assets/Cutscenes/1.png" fade="0.0"]
+A warm summer's day, a child was born kissed by the gentle sunrays and caressed by the cool breeze.
+The small shire she was born to had rolling hills, proud trees, and jolly people.
+[background arg="res://Assets/Cutscenes/2.png" fade="0.0"]
+The country elsewhere was wartorn, but she does not know it yet—
+Ghouls have ravaged the land just three years prior, and people from the north had to flee to the capital Terazza for refuge.
+[background arg="res://Assets/Cutscenes/3.png" fade="0.0"]
+Where once a child born would be born ot the city to be enscribed, no such thing is imaginable now. The roads had grown dangerous as the conflict goes on.
+[background arg="res://Assets/Cutscenes/1.png" fade="0.0"]
+label Naming Input
+The town namer has found her name, {CONSTS.Ana}. But trouble befalls this name. And for reasons you don't know your uncle suggests something usually frowned upon.
+You must don a temporary name before the time for your real name comes.
+[text_input text="What will you be called?" var="INPUT.PlayerName"]
+if {INPUT.PlayerName}  ==  "Ana":
+	jump Naming Input
+elif {CONSTS.Ana} == "ana":
+	jump Naming Input
+[background arg="res://Assets/Cutscenes/4.png" fade="0.0"]
+{INPUT.PlayerName} was a peculiar child. Growing up, she was trained in magic under Uncle. Although compared to her peers she was lagging well behind.
+[background arg="res://Assets/Cutscenes/5.png" fade="0.0"]
+Through trial and error, uncle had figured it out\: dear {INPUT.PlayerName} has a strange relationship with magic.
+[background arg="res://Assets/Cutscenes/6.png" fade="0.0"]
+The child has no intuitive grasp on the semantics of magic, rather she get's stuck viewing magic at it's individual components.
+Once she learned how to put them together however, she could cast as well as other children albeit in a much slower speed.
+[background arg="res://Assets/Cutscenes/7.png" fade="0.0"]
+Over time, her skill had proved to be useful. Her discerning sense of parts and segments made her a prodigy in dispelling spells and locks. A skill more advanced for even practicing magicians.
+[background arg="res://Assets/Cutscenes/4.png" fade="0.0"]
+She proved to be one of Uncle's last few students over the years.
+As the war waged on, families pulled their children out of study in fear that they will be conscripted and sent to battle by the capital.
+Perhaps because of {INPUT.PlayerName}'s gratitude, or maybe familial ties, that she continued to study under his tutelage.
+[background arg="res://Assets/Cutscenes/8.png" fade="0.0"]
+And today, Uncle tells {INPUT.PlayerName} that something calls her. One that calls her by her true name\: {CONST.Ana}.

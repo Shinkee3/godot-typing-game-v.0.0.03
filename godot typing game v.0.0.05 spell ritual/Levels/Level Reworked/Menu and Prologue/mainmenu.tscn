@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ds2u4t32fsbux"]
+[gd_scene format=3 uid="uid://ds2u4t32fsbux"]
 
 [ext_resource type="Script" uid="uid://bd77klxsfkwaf" path="res://Levels/Level Reworked/Menu and Prologue/mainmenu.gd" id="1_e0eyy"]
 [ext_resource type="Texture2D" uid="uid://cwun68cfc7pdk" path="res://Assets/icon.png" id="1_wvugp"]
@@ -26,7 +26,7 @@ fill_to = Vector2(0.0227273, 1)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5xke4"]
 texture = SubResource("GradientTexture2D_72r42")
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" unique_id=735254661]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,7 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e0eyy")
 
-[node name="LoadingScreen" type="TextureRect" parent="."]
+[node name="LoadingScreen" type="TextureRect" parent="." unique_id=1777450799]
 visible = false
 z_index = 5
 layout_mode = 1
@@ -46,7 +46,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_5xke4")
 
-[node name="Label" type="Label" parent="LoadingScreen"]
+[node name="Label" type="Label" parent="LoadingScreen" unique_id=635194554]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -60,7 +60,7 @@ theme = ExtResource("2_kf0r8")
 theme_override_font_sizes/font_size = 50
 text = "Loading..."
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1466366640]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -72,7 +72,7 @@ grow_horizontal = 2
 texture = ExtResource("1_wvugp")
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=295336215]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -86,24 +86,24 @@ offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StartButton" type="Button" parent="VBoxContainer"]
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1211487554]
 layout_mode = 2
 text = "START"
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=1494055687]
 visible = false
 layout_mode = 2
 text = "SETTINGS"
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=150070659]
 layout_mode = 2
 text = "CREDITS"
 script = ExtResource("3_0cooi")
 
-[node name="CreditsPage" type="CanvasLayer" parent="VBoxContainer/CreditsButton"]
+[node name="CreditsPage" type="CanvasLayer" parent="VBoxContainer/CreditsButton" unique_id=2117127510]
 visible = false
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/CreditsButton/CreditsPage"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/CreditsButton/CreditsPage" unique_id=1621259857]
 custom_minimum_size = Vector2(1000, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -114,7 +114,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_5xke4")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/CreditsButton/CreditsPage/PanelContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/CreditsButton/CreditsPage/PanelContainer" unique_id=1899353374]
 layout_mode = 2
 bbcode_enabled = true
 text = "
@@ -141,21 +141,21 @@ SqeakyToy136, Raukisu, Jo, CastorGames, Miguel"
 fit_content = true
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer/CreditsButton/CreditsPage/PanelContainer"]
+[node name="Button" type="Button" parent="VBoxContainer/CreditsButton/CreditsPage/PanelContainer" unique_id=718612795]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "back"
 
-[node name="ExitButton" type="Button" parent="VBoxContainer"]
+[node name="ExitButton" type="Button" parent="VBoxContainer" unique_id=288643810]
 layout_mode = 2
 text = "EXIT"
 
-[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." unique_id=648379412]
 stream = ExtResource("2_0trh8")
 autoplay = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=239003566]
 stream = ExtResource("3_75l0m")
 autoplay = true
 
