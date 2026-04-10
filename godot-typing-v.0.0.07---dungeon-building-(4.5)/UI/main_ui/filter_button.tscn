@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1tscdxa66tdx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1o1pb"]
+bg_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgsxn"]
+bg_color = Color(0.498039, 0.654902, 0.423529, 1)
+
+[node name="filter_button" type="Button"]
+size_flags_horizontal = 6
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1o1pb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rgsxn")
+toggle_mode = true
+text = "filter (set by spellbook.gd)"

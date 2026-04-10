@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ct7nh6q1bg3cj"
+path="res://.godot/imported/Knife to the Throat.mp3-448142c83c8d6ebb8bac67756824bc5d.mp3str"
+
+[deps]
+
+source_file="res://Assets/audio/Frieren/Knife to the Throat.mp3"
+dest_files=["res://.godot/imported/Knife to the Throat.mp3-448142c83c8d6ebb8bac67756824bc5d.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

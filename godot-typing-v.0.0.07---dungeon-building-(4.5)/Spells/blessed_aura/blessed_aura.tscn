@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://dprtktnhtow1j"]
+
+[ext_resource type="PackedScene" uid="uid://dkdhhewiedge0" path="res://Spells/spell_hitbox.tscn" id="1_6tqxw"]
+[ext_resource type="Texture2D" uid="uid://bpkxrx2fbqdj1" path="res://Assets/white circle.png" id="2_w6de1"]
+
+[sub_resource type="GDScript" id="GDScript_58uty"]
+script/source = "extends Spell
+
+@onready var timer_lifetime: Timer = $lifetime
+@onready var sprite: Sprite2D = $Sprite2D ## visuals
+@onready var hitbox: SpellHitbox = $Spell_hitbox
+
+## NOTE: these variables are no longer needed due to PlayerInfo singleton
+#@onready var player: Player = get_parent().get_parent().get_parent().get_parent().get_node(\"Player\") ## Kait: Added this
+#var player_position: Vector2
+
+var speed_reduction: float = 0
+var damage: float = 10
+
+
+func _ready() -> void:
+	hitbox.monitoring = false ## disable this at the start since it hasn't been casted yet
+	hide()
+
+
+func cast_spell(target_pos: Vector2) -> void:
+	print(\"blessed aura casted\")
+	hitbox.monitoring = true
+	timer_lifetime.start()
+	show()
+
+
+func _physics_process(_delta: float) -> void:
+	if visible == true:
+		global_position = PlayerInfo.player_pos
+
+
+func _on_lifetime_timeout() -> void:
+	hitbox.monitoring = false 
+	print(\"hitbox hidden\")
+	hide()
+
+
+func spell_effect(enemy: Enemy) -> void:
+	enemy.speed = enemy.speed * speed_reduction
+	print(\"enemy slowed\")
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rwxvy"]
+radius = 64.3593
+
+[node name="blessed_aura" type="Node2D"]
+scale = Vector2(4, 4)
+script = SubResource("GDScript_58uty")
+spell_tag = 1
+
+[node name="Spell_hitbox" parent="." instance=ExtResource("1_6tqxw")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spell_hitbox"]
+shape = SubResource("CircleShape2D_rwxvy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.32549)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_w6de1")
+
+[node name="lifetime" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[connection signal="timeout" from="lifetime" to="." method="_on_lifetime_timeout"]

@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=3 uid="uid://d0gakkxglbfy2"]
+
+[ext_resource type="Script" uid="uid://bbf0s2ud7m3x5" path="res://Enemy/BossCaster/boss_caster_rewrite.gd" id="1_6a0h3"]
+[ext_resource type="Texture2D" uid="uid://cfwwke5w61udb" path="res://Assets/32rogues/monsters.png" id="2_oaijj"]
+[ext_resource type="Texture2D" uid="uid://cwtpbs5c5q082" path="res://Assets/ritualcircle/ritual_circle_spell.png" id="3_rsvd5"]
+[ext_resource type="Script" uid="uid://bdmge820gyrtl" path="res://Enemy/BossCaster/stun.gd" id="4_6a0h3"]
+[ext_resource type="Script" uid="uid://d0qryljqewy6h" path="res://Enemy/BossCaster/EnemySpells.gd" id="4_sogsa"]
+[ext_resource type="Texture2D" uid="uid://bpkxrx2fbqdj1" path="res://Assets/white circle.png" id="5_saqwv"]
+[ext_resource type="Script" uid="uid://c5ciej3qmaj27" path="res://Enemy/BossCaster/EnemyCounterSpell.gd" id="7_co27i"]
+[ext_resource type="PackedScene" uid="uid://dctd2p4dudtjw" path="res://Levels/Level Parts/Old Walls/env_counterspell_input.tscn" id="8_1mfxy"]
+[ext_resource type="PackedScene" uid="uid://bl2vnvvq66kej" path="res://Enemy/BossCaster/Attacks/rectangle_attacks.tscn" id="9_lbbyi"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uf876"]
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gs3gr"]
+size = Vector2(14, 25)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5cbhi"]
+radius = 30.0167
+
+[node name="Caster" type="CharacterBody2D"]
+light_mask = 3
+visibility_layer = 3
+material = SubResource("CanvasItemMaterial_uf876")
+scale = Vector2(2, 2)
+motion_mode = 1
+script = ExtResource("1_6a0h3")
+
+[node name="Healthbar" type="ProgressBar" parent="."]
+modulate = Color(1, 0, 0, 0.984314)
+visibility_layer = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -26.5
+offset_right = 20.0
+offset_bottom = -21.5
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 30.0
+value = 30.0
+show_percentage = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_gs3gr")
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+texture_filter = 1
+use_parent_material = true
+texture = ExtResource("2_oaijj")
+region_enabled = true
+region_rect = Rect2(64, 128, 32, 32)
+
+[node name="Stun" type="Sprite2D" parent="EnemySprite"]
+visible = false
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_rsvd5")
+script = ExtResource("4_6a0h3")
+
+[node name="EnemySpells" type="Node" parent="."]
+script = ExtResource("4_sogsa")
+
+[node name="RectangleAttacks" parent="EnemySpells" instance=ExtResource("9_lbbyi")]
+scale = Vector2(2, 2)
+
+[node name="CounterSpell" type="Area2D" parent="." node_paths=PackedStringArray("Counterspell")]
+scale = Vector2(0.5, 0.5)
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource("7_co27i")
+Counterspell = NodePath("EnvCounterSpell")
+
+[node name="EnvCounterSpell" parent="CounterSpell" node_paths=PackedStringArray("queue_free_parent") instance=ExtResource("8_1mfxy")]
+visible = false
+offset_left = 53.0
+offset_top = -21.0
+offset_right = 219.0
+offset_bottom = 10.0
+queue_free_parent = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CounterSpell"]
+shape = SubResource("CircleShape2D_5cbhi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-21, -7)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("5_saqwv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-16.5, 28.999996)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_saqwv")
+
+[connection signal="area_entered" from="CounterSpell" to="CounterSpell" method="_on_area_entered"]
+[connection signal="area_exited" from="CounterSpell" to="CounterSpell" method="_on_area_exited"]

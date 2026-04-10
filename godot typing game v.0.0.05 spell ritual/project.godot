@@ -8,14 +8,18 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="godot typing v.0.0.07 - DUNGEON BUILDING"
 config/description="ADDING THE DUNGEON"
 config/tags=PackedStringArray("medium_project")
 run/main_scene="res://Levels/Level Reworked/Menu and Prologue/mainmenu.tscn"
-config/features=PackedStringArray("4.5", "GL Compatibility")
-boot_splash/fullsize=false
+config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/stretch_mode=0
 boot_splash/image="res://Assets/icon.png"
 boot_splash/minimum_display_time=2000
 

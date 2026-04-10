@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4a30yaatk3t1"]
+
+[ext_resource type="Script" path="res://Player/player_melee.gd" id="1_gic76"]
+[ext_resource type="Texture2D" uid="uid://ceeatsthmnt54" path="res://Assets/32rogues/rogues.png" id="2_at8jo"]
+[ext_resource type="Texture2D" uid="uid://bpkxrx2fbqdj1" path="res://Assets/white circle.png" id="5_02wmo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fok3w"]
+size = Vector2(14, 25)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3rcn8"]
+radius = 12.0
+
+[node name="Player_melee" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 8
+collision_mask = 13
+script = ExtResource("1_gic76")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_fok3w")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-4, 0)
+texture = ExtResource("2_at8jo")
+region_enabled = true
+region_rect = Rect2(64, 32, 32, 32)
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+z_index = 2
+energy = 0.3
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = ExtResource("5_02wmo")
+texture_scale = 20.0
+
+[node name="Weapon" type="Sprite2D" parent="."]
+modulate = Color(0.67451, 1, 1, 0.564706)
+z_index = -1
+scale = Vector2(0.083, 0.083)
+texture = ExtResource("5_02wmo")
+centered = false
+offset = Vector2(-300, -125)
+
+[node name="hitbox" type="Area2D" parent="Weapon"]
+position = Vector2(-168.675, 0)
+scale = Vector2(12.0482, 12.0482)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/hitbox"]
+shape = SubResource("CircleShape2D_3rcn8")
+
+[node name="Timer" type="Timer" parent="Weapon"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Weapon/Timer" to="." method="_on_timer_timeout"]
