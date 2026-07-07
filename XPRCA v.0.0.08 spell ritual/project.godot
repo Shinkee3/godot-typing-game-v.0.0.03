@@ -23,18 +23,18 @@ config/name="Sapirica"
 config/version="0.0.05"
 config/tags=PackedStringArray("medium_project")
 run/main_scene="uid://ds2u4t32fsbux"
-config/features=PackedStringArray("4.6", "GL Compatibility")
-boot_splash/stretch_mode=0
+config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/image="res://Assets/icon.png"
 config/icon="uid://cwun68cfc7pdk"
 boot_splash/minimum_display_time=2000
+boot_splash/stretch_mode=0
 
 [autoload]
 
 PlayerInfo="*res://Autoloads/player_info.gd"
 SignalBus="*res://Autoloads/signal_bus.gd"
 PlayerSpeech="*res://Autoloads/player_speech.gd"
-Dialogic="*uid://ds2q0uclmolvu"
+Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [debug]
 
@@ -42,9 +42,16 @@ gdscript/warnings/untyped_declaration=1
 
 [dialogic]
 
-directories/dch_directory={}
+directories/dch_directory={
+"detritus": "res://Resources/Dialogue/Dialogic/detritus.dch",
+"fescue": "res://Resources/Dialogue/Dialogic/fescue.dch",
+"uncle": "res://Resources/Dialogue/Dialogic/uncle.dch"
+}
 directories/dtl_directory={
-"InitialCutscene": "res://Resources/Dialogue/Dialogic/InitialCutscene.dtl"
+"2ndFloor": "res://Resources/Dialogue/Dialogic/2ndFloor.dtl",
+"BossFight": "res://Resources/Dialogue/Dialogic/BossFight.dtl",
+"InitialCutscene": "res://Resources/Dialogue/Dialogic/InitialCutscene.dtl",
+"Intro": "res://Resources/Dialogue/Dialogic/Intro.dtl"
 }
 layout/style_directory={}
 variables={
