@@ -88,8 +88,12 @@ func go_to_next_level(next_level_path: String) -> void:
 
 func _on_game_over_retry() -> void:
 	go_to_next_level(hub_level_path)
-	
+
+# CHEATS
 # adding some cheatcodes to skip things
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("skiptolevel3"):
 		go_to_next_level("res://Levels/Level Reworked/walls_level_3.tscn")
+	
+	if event.is_action_pressed("skiptolevel4"):
+		go_to_next_level(walls_level_4_path)

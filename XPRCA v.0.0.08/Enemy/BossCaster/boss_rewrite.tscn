@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://b42jxrpwjxdkn"]
+
+[ext_resource type="Texture2D" uid="uid://cfwwke5w61udb" path="res://Assets/Characters And Tiles/Mobs/monsters.png" id="2_cyjwk"]
+[ext_resource type="PackedScene" uid="uid://bl2vnvvq66kej" path="res://Enemy/BossCaster/Attacks/rectangle_attacks.tscn" id="3_whu7b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0op5q"]
+radius = 67.0
+height = 178.0
+
+[node name="Boss_Rewrite" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_0op5q")
+disabled = true
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CapsuleShape2D_0op5q")
+disabled = true
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+z_index = 13
+texture_filter = 1
+scale = Vector2(6, 6)
+texture = ExtResource("2_cyjwk")
+region_enabled = true
+region_rect = Rect2(64, 128, 32, 32)
+
+[node name="RectangleAttacks" parent="EnemySprite" instance=ExtResource("3_whu7b")]
+visible = false

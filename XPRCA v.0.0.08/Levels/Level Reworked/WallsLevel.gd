@@ -1,3 +1,4 @@
+
 extends BaseLevel
 class_name WallsLevel
 

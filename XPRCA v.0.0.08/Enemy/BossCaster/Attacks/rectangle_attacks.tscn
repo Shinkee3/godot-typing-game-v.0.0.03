@@ -70,3 +70,4 @@ wait_time = 0.05
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+enabled = false

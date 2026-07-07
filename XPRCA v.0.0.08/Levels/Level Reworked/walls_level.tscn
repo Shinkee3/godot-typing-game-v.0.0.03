@@ -297,15 +297,12 @@ color = Color(0.579921, 0.636542, 0.84097, 1)
 
 [node name="Skeleton_rewrite2" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(-728, 876)
-max_health = 10.0
 
 [node name="Skeleton_rewrite3" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(-1027, 793)
-max_health = 10.0
 
 [node name="Skeleton_rewrite4" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(-803, 404)
-max_health = 10.0
 
 [node name="Fast" parent="Enemies" instance=ExtResource("9_gmywy")]
 position = Vector2(312, 1179)
@@ -315,19 +312,15 @@ position = Vector2(1218, 1127)
 
 [node name="Skeleton_rewrite" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(-843, 1068)
-max_health = 10.0
 
 [node name="Skeleton_rewrite5" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(918, 566)
-max_health = 10.0
 
 [node name="Skeleton_rewrite6" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(1009, 178)
-max_health = 10.0
 
 [node name="Skeleton_rewrite7" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(161, 164)
-max_health = 10.0
 
 [node name="Fast3" parent="Enemies" instance=ExtResource("9_gmywy")]
 position = Vector2(292, 56)
