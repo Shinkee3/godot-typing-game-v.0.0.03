@@ -114,11 +114,17 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 			go_to_next_level(hub_level_path)
 		else:
 			pass
-	elif "mode in new_text":
+	elif "mode" in new_text:
 		var statuses = PlayerInfo.statuses
 		if "godmode" in new_text:
 			statuses.append(PlayerInfo.States.INVINCIBLE)
 		elif "mortalmode" in new_text:
 			statuses.erase(PlayerInfo.States.INVINCIBLE)
+		
+	elif new_text == "kill":
+		PlayerInfo.health = 0
+		
+	elif "damage" in new_text:
+		PlayerInfo.player_health_change(-int(new_text[-1])) #beast
 	
-	$CanvasLayer/LineEdit.clear()
+	$CanvasLayer/Console.clear()

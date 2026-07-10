@@ -103,7 +103,7 @@ visible = false
 unique_name_in_owner = true
 mouse_filter = 2
 
-[node name="LineEdit" type="LineEdit" parent="CanvasLayer"]
+[node name="Console" type="LineEdit" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -113,13 +113,13 @@ grow_horizontal = 0
 tooltip_text = "skip to level [int]
      0 - hub level\\
 
-godmode -  health = 9999
-mortalmode - health = 100
-kill self - 
-     "
+godmode - invincible
+mortalmode - not invincible
+kill - set health to zero
+damage [int] - single digit damage"
 placeholder_text = "CONSOLE"
 expand_to_text_length = true
 caret_blink = true
 
 [connection signal="retry" from="CanvasLayer/SubViewportContainer/SubViewport/game_over" to="." method="_on_game_over_retry"]
-[connection signal="text_submitted" from="CanvasLayer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="CanvasLayer/Console" to="." method="_on_line_edit_text_submitted"]

@@ -43,6 +43,7 @@ func teleport_sequence():
 	var array1
 	for pos in  tp_markers.get_children():
 		body.global_position = pos.global_position
+		target = PlayerInfo.player_pos
 		attackhandler.shoot_projectile(target)
 		await get_tree().create_timer(1.0).timeout
 	body.global_position = old_position
