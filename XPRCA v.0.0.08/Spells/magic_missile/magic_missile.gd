@@ -2,11 +2,6 @@ extends Spell
 
 const MagicMissileProjectileScene: PackedScene = preload("res://Projectiles/magic_missile_projectile/magic_missile_projectile.tscn")
 
-#@onready var timer_lifetime: Timer = $lifetime
-#@onready var sprite: Sprite2D = $Sprite2D # no need, the visual is now on the projectile scene
-#@onready var hitbox: SpellHitbox = $Spell_hitbox
-#@onready var player = get_parent().get_parent().get_parent().get_parent().get_node("Player") ## Kait: Added this
-
 ## NOTE: i moved some variables here to magic_missile_projectile
 
 ## Concern:

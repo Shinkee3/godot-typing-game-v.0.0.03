@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://tbpb7fwbqbpe"]
+
+[ext_resource type="Script" uid="uid://ds8x0i0s38yyi" path="res://Spells/sanctum/sanctum.gd" id="1_u0nga"]
+[ext_resource type="Texture2D" uid="uid://yxigoyhs4jfc" path="res://Assets/Spells/Earth Wall.png" id="2_76mul"]
+
+[node name="rock_skin" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_u0nga")
+title = "Rock Skin"
+spell_tag = 1
+incantation = "chelys"
+description = "gives you rock status effect idk"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_76mul")

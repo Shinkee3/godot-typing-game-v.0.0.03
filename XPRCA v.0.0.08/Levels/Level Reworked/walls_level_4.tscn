@@ -1,12 +1,15 @@
-[gd_scene load_steps=11 format=4 uid="uid://bb1g6ix2mk6ym"]
+[gd_scene load_steps=17 format=4 uid="uid://bb1g6ix2mk6ym"]
 
 [ext_resource type="Script" uid="uid://6qrc8sjba4ro" path="res://Levels/Level Reworked/WallsLevel.gd" id="1_bc526"]
 [ext_resource type="PackedScene" uid="uid://bl0dlxrg1qk1n" path="res://Player/player_rewrite.tscn" id="2_awv8p"]
 [ext_resource type="TileSet" uid="uid://bvr80ykefb1v5" path="res://Resources/Tilemaps/base_tilemap.tres" id="4_wyl8t"]
 [ext_resource type="Script" uid="uid://bfvvcbadbd215" path="res://Levels/Level Reworked/Boss_Rewrite2.gd" id="5_ouegd"]
 [ext_resource type="PackedScene" uid="uid://bkh3ujfhdvy0g" path="res://Resources/Tilemaps/torch.tscn" id="5_sbtft"]
+[ext_resource type="Script" uid="uid://82t4vxh4eaug" path="res://Enemy/Bossfight_level4/boss_attack_handler.gd" id="7_7cjgn"]
 [ext_resource type="Script" uid="uid://bpmq7ixtp6pw7" path="res://Levels/Level Reworked/dispellable_enemies_container.gd" id="7_d0xtk"]
 [ext_resource type="PackedScene" uid="uid://b42jxrpwjxdkn" path="res://Enemy/BossCaster/boss_rewrite.tscn" id="7_sbtft"]
+[ext_resource type="Script" uid="uid://dmd2sxf5fhodd" path="res://Enemy/Bossfight_level4/spell_bubble.gd" id="9_iwyvj"]
+[ext_resource type="Texture2D" uid="uid://u4eraug4wr4q" path="res://Assets/Portraits/speechbubble-sheet.png" id="9_r1xo2"]
 [ext_resource type="PackedScene" uid="uid://dimsony22xe72" path="res://Resources/Next Level Door/next_level_door.tscn" id="12_umrhq"]
 
 [sub_resource type="Gradient" id="Gradient_wyl8t"]
@@ -20,6 +23,15 @@ height = 1000
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.798781, 0.280488)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8vwpa"]
+light_mode = 1
+
+[sub_resource type="Theme" id="Theme_iwyvj"]
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/font_sizes/normal_font_size = 22
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwyvj"]
 
 [node name="walls_level4" type="Node2D"]
 texture_filter = 2
@@ -77,31 +89,129 @@ shadow_enabled = true
 [node name="DispellableEnemies" type="Node2D" parent="."]
 script = ExtResource("7_d0xtk")
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="BossHandler" type="Node2D" parent="."]
 script = ExtResource("5_ouegd")
 
-[node name="Boss_Rewrite" parent="Enemies" instance=ExtResource("7_sbtft")]
+[node name="Boss_Rewrite" parent="BossHandler" instance=ExtResource("7_sbtft")]
+position = Vector2(66, -135)
 
-[node name="PosMarkers" type="Node2D" parent="Enemies"]
+[node name="AttackHandler" type="Node2D" parent="BossHandler"]
+script = ExtResource("7_7cjgn")
+
+[node name="PosMarkers" type="Node2D" parent="BossHandler"]
+visible = false
 position = Vector2(362, 284)
 
-[node name="Marker2D" type="Marker2D" parent="Enemies/PosMarkers"]
+[node name="Marker2D" type="Marker2D" parent="BossHandler/PosMarkers"]
 position = Vector2(-756, -355)
 gizmo_extents = 321.9
 
-[node name="Marker2D2" type="Marker2D" parent="Enemies/PosMarkers"]
+[node name="Marker2D2" type="Marker2D" parent="BossHandler/PosMarkers"]
 position = Vector2(737, -390)
 gizmo_extents = 477.1
 
-[node name="Marker2D3" type="Marker2D" parent="Enemies/PosMarkers"]
+[node name="Marker2D3" type="Marker2D" parent="BossHandler/PosMarkers"]
 position = Vector2(-766, 329)
 gizmo_extents = 321.9
 
-[node name="Marker2D4" type="Marker2D" parent="Enemies/PosMarkers"]
+[node name="Marker2D4" type="Marker2D" parent="BossHandler/PosMarkers"]
 position = Vector2(726, 329)
 gizmo_extents = 321.9
 
+[node name="CastingHandler" type="MarginContainer" parent="BossHandler"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -147.0
+offset_right = 208.0
+offset_bottom = -79.0
+grow_vertical = 0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_bottom = 35
+script = ExtResource("9_iwyvj")
+
+[node name="PanelContainer" type="PanelContainer" parent="BossHandler/CastingHandler"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BossHandler/CastingHandler/PanelContainer"]
+modulate = Color(0.5924475, 2.201982e-06, 4.3317675e-07, 1)
+material = SubResource("CanvasItemMaterial_8vwpa")
+layout_mode = 2
+texture = ExtResource("9_r1xo2")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 11
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="BossHandler/CastingHandler/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BossHandler/CastingHandler/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = SubResource("Theme_iwyvj")
+bbcode_enabled = true
+text = "asdkfjhasdhfksjhf"
+fit_content = true
+scroll_active = false
+
+[node name="Label" type="Label" parent="BossHandler/CastingHandler"]
+visible = false
+layout_mode = 2
+text = "!"
+
+[node name="ArenaMarkers" type="Node2D" parent="BossHandler"]
+
+[node name="Marker2D" type="Marker2D" parent="BossHandler/ArenaMarkers"]
+position = Vector2(-560, 2)
+gizmo_extents = 243.9
+
+[node name="Area2D" type="Area2D" parent="BossHandler/ArenaMarkers/Marker2D"]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossHandler/ArenaMarkers/Marker2D/Area2D"]
+shape = SubResource("RectangleShape2D_iwyvj")
+
+[node name="Marker2D2" type="Marker2D" parent="BossHandler/ArenaMarkers"]
+position = Vector2(-560, 371)
+gizmo_extents = 243.9
+
+[node name="Marker2D3" type="Marker2D" parent="BossHandler/ArenaMarkers"]
+position = Vector2(682, 2)
+gizmo_extents = 243.9
+
+[node name="Marker2D4" type="Marker2D" parent="BossHandler/ArenaMarkers"]
+position = Vector2(682, 365)
+gizmo_extents = 243.9
+
+[node name="Marker2D5" type="Marker2D" parent="BossHandler/ArenaMarkers"]
+position = Vector2(84, 353)
+gizmo_extents = 243.9
+
+[node name="Marker2D6" type="Marker2D" parent="BossHandler/ArenaMarkers"]
+position = Vector2(84, 178)
+gizmo_extents = 243.9
+
+[node name="Marker2D7" type="Marker2D" parent="BossHandler/ArenaMarkers"]
+position = Vector2(-231, 178)
+gizmo_extents = 243.9
+
+[node name="Marker2D8" type="Marker2D" parent="BossHandler/ArenaMarkers"]
+position = Vector2(433, 178)
+gizmo_extents = 243.9
+
 [node name="NextLevelDoor" parent="." instance=ExtResource("12_umrhq")]
+visible = false
 position = Vector2(63, -127)
 connected_level = "uid://bb1g6ix2mk6ym"
 

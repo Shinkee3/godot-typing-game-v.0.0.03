@@ -219,16 +219,16 @@ size_flags_horizontal = 10
 size_flags_vertical = 4
 step = 10.0
 value = 100.0
-show_percentage = false
+allow_greater = true
 script = ExtResource("3_6nleu")
 
 [node name="HBox2" type="HBoxContainer" parent="SplitContainer/BottomBar/CharacterStatus/MarginContainer/VBoxContainer/PlayerInfoUI"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="mana" type="Label" parent="SplitContainer/BottomBar/CharacterStatus/MarginContainer/VBoxContainer/PlayerInfoUI/HBox2"]
+[node name="stamina" type="Label" parent="SplitContainer/BottomBar/CharacterStatus/MarginContainer/VBoxContainer/PlayerInfoUI/HBox2"]
 layout_mode = 2
-text = "Mana:"
+text = "Stamina:"
 
 [node name="manabar" type="ProgressBar" parent="SplitContainer/BottomBar/CharacterStatus/MarginContainer/VBoxContainer/PlayerInfoUI/HBox2"]
 modulate = Color(0.45098, 0.74902, 0.984314, 1)

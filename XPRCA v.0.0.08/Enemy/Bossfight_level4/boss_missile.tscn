@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dornu3qofkkrp"]
+
+[ext_resource type="Script" uid="uid://d2yr13jt1np6v" path="res://Levels/Level Reworked/boss_missile.gd" id="1_g73at"]
+
+[sub_resource type="Gradient" id="Gradient_edmv4"]
+offsets = PackedFloat32Array(0.62666667, 0.66333336, 0.7)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_00aif"]
+gradient = SubResource("Gradient_edmv4")
+width = 100
+height = 100
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ccvkr"]
+radius = 44.011364
+
+[node name="BossMissile" type="Area2D"]
+z_index = 13
+script = ExtResource("1_g73at")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_00aif")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ccvkr")
+debug_color = Color(0.96762115, 0, 0.47612584, 0.41960785)
+
+[node name="Timer" type="Timer" parent="."]

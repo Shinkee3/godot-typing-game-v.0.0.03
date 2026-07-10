@@ -91,10 +91,10 @@ var statuses: Array = []
 func invincibility_frames():
 	player_invincible = true
 	
-func player_health_change(change, type):
-	if change < 0:
+func player_health_change(amount: int, type: int = 0):
+	if amount < 0:
 		if statuses == []:
-			player_health += change
+			player_health += amount
 			print("attacked")
 		elif 0 in statuses:
 			pass
@@ -102,8 +102,8 @@ func player_health_change(change, type):
 		#	player_invincible = true
 			"""PLAY HURT PARTICLE/SOUND"""
 			
-	if change >= 0:
-		player_health += change
+	if amount >= 0:
+		player_health += amount
 		"""PLAY HEALED PARTICLE/SOUND"""
 
 func player_change_modulation(mod):

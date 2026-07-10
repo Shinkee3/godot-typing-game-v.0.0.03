@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cxhs8mky6mys5"]
+[gd_scene load_steps=13 format=3 uid="uid://cxhs8mky6mys5"]
 
 [ext_resource type="Script" uid="uid://wxv0a32810ay" path="res://Levels/main/main.gd" id="1_yeh0h"]
 [ext_resource type="Script" uid="uid://u3du5a3wppe1" path="res://Levels/main/SceneChanger.gd" id="2_64ct0"]
@@ -6,10 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://bckt54388ph6s" path="res://Resources/Dialogue/Dialogue Old/dialogueOverlay.tscn" id="2_ih4eg"]
 [ext_resource type="PackedScene" uid="uid://cmku625mxhvvn" path="res://Spells/explosion_spell/fireball_rewrite.tscn" id="4_cvyq6"]
 [ext_resource type="PackedScene" uid="uid://bd2j8dwwrtd2y" path="res://Levels/main/game_over.tscn" id="4_fkct0"]
-[ext_resource type="PackedScene" uid="uid://dprtktnhtow1j" path="res://Spells/blessed_aura/blessed_aura.tscn" id="7_waqyl"]
+[ext_resource type="PackedScene" uid="uid://dprtktnhtow1j" path="res://Spells/Effulgence/effulgence.tscn" id="7_waqyl"]
 [ext_resource type="PackedScene" uid="uid://drlj5p7tiypmf" path="res://Spells/magic_missile/magic_missile.tscn" id="8_3fjbr"]
 [ext_resource type="PackedScene" uid="uid://dc502prk7b82g" path="res://Spells/teleport/teleport.tscn" id="9_iysua"]
 [ext_resource type="PackedScene" uid="uid://jwupxijdxqpo" path="res://Spells/rock_skin/rock_skin.tscn" id="10_08cvt"]
+[ext_resource type="PackedScene" uid="uid://bpf7x2yqjgg4v" path="res://Spells/rejuvenate/rejuvenate.tscn" id="11_dwcgc"]
 [ext_resource type="PackedScene" uid="uid://c2hb3gwneuox7" path="res://Spells/sight/sight.tscn" id="20_g8x7u"]
 
 [node name="Main" type="Control"]
@@ -96,8 +97,29 @@ description = "Extends your vision into another area"
 [node name="rock_skin" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("10_08cvt")]
 visible = false
 
+[node name="Rejuvenate" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("11_dwcgc")]
+
 [node name="ingame_ui" parent="CanvasLayer" instance=ExtResource("2_ffheu")]
 unique_name_in_owner = true
 mouse_filter = 2
 
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -68.5625
+offset_bottom = 31.0
+grow_horizontal = 0
+tooltip_text = "skip to level [int]
+     0 - hub level\\
+
+godmode -  health = 9999
+mortalmode - health = 100
+kill self - 
+     "
+placeholder_text = "CONSOLE"
+expand_to_text_length = true
+caret_blink = true
+
 [connection signal="retry" from="CanvasLayer/SubViewportContainer/SubViewport/game_over" to="." method="_on_game_over_retry"]
+[connection signal="text_submitted" from="CanvasLayer/LineEdit" to="." method="_on_line_edit_text_submitted"]

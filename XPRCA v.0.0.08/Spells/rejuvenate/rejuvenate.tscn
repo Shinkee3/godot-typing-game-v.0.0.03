@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpf7x2yqjgg4v"]
+
+[ext_resource type="Script" uid="uid://dpilpcsg52ym1" path="res://Spells/rejuvenate/rejuvenate.gd" id="1_ya0c7"]
+
+[sub_resource type="Gradient" id="Gradient_56pun"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.44313726, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ya0c7"]
+gradient = SubResource("Gradient_56pun")
+width = 5
+height = 5
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+
+[node name="rejuvenate" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_ya0c7")
+title = "Rejuvenate"
+spell_tag = 1
+incantation = "rejeunir"
+description = "Returns some health to the caster"
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 100
+emitting = false
+amount = 15
+texture = SubResource("GradientTexture2D_ya0c7")
+one_shot = true
+explosiveness = 1.0
+randomness = 0.68
+lifetime_randomness = 0.9
+emission_shape = 3
+emission_rect_extents = Vector2(13, 10)
+gravity = Vector2(0, -10)

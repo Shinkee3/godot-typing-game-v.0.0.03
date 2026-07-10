@@ -91,9 +91,28 @@ func _on_game_over_retry() -> void:
 
 # CHEATS
 # adding some cheatcodes to skip things
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("skiptolevel3"):
-		go_to_next_level("res://Levels/Level Reworked/walls_level_3.tscn")
+# There should be a better way to this type of thing
+
+func _on_line_edit_text_submitted(new_text: String) -> void:
+	if "skip to level" in new_text:
+		if new_text[-1] == "0":
+			go_to_next_level(hub_level_path)
+		elif new_text[-1] == "1":
+			go_to_next_level(walls_level_path)
+		elif new_text[-1] == "2":
+			go_to_next_level(walls_level_2_path)
+		elif new_text[-1] == "3":
+			go_to_next_level(walls_level_3_path)
+		elif new_text[-1] == "4":
+			go_to_next_level(walls_level_4_path)
+			print(new_text[-1])
+		elif new_text[-1] == "5":
+			go_to_next_level(hub_level_path)
+		else:
+			pass
+	elif "godmode" in new_text:
+		PlayerInfo.player_health_change(9999)
+	elif "mortalmode" in new_text:
+		PlayerInfo.player_health_change(100)
 	
-	if event.is_action_pressed("skiptolevel4"):
-		go_to_next_level(walls_level_4_path)
+	$CanvasLayer/LineEdit.clear()

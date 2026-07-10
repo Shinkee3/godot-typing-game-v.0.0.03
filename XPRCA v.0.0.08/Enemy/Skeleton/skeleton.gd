@@ -92,4 +92,4 @@ func _on_enemy_hurtbox_health_changed() -> void:
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		print("player attacked")
-		PlayerInfo.player_health_change(-10, "normal")
+		PlayerInfo.player_health_change(-10)
