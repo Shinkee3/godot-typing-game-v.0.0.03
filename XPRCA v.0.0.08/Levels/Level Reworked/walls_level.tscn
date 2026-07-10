@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://bso42iqvnnufr"]
+[gd_scene load_steps=27 format=4 uid="uid://bso42iqvnnufr"]
 
 [ext_resource type="Script" uid="uid://6qrc8sjba4ro" path="res://Levels/Level Reworked/WallsLevel.gd" id="1_xwiuu"]
 [ext_resource type="PackedScene" uid="uid://bl0dlxrg1qk1n" path="res://Player/player_rewrite.tscn" id="2_u0fu2"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://cfivcum64igrb" path="res://Levels/Level Reworked/exit_dispell_detector.gd" id="7_q32lo"]
 [ext_resource type="Script" uid="uid://b7xjv8wj2g02f" path="res://Levels/Level Reworked/spawn_dispell_detector.gd" id="8_588t8"]
 [ext_resource type="PackedScene" uid="uid://j787dha03xy1" path="res://Enemy/Skeleton/skeleton.tscn" id="8_b5xba"]
-[ext_resource type="PackedScene" uid="uid://7ypyy43mejd5" path="res://Enemy/FastEnemy/fast_enemy.tscn" id="9_gmywy"]
 [ext_resource type="PackedScene" uid="uid://dimsony22xe72" path="res://Resources/Next Level Door/next_level_door.tscn" id="11_8wwel"]
 [ext_resource type="Texture2D" uid="uid://bjglo6q1vsfgg" path="res://Assets/Particles/magicParticles.tres" id="11_ws4aa"]
 
@@ -298,17 +297,44 @@ color = Color(0.579921, 0.636542, 0.84097, 1)
 [node name="Skeleton_rewrite2" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(-728, 876)
 
+[node name="Skeleton_rewrite9" parent="Enemies" instance=ExtResource("8_b5xba")]
+position = Vector2(328, 1215)
+
+[node name="Skeleton_rewrite11" parent="Enemies" instance=ExtResource("8_b5xba")]
+position = Vector2(776, 1203)
+
+[node name="Skeleton_rewrite12" parent="Enemies" instance=ExtResource("8_b5xba")]
+position = Vector2(1124, 1151)
+
+[node name="Skeleton_rewrite13" parent="Enemies" instance=ExtResource("8_b5xba")]
+position = Vector2(1470, 1125)
+
+[node name="Skeleton_rewrite14" parent="Enemies" instance=ExtResource("8_b5xba")]
+position = Vector2(1479, 988)
+
+[node name="Skeleton_rewrite15" parent="Enemies" instance=ExtResource("8_b5xba")]
+position = Vector2(1481, 784)
+
+[node name="Skeleton_rewrite16" parent="Enemies" instance=ExtResource("8_b5xba")]
+position = Vector2(998, -713)
+
+[node name="Skeleton_rewrite17" parent="Enemies" instance=ExtResource("8_b5xba")]
+position = Vector2(-418, -327)
+
+[node name="Skeleton_rewrite18" parent="Enemies" instance=ExtResource("8_b5xba")]
+position = Vector2(94, 907)
+
+[node name="Skeleton_rewrite19" parent="Enemies" instance=ExtResource("8_b5xba")]
+position = Vector2(-53, 669)
+
+[node name="Skeleton_rewrite10" parent="Enemies" instance=ExtResource("8_b5xba")]
+position = Vector2(150, 1217)
+
 [node name="Skeleton_rewrite3" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(-1027, 793)
 
 [node name="Skeleton_rewrite4" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(-803, 404)
-
-[node name="Fast" parent="Enemies" instance=ExtResource("9_gmywy")]
-position = Vector2(312, 1179)
-
-[node name="Fast2" parent="Enemies" instance=ExtResource("9_gmywy")]
-position = Vector2(1218, 1127)
 
 [node name="Skeleton_rewrite" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(-843, 1068)
@@ -321,14 +347,6 @@ position = Vector2(1009, 178)
 
 [node name="Skeleton_rewrite7" parent="Enemies" instance=ExtResource("8_b5xba")]
 position = Vector2(161, 164)
-
-[node name="Fast3" parent="Enemies" instance=ExtResource("9_gmywy")]
-position = Vector2(292, 56)
-
-[node name="Skeleton_rewrite8" parent="Enemies" instance=ExtResource("8_b5xba")]
-position = Vector2(-554, 149)
-scale = Vector2(4, 4)
-max_health = 30.0
 
 [node name="NextLevelDoor" parent="." instance=ExtResource("11_8wwel")]
 position = Vector2(1627, 164)

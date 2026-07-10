@@ -20,6 +20,7 @@ func receive_spell_effect(spell: Spell) -> void:
 
 func receive_damage(damage: float) -> void:
 	enemy.health -= damage
+	print(enemy.health)
 	emit_signal("health_changed")
 
 func receive_melee_damage(damage: float) -> void:

@@ -2,8 +2,9 @@ extends Area2D
 class_name MagicMissile_Projectile
 
 var speed: float = 400
-var damage: float = 2
 var direction: Vector2
+
+@export var damage = 2
 
 @onready var sprite: Sprite2D = $Sprite2D
 
@@ -18,7 +19,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_lifetime_timeout() -> void: ## NOTE: Lifetime timer node has Autostart and One Shot ON
 	queue_free()
-
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.has_method("receive_damage"): ## duck typing 

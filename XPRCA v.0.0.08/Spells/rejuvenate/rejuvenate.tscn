@@ -19,7 +19,7 @@ script = ExtResource("1_ya0c7")
 title = "Rejuvenate"
 spell_tag = 1
 incantation = "rejeunir"
-description = "Returns some health to the caster"
+description = "Restores some health to the caster"
 
 [node name="GPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = 100

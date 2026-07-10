@@ -93,6 +93,10 @@ func _on_game_over_retry() -> void:
 # adding some cheatcodes to skip things
 # There should be a better way to this type of thing
 
+enum CHEATS {
+	
+}
+
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	if "skip to level" in new_text:
 		if new_text[-1] == "0":
@@ -110,9 +114,11 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 			go_to_next_level(hub_level_path)
 		else:
 			pass
-	elif "godmode" in new_text:
-		PlayerInfo.player_health_change(9999)
-	elif "mortalmode" in new_text:
-		PlayerInfo.player_health_change(100)
+	elif "mode in new_text":
+		var statuses = PlayerInfo.statuses
+		if "godmode" in new_text:
+			statuses.append(PlayerInfo.States.INVINCIBLE)
+		elif "mortalmode" in new_text:
+			statuses.erase(PlayerInfo.States.INVINCIBLE)
 	
 	$CanvasLayer/LineEdit.clear()

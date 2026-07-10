@@ -1,6 +1,7 @@
 extends Spell
 
 const MagicMissileProjectileScene: PackedScene = preload("res://Projectiles/magic_missile_projectile/magic_missile_projectile.tscn")
+var damage: float = 2
 
 ## NOTE: i moved some variables here to magic_missile_projectile
 
@@ -43,5 +44,5 @@ func shoot_projectile(_pos: Vector2) -> void:
 ## the "spell_effect" function is intended to let the spell affect the enemy in different ways,
 ## but if we just want to damage the enemy, we can have a separate dedicated function for that instead
 func spell_effect(enemy: Enemy) -> void:
-	pass
-	#enemy.health -= damage
+	
+	enemy.health -= damage

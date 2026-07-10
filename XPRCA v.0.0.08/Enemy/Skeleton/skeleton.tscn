@@ -29,7 +29,6 @@ script = ExtResource("1_426rx")
 max_speed = 70.0
 
 [node name="Healthbar" type="ProgressBar" parent="."]
-visible = false
 modulate = Color(1, 0, 0, 0.984314)
 light_mask = 3
 visibility_layer = 3
@@ -60,7 +59,6 @@ region_enabled = true
 region_rect = Rect2(2.08165e-12, 128, 32, 32)
 
 [node name="EnemyHurtbox" parent="." instance=ExtResource("3_itt4j")]
-collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtbox"]
 shape = SubResource("CircleShape2D_inpqm")

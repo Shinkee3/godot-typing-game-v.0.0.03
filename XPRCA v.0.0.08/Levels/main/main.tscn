@@ -97,7 +97,7 @@ description = "Extends your vision into another area"
 [node name="rock_skin" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("10_08cvt")]
 visible = false
 
-[node name="Rejuvenate" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("11_dwcgc")]
+[node name="rejuvenate" parent="CanvasLayer/SubViewportContainer/SubViewport/SpellContainer" instance=ExtResource("11_dwcgc")]
 
 [node name="ingame_ui" parent="CanvasLayer" instance=ExtResource("2_ffheu")]
 unique_name_in_owner = true

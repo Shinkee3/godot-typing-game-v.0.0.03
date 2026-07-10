@@ -78,12 +78,14 @@ func player_health_updated():
 """
 
 # [[[DAMAGE HANDLING AND STATUSES]]] #
+var MAX_PLAYER_HEALTH: float = 100
 var player_health: float = 100
 var player_invincible : bool = true
 
 enum States {
 	ROCK,
-	INVINCIBLE
+	INVINCIBLE,
+	GHOST
 }
 
 var statuses: Array = []
@@ -92,14 +94,13 @@ func invincibility_frames():
 	player_invincible = true
 	
 func player_health_change(amount: int, type: int = 0):
+
 	if amount < 0:
-		if statuses == []:
+		if States.INVINCIBLE in statuses:
+			return
+		else:
 			player_health += amount
 			print("attacked")
-		elif 0 in statuses:
-			pass
-		#if type == null:
-		#	player_invincible = true
 			"""PLAY HURT PARTICLE/SOUND"""
 			
 	if amount >= 0:
@@ -109,4 +110,3 @@ func player_health_change(amount: int, type: int = 0):
 func player_change_modulation(mod):
 	pass
 		
-	

@@ -13,6 +13,7 @@ var target
 @export_category("Enemy Stats")
 @export var max_health: float = 10
 @export var max_speed: float = 10 ## Kait: Added this for speed change
+@export var base_damage: float = 10
 ## export variables can be changed thru the inspector
 
 var health: float:
