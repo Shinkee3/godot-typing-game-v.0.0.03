@@ -98,7 +98,7 @@ enum CHEATS {
 }
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
-	if "skip to level" in new_text:
+	if "skp" in new_text:
 		if new_text[-1] == "0":
 			go_to_next_level(hub_level_path)
 		elif new_text[-1] == "1":

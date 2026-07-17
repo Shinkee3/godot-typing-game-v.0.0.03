@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b42jxrpwjxdkn" path="res://Enemy/BossCaster/boss_rewrite.tscn" id="7_sbtft"]
 [ext_resource type="Script" uid="uid://dmd2sxf5fhodd" path="res://Enemy/Bossfight_level4/spell_bubble.gd" id="9_iwyvj"]
 [ext_resource type="Texture2D" uid="uid://u4eraug4wr4q" path="res://Assets/Portraits/speechbubble-sheet.png" id="9_r1xo2"]
+[ext_resource type="PackedScene" uid="uid://b81u8vmvjgvhr" path="res://Enemy/Bossfight_level4/aoe_round.tscn" id="10_iwyvj"]
 [ext_resource type="PackedScene" uid="uid://dimsony22xe72" path="res://Resources/Next Level Door/next_level_door.tscn" id="12_umrhq"]
 
 [sub_resource type="Gradient" id="Gradient_wyl8t"]
@@ -30,8 +31,6 @@ light_mode = 1
 [sub_resource type="Theme" id="Theme_iwyvj"]
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
 RichTextLabel/font_sizes/normal_font_size = 22
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwyvj"]
 
 [node name="walls_level4" type="Node2D"]
 texture_filter = 2
@@ -168,19 +167,38 @@ visible = false
 layout_mode = 2
 text = "!"
 
+[node name="ArenaAreas" type="Node2D" parent="BossHandler"]
+position = Vector2(0, -793)
+
+[node name="Area2D" parent="BossHandler/ArenaAreas" instance=ExtResource("10_iwyvj")]
+monitoring = false
+
+[node name="Area2D2" parent="BossHandler/ArenaAreas" instance=ExtResource("10_iwyvj")]
+monitoring = false
+
+[node name="Area2D3" parent="BossHandler/ArenaAreas" instance=ExtResource("10_iwyvj")]
+monitoring = false
+
+[node name="Area2D4" parent="BossHandler/ArenaAreas" instance=ExtResource("10_iwyvj")]
+monitoring = false
+
+[node name="Area2D5" parent="BossHandler/ArenaAreas" instance=ExtResource("10_iwyvj")]
+monitoring = false
+
+[node name="Area2D6" parent="BossHandler/ArenaAreas" instance=ExtResource("10_iwyvj")]
+monitoring = false
+
+[node name="Area2D7" parent="BossHandler/ArenaAreas" instance=ExtResource("10_iwyvj")]
+monitoring = false
+
+[node name="Area2D8" parent="BossHandler/ArenaAreas" instance=ExtResource("10_iwyvj")]
+monitoring = false
+
 [node name="ArenaMarkers" type="Node2D" parent="BossHandler"]
 
 [node name="Marker2D" type="Marker2D" parent="BossHandler/ArenaMarkers"]
 position = Vector2(-560, 2)
 gizmo_extents = 243.9
-
-[node name="Area2D" type="Area2D" parent="BossHandler/ArenaMarkers/Marker2D"]
-collision_layer = 0
-collision_mask = 8
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BossHandler/ArenaMarkers/Marker2D/Area2D"]
-shape = SubResource("RectangleShape2D_iwyvj")
 
 [node name="Marker2D2" type="Marker2D" parent="BossHandler/ArenaMarkers"]
 position = Vector2(-560, 371)
@@ -199,7 +217,7 @@ position = Vector2(84, 353)
 gizmo_extents = 243.9
 
 [node name="Marker2D6" type="Marker2D" parent="BossHandler/ArenaMarkers"]
-position = Vector2(84, 178)
+position = Vector2(84, -204)
 gizmo_extents = 243.9
 
 [node name="Marker2D7" type="Marker2D" parent="BossHandler/ArenaMarkers"]

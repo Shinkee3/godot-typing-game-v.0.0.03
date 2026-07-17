@@ -12,8 +12,8 @@ var aim_target_pos: Vector2
 
 var smoothed_mouse_position: Vector2
 
-var speed: float = 150
-var sprint_speed: float = 400
+var speed: float = 200
+var sprint_speed: float = 350
 
 var indialogue: bool = true
 

@@ -71,6 +71,10 @@ glossary/glossary_files=["uid://bhl802hwwmjix"]
 
 window/stretch/mode="viewport"
 
+[editor]
+
+movie_writer/movie_file="/Users/kaitlynkatigbac/Movies/XPIRICA/Movies/Sapirica.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
