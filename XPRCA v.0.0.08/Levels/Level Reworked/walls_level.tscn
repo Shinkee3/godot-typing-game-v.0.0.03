@@ -350,7 +350,7 @@ position = Vector2(161, 164)
 
 [node name="NextLevelDoor" parent="." instance=ExtResource("11_8wwel")]
 position = Vector2(1627, 164)
-connected_level = "uid://bnko63sjwby0s"
+connected_level = "uid://bb1g6ix2mk6ym"
 
 [connection signal="child_exiting_tree" from="Map/MagicItems/DispellableWallsContainer" to="Map/MagicItems/DispellableWallsContainer" method="_on_child_exiting_tree"]
 [connection signal="area_entered" from="Map/MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" to="Map/MagicItems/DispellableWallsContainer/SpawnDispell/SpawnDispellDetector" method="_on_area_entered"]

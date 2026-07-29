@@ -1,5 +1,6 @@
-[gd_resource type="TileSet" load_steps=23 format=3 uid="uid://bvr80ykefb1v5"]
+[gd_resource type="TileSet" load_steps=25 format=3 uid="uid://bvr80ykefb1v5"]
 
+[ext_resource type="PackedScene" uid="uid://dbchwt1tklydy" path="res://Enemy/Barrels/barrels.tscn" id="1_7qxio"]
 [ext_resource type="Texture2D" uid="uid://7cqvb7a2g3o1" path="res://Assets/Characters And Tiles/Environment/tiles.png" id="1_al5tp"]
 [ext_resource type="Texture2D" uid="uid://qfhi4ehhqew6" path="res://Assets/Characters And Tiles/Environment/animated-tiles.png" id="4_2s70s"]
 [ext_resource type="Texture2D" uid="uid://bh5iif7l7l031" path="res://Assets/Characters And Tiles/Environment/autotiles.png" id="5_er1lu"]
@@ -7,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://c1kyqu18227o1" path="res://Assets/Characters And Tiles/Items/items.png" id="9_er1lu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pybgr"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4u374"]
+resource_name = "Barrels"
+scenes/1/scene = ExtResource("1_7qxio")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4u374"]
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -173,7 +178,7 @@ texture_region_size = Vector2i(32, 32)
 4:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -16, 8, -16, 8, 16, -8, 16)
 5:17/0 = 0
 6:17/0 = 0
-6:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -16, 8, -16, 8, 8, -8, 8)
+6:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8.096407, -8.096409, 7.5005684, -8.446903, 8, 8, -8, 8)
 2:19/0 = 0
 3:19/0 = 0
 4:19/0 = 0
@@ -794,3 +799,4 @@ sources/3 = SubResource("TileSetAtlasSource_6aeun")
 sources/4 = SubResource("TileSetAtlasSource_mkyfa")
 sources/8 = SubResource("TileSetAtlasSource_xm8t7")
 sources/9 = SubResource("TileSetAtlasSource_pbawl")
+sources/0 = SubResource("TileSetScenesCollectionSource_4u374")

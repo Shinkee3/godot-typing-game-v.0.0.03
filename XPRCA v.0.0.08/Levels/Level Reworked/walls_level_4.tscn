@@ -5,9 +5,9 @@
 [ext_resource type="TileSet" uid="uid://bvr80ykefb1v5" path="res://Resources/Tilemaps/base_tilemap.tres" id="4_wyl8t"]
 [ext_resource type="Script" uid="uid://bfvvcbadbd215" path="res://Levels/Level Reworked/Boss_Rewrite2.gd" id="5_ouegd"]
 [ext_resource type="PackedScene" uid="uid://bkh3ujfhdvy0g" path="res://Resources/Tilemaps/torch.tscn" id="5_sbtft"]
+[ext_resource type="PackedScene" uid="uid://bhq7c2to242ba" path="res://Enemy/Bossfight_level4/boss_body.tscn" id="6_iwyvj"]
 [ext_resource type="Script" uid="uid://82t4vxh4eaug" path="res://Enemy/Bossfight_level4/boss_attack_handler.gd" id="7_7cjgn"]
 [ext_resource type="Script" uid="uid://bpmq7ixtp6pw7" path="res://Levels/Level Reworked/dispellable_enemies_container.gd" id="7_d0xtk"]
-[ext_resource type="PackedScene" uid="uid://b42jxrpwjxdkn" path="res://Enemy/BossCaster/boss_rewrite.tscn" id="7_sbtft"]
 [ext_resource type="Script" uid="uid://dmd2sxf5fhodd" path="res://Enemy/Bossfight_level4/spell_bubble.gd" id="9_iwyvj"]
 [ext_resource type="Texture2D" uid="uid://u4eraug4wr4q" path="res://Assets/Portraits/speechbubble-sheet.png" id="9_r1xo2"]
 [ext_resource type="PackedScene" uid="uid://b81u8vmvjgvhr" path="res://Enemy/Bossfight_level4/aoe_round.tscn" id="10_iwyvj"]
@@ -91,8 +91,8 @@ script = ExtResource("7_d0xtk")
 [node name="BossHandler" type="Node2D" parent="."]
 script = ExtResource("5_ouegd")
 
-[node name="Boss_Rewrite" parent="BossHandler" instance=ExtResource("7_sbtft")]
-position = Vector2(66, -135)
+[node name="BossBody" parent="BossHandler" instance=ExtResource("6_iwyvj")]
+position = Vector2(65, -136)
 
 [node name="AttackHandler" type="Node2D" parent="BossHandler"]
 script = ExtResource("7_7cjgn")
@@ -234,7 +234,7 @@ position = Vector2(63, -127)
 connected_level = "uid://bb1g6ix2mk6ym"
 
 [node name="Player" parent="." instance=ExtResource("2_awv8p")]
-position = Vector2(362, 284)
+position = Vector2(62, 869)
 collision_mask = 9
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

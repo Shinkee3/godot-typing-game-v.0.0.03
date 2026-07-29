@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var tp_markers = $PosMarkers
-@onready var body = $Boss_Rewrite
+@onready var body = $BossBody
 @onready var attackhandler = $AttackHandler
 @onready var castinghandler = $CastingHandler
 @onready var arenamarkers = $ArenaMarkers
@@ -28,6 +28,22 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	"""wait(3.0)
+	if tempcounter == 0:
+		await castinghandler.casting_spell("Teleport and Shoot") #omg it fucking worksss!!!
+		teleport_sequence()
+	elif tempcounter == 1:
+		await castinghandler.casting_spell("Teleport and Shoot", 3, 5) #omg it fucking worksss!!!
+		teleport_sequence()
+	elif tempcounter >= 2:
+		wait(2)
+		await castinghandler.casting_spell("Area of Effect", 0,5)
+		await random_teleport()
+		await area_of_effect(tempcounter - 1)
+			#reset_areas_postion(3)
+			#print("resetting areas")
+	tempcounter += 1
+			"""
 	if Input.is_action_just_pressed("shiftspace"):
 		if tempcounter == 0:
 			await castinghandler.casting_spell("Teleport and Shoot") #omg it fucking worksss!!!
@@ -42,8 +58,10 @@ func _process(delta: float) -> void:
 			await area_of_effect(tempcounter - 1)
 			#reset_areas_postion(3)
 			#print("resetting areas")
-
 		tempcounter += 1
+		
+
+
 func cast_spell(spell: String):
 	pass
 
